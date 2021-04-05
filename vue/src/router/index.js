@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Scheduling from '../views/Scheduling.vue'
 
 Vue.use(Router)
 
@@ -26,7 +27,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -53,6 +54,15 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/scheduling",
+      name: "scheduling",
+      component: Scheduling,
+      meta: {
+        requiresAuth: false
+      }
+    }
+
   ]
 })
 
