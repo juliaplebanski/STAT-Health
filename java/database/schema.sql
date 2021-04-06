@@ -1,5 +1,6 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS doctor_schedule;
 DROP TABLE IF EXISTS visit;
 DROP TABLE IF EXISTS visit_status;
 DROP TABLE IF EXISTS patient;
@@ -58,6 +59,17 @@ CREATE TABLE visit (
 );
 
 
+CREATE TABLE doctor_schedule (
+  doctor_id integer NOT NULL,
+  doctor_schedule_id serial NOT NULL,
+  appointment_start_time time NOT NULL,
+  appointment_end_time time (50) NOT NULL,
+  
+  CONSTRAINT pk_doctor_schedule_id PRIMARY KEY (doctor_schedule_id),
+  CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id)
+);
+
+
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
@@ -70,7 +82,22 @@ INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, end_time, st
 INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, end_time, status_id) VALUES (1,1, '5/9/2021', '9:00', '9:30', 'a');
 INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, end_time, status_id) VALUES (1,1, '5/12/2021', '9:00', '9:30', 'a');
 INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, end_time, status_id) VALUES (1,1, '5/16/2021', '8:00', '8:30', 'a');
-
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '8:00', '8:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '8:30', '9:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '9:00', '9:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '9:30', '10:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '10:00', '10:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '10:30', '11:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '11:00', '11:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '11:30', '12:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '12:30', '1:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '1:00', '1:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '1:30', '2:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '2:00', '2:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '3:00', '3:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '3:30', '4:00');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '4:00', '4:30');
+INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '4:30', '5:00');
 
 
 COMMIT TRANSACTION;
