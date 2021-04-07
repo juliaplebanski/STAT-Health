@@ -96,10 +96,20 @@ export default {
   
 } */
 .form-control {
-  
+  /* width:auto;
   display: flex;
   justify-content: center;
-  background-color: green;
+  align-items: center;
+  background-color: green; */
+  display: flex;
+  align-items: center;
+  width: auto;
+  padding: 0%;
+  justify-content: space-around;
+  color: #495057;
+  background-color: rgba(0, 217, 255, 0.899);
+  border: 1px solid #ced4da;
+  
 }
 
 </style>
