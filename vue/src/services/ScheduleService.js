@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default {
 
-  getAvailability(selectedDate) {
-    return axios.get('/scheduling', selectedDate)
+  getAvailability(doctorId, selectedDate) {
+    return axios.get('/home/scheduling/doctorId/selectedDate', doctorId, selectedDate)
   },
 
 }

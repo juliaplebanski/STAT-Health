@@ -10,8 +10,8 @@
         {{ date.text }}
       </option>
     </select>
-    <!-- <span>Selected: {{ selected }}</span> -->
-    <div class="btn-group-vertical btn-group-lg">
+    <span>Selected: {{ selected }}</span> 
+    <div class="btn-group-vertical btn-group-lg" v-show="times.length > 0">
       <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:key="time">{{ time }}</button>
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
         { text: "Wednesday, May 12, 2021", value: "5/12/2021" },
       ],
       dates: [],
-      times: [ "9:30", "10:30", "1:30"]
+      times: []
     };
   },
   created() {
@@ -90,11 +90,11 @@ export default {
     getAvailability(selected) {
       const doctorId = this.$store.state.doctorId;
       scheduleService
-        .getAvailability(selected, doctorId)
+        .getAvailability(doctorId, selected)
         .then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
-            //create times array
+            this.times = response.data;
           }
         })
         .catch((error) => {
