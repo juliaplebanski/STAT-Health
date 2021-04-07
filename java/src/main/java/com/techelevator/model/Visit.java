@@ -5,7 +5,7 @@ import java.sql.Time;
 import java.util.Date;
 
 public class Visit {
-	private int visitId;
+	//private int visitId;
 	private Date dateOfVisit;
 	private Time startTime;
 	private Time endTime;
@@ -37,13 +37,13 @@ public class Visit {
 		this.statusId = statusId;
 	}
 
-	public int getVisitId() {
-		return visitId;
-	}
-
-	public void setVisitId(int visitId) {
-		this.visitId = visitId;
-	}
+//	public int getVisitId() {
+//		return visitId;
+//	}
+//
+//	public void setVisitId(int visitId) {
+//		this.visitId = visitId;
+//	}
 
 	public Date getDateOfVisit() {
 		return dateOfVisit;

@@ -33,5 +33,11 @@ public class VisitController {
 		return visitDao.getAllAvailableVisitsByDoctorId(doctorId, LocalDate.parse(dateOfVisit));
 
 	}
+	
+	@RequestMapping(path = "/scheduling/bookAppointment", method = RequestMethod.POST)
+	public Visit bookAppointment (@RequestBody Visit visit) {
+		return visitDao.bookAppointment(visit);
+	
+	}
 
 }
