@@ -12,7 +12,7 @@
     </select>
     <span>Selected: {{ selected }}</span> 
     <div class="btn-group-vertical btn-group-lg" v-show="times.length > 0">
-      <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:key="time">{{ time }}</button>
+      <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:value="time.startTime" v-bind:key="time.startTime">{{ time.startTime }}</button>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import scheduleService from "../services/ScheduleService.js";
 
 export default {
-  name: "select-date",
+  name: "doctor-availability",
   data() {
     return {
       selected: "",
@@ -91,14 +91,10 @@ export default {
     },
     getAvailability(selected) {
       const doctorId = this.$store.state.doctorId;
-      scheduleService
-        .getAvailability(doctorId, selected)
-        .then((response) => {
+      scheduleService.getAvailability(doctorId, selected).then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
-            // response.forEach(item => {
-            //   this.times.push({ text: item, value: item});
-            // })
+            this.times = response.data;
           }
         })
         .catch((error) => {
