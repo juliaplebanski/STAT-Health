@@ -25,6 +25,6 @@ export default {
 div#main{
   display: flex;
   justify-content: space-between;
-  justify-items: center;
 }
+
 </style>
