@@ -90,7 +90,6 @@ INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_t
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '10:30', '11:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '11:00', '11:30');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '11:30', '12:00');
-INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '12:30', '1:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '1:00', '1:30');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '1:30', '2:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time,appointment_end_time) VALUES (1, '2:00', '2:30');
