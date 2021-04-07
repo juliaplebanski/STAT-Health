@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <select v-model="selected">
+  <div id="main">
+    <label for="dates">Select desired date:</label>
+    <select id="dates" v-model="selected" v-on:change="getAvailability(selected)">
       <option
         v-for="date in dates"
         v-bind:value="date.value"
@@ -9,12 +10,15 @@
         {{ date.text }}
       </option>
     </select>
-    <span>Selected: {{ selected }}</span>
+    <!-- <span>Selected: {{ selected }}</span> -->
+    <div class="btn-group-vertical btn-group-lg">
+      <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:key="time">{{ time }}</button>
+    </div>
   </div>
 </template>
 
 <script>
-// import ScheduleService from "../services/ScheduleService.js";
+import scheduleService from "../services/ScheduleService.js";
 
 export default {
   name: "select-date",
@@ -26,6 +30,7 @@ export default {
         { text: "Wednesday, May 12, 2021", value: "5/12/2021" },
       ],
       dates: [],
+      times: [ "9:30", "10:30", "1:30"]
     };
   },
   created() {
@@ -38,16 +43,19 @@ export default {
       for (let i = 1; i <= daysToAdd; i++) {
         let currentDate = new Date();
         currentDate.setDate(startDate.getDate() + i);
-        let dateString =
-          this.dayAsString(currentDate.getDay()) +
-          ", " +
-          this.monthAsString(currentDate.getMonth()) +
-          " " +
-          currentDate.getDate() +
-          " " +
-          currentDate.getFullYear();
-          let valueDate = currentDate.toLocaleDateString('en-ZA');
-        aryDates.push({ text: dateString, value: valueDate });
+        let day = this.dayAsString(currentDate.getDay());
+        if (day !== "Saturday" && day !== "Sunday") {
+          let dateString =
+            day +
+            ", " +
+            this.monthAsString(currentDate.getMonth()) +
+            " " +
+            currentDate.getDate() +
+            " " +
+            currentDate.getFullYear();
+          let valueDate = currentDate.toLocaleDateString("en-ZA");
+          aryDates.push({ text: dateString, value: valueDate });
+        }
       }
       return aryDates;
     },
@@ -79,17 +87,34 @@ export default {
       weekdays[6] = "Saturday";
       return weekdays[dayIndex];
     },
-    // submitDate(selected) {
-    //   scheduleService.getAvailability(selected).then((response) => {
-    //       if (response.status == "200") {
-    //         console.log(response.status + " 2");
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       // handle an error
-    //       console.log(error);
-    //     });
-    // },
+    getAvailability(selected) {
+      const doctorId = this.$store.state.doctorId;
+      scheduleService
+        .getAvailability(selected, doctorId)
+        .then((response) => {
+          if (response.status == "200") {
+            console.log(response.status + " 2");
+            //create times array
+          }
+        })
+        .catch((error) => {
+          // handle an error
+          console.log(error);
+        });
+    },
   },
 };
 </script>
+
+<style scoped>
+
+button {
+  background-color: #1e3250;
+  border-color:  #1e3250;
+}
+button:hover {
+  background-color: #3863A0;
+  border-color:  #3863A0;
+}
+
+</style>
