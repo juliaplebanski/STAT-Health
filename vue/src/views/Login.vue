@@ -74,3 +74,32 @@ export default {
   }
 };
 </script>
+<style>
+/* #username{
+  width: auto;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  
+  background-color: green;
+  
+}
+#password{
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-grow: 2;
+  background-color: green;
+  
+} */
+.form-control {
+  
+  display: flex;
+  justify-content: center;
+  background-color: green;
+}
+
+</style>
