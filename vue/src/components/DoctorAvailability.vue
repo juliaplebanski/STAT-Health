@@ -46,10 +46,8 @@ export default {
           currentDate.getDate() +
           " " +
           currentDate.getFullYear();
-        aryDates.push(
-          "{ text: " + dateString + " , value: " + dateString + " }"
-        );
-        console.log(aryDates);
+          let valueDate = currentDate.toLocaleDateString('en-ZA');
+        aryDates.push({ text: dateString, value: valueDate });
       }
       return aryDates;
     },
