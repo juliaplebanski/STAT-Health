@@ -27,7 +27,6 @@ public class JDBCVisitDAO implements VisitDAO {
 		List<Visit> listOfAvailableVisitsByDoctorId = new ArrayList<>();
 		String selectSQL = "SELECT doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time FROM doctor_schedule RIGHT OUTER JOIN visit ON visit.doctor_id = doctor_schedule.doctor_id WHERE visit.doctor_id = ? AND (visit.date_of_visit = ? AND doctor_schedule.appointment_start_time NOT IN (SELECT visit.start_time FROM visit)) OR ? NOT IN (SELECT visit.date_of_visit FROM visit); ";
 
-			
 		SqlRowSet results = jdbcTemplate.queryForRowSet(selectSQL, doctorId, dateOfVisit, dateOfVisit);
 		while (results.next()) {
 			listOfAvailableVisitsByDoctorId.add(mapRowToAvailableVisits(results));
@@ -35,11 +34,20 @@ public class JDBCVisitDAO implements VisitDAO {
 		return listOfAvailableVisitsByDoctorId;
 	}
 
+	@Override
+	public Visit bookAppointment(Visit visit) {
+		// TODO Auto-generated method stub
+		String insertSql = "INSERT INTO visit(patient_id, doctor_id, start_time, end_time, date_of_visit, status_id)  VALUES (?,?,?,?,?,?); ";
+		jdbcTemplate.update(insertSql, visit.getPatientId(), visit.getDoctorId(), visit.getStartTime(),
+				visit.getEndTime(), visit.getDateOfVisit(), visit.getStatusId());
+		return visit;
+	}
+
 	/** used to map the results row to properties of the venueSpace class */
 	private Visit mapRowToAvailableVisits(SqlRowSet results) {
 		Visit visit = new Visit();
 		// only pull out what we need for our query
-	//	visit.setDateOfVisit(results.getDate("date_of_visit"));
+		// visit.setDateOfVisit(results.getDate("date_of_visit"));
 		// visit.setDoctorId(results.getInt("doctor_id"));
 		visit.setEndTime(results.getTime("appointment_end_time"));
 		// visit.setPatientId(results.getInt("patient_id"));
@@ -47,7 +55,6 @@ public class JDBCVisitDAO implements VisitDAO {
 		// visit.setStatusId(results.getString("status_id"));
 		// visit.setVisitId(results.getInt("visit_id"));
 
-		
 		return visit;
 
 	}
