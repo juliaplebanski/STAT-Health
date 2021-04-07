@@ -53,7 +53,9 @@ export default {
             currentDate.getDate() +
             " " +
             currentDate.getFullYear();
-          let valueDate = currentDate.toLocaleDateString("en-ZA");
+          let valueDate = currentDate.toLocaleDateString('fr-CA');
+        
+          console.log(valueDate);
           aryDates.push({ text: dateString, value: valueDate });
         }
       }
@@ -94,12 +96,13 @@ export default {
         .then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
-            this.times = response.data;
+            response.forEach(item => {
+              this.times.push({ text: item, value: item});
+            })
           }
         })
         .catch((error) => {
-          // handle an error
-          console.log(error);
+          console.log(error + doctorId + selected);
         });
     },
   },
