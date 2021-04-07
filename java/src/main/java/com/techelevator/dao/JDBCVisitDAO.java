@@ -30,7 +30,6 @@ public class JDBCVisitDAO implements VisitDAO {
 				+ "WHERE visit.doctor_id = ? AND " + "visit.date_of_visit = ? "
 				+ "AND doctor_schedule.appointment_start_time NOT IN (SELECT visit.start_time FROM visit); ";
 
-		System.out.println(selectSQL);
 		SqlRowSet results = jdbcTemplate.queryForRowSet(selectSQL, doctorId, dateOfVisit);
 		while (results.next()) {
 			listOfAvailableVisitsByDoctorId.add(mapRowToAvailableVisits(results));
@@ -41,15 +40,16 @@ public class JDBCVisitDAO implements VisitDAO {
 	/** used to map the results row to properties of the venueSpace class */
 	private Visit mapRowToAvailableVisits(SqlRowSet results) {
 		Visit visit = new Visit();
+		// only pull out what we need for our query
 		visit.setDateOfVisit(results.getDate("date_of_visit"));
-		//visit.setDoctorId(results.getInt("doctor_id"));
-		//visit.setEndTime(results.getTime("end_time"));
-	//	visit.setPatientId(results.getInt("patient_id"));
-		visit.setStartTime(results.getTime("start_time"));
-	//	visit.setStatusId(results.getString("status_id"));
-	//	visit.setVisitId(results.getInt("visit_id"));
+		// visit.setDoctorId(results.getInt("doctor_id"));
+		visit.setEndTime(results.getTime("appointment_end_time"));
+		// visit.setPatientId(results.getInt("patient_id"));
+		visit.setStartTime(results.getTime("appointment_start_time"));
+		// visit.setStatusId(results.getString("status_id"));
+		// visit.setVisitId(results.getInt("visit_id"));
 
-		//only pull out what we need for our query 
+		
 		return visit;
 
 	}
