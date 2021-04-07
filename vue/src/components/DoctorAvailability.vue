@@ -96,9 +96,9 @@ export default {
         .then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
-            response.forEach(item => {
-              this.times.push({ text: item, value: item});
-            })
+            // response.forEach(item => {
+            //   this.times.push({ text: item, value: item});
+            // })
           }
         })
         .catch((error) => {
