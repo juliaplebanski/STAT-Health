@@ -28,21 +28,21 @@ public class VisitController {
 	VisitDAO visitDao;
 
 //	Mapped as a GET Method using base url of /visit
-	@RequestMapping(path = "/scheduling/{doctorId}/{dateOfVisit}", method = RequestMethod.GET)
-	public List<Visit> getAllAvailableVisitsByDoctorId(@PathVariable int doctorId, @PathVariable String dateOfVisit) {
-		return visitDao.getAllAvailableVisitsByDoctorId(doctorId, LocalDate.parse(dateOfVisit));
+	@RequestMapping(path = "/scheduling/{patientId}/{doctorId}/{dateOfVisit}", method = RequestMethod.GET)
+	public List<Visit> getAllAvailableVisitsByDoctorId(@PathVariable int patientId, @PathVariable int doctorId, @PathVariable String dateOfVisit) {
+		return visitDao.getAllAvailableVisitsByDoctorId(patientId, doctorId, LocalDate.parse(dateOfVisit));
 
 	}
 	
-	@RequestMapping(path = "/scheduling/bookAppointment", method = RequestMethod.POST)
+	@RequestMapping(path = "/scheduling", method = RequestMethod.POST)
 	public Visit bookAppointment (@RequestBody Visit visit) {
 		return visitDao.bookAppointment(visit);
 	
 	}
 
-	@RequestMapping(path = "/scheduling/upcomingAppointments", method = RequestMethod.GET) //fix to correct path 
-	public Visit upcomingAppointments (@PathVariable int doctorId, @PathVariable String dateOfVisit, Object visitId) { //+ input parameters 
-		return (Visit) visitDao.getListOfUpcomingAppointments();
+	@RequestMapping(path = "", method = RequestMethod.GET) //fix to correct path 
+	public List<Visit> retrieveListOfUpcomingAppointments(@PathVariable int patientId) { //+ input parameters 
+		return visitDao.retrieveListOfUpcomingAppointments(patientId);
 	
 	}
 	

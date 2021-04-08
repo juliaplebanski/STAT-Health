@@ -22,24 +22,24 @@ public class JDBCVisitDAO implements VisitDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
-	
-	
-	
 	@Override
-	public List<Visit> getAllAvailableVisitsByDoctorId(int doctorId, LocalDate dateOfVisit) {
+	public List<Visit> getAllAvailableVisitsByDoctorId(int patientId, int doctorId, LocalDate dateOfVisit) {
 		// TODO Auto-generated method stub
 		List<Visit> listOfAvailableVisitsByDoctorId = new ArrayList<>();
-		String selectSQL = "SELECT doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time FROM doctor_schedule RIGHT OUTER JOIN visit ON visit.doctor_id = doctor_schedule.doctor_id WHERE visit.doctor_id = ? AND (visit.date_of_visit = ? AND doctor_schedule.appointment_start_time NOT IN (SELECT visit.start_time FROM visit)) OR ? NOT IN (SELECT visit.date_of_visit FROM visit) GROUP BY doctor_schedule.doctor_schedule_id, doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time ORDER BY doctor_schedule.doctor_schedule_id; " ;
-		SqlRowSet results = jdbcTemplate.queryForRowSet(selectSQL, doctorId, dateOfVisit, dateOfVisit);
+		String selectSQL = "SELECT patient.patient_id, doctor_schedule.doctor_id, doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time FROM doctor_schedule " + 
+				"RIGHT OUTER JOIN visit ON visit.doctor_id = doctor_schedule.doctor_id " + 
+				"JOIN patient ON patient.doctor_id = doctor_schedule.doctor_id " + 
+				"WHERE patient.patient_id = ? AND visit.doctor_id = ? AND (visit.date_of_visit = ? AND doctor_schedule.appointment_start_time " + 
+				"NOT IN (SELECT visit.start_time FROM visit) OR ? NOT IN (SELECT visit.date_of_visit FROM visit)) " + 
+				"GROUP BY patient.patient_id, doctor_schedule.doctor_schedule_id, doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time " + 
+				"ORDER BY patient.patient_id, doctor_schedule.doctor_schedule_id; " ;
+		SqlRowSet results = jdbcTemplate.queryForRowSet(selectSQL, patientId, doctorId, dateOfVisit, dateOfVisit);
 		while (results.next()) {
 			listOfAvailableVisitsByDoctorId.add(mapRowToAvailableVisits(results));
 		}
 		return listOfAvailableVisitsByDoctorId;
 	}
 
-	
-	
-	
 	@Override
 	public Visit bookAppointment(Visit visit) {
 		// TODO Auto-generated method stub
@@ -53,10 +53,10 @@ public class JDBCVisitDAO implements VisitDAO {
 	private Visit mapRowToAvailableVisits(SqlRowSet results) {
 		Visit visit = new Visit();
 		// only pull out what we need for our query
-		//visit.setDateOfVisit(results.getDate("date_of_visit"));
-		//visit.setDoctorId(results.getInt("doctor_id"));
+		// visit.setDateOfVisit(results.getDate("date_of_visit"));
+		visit.setDoctorId(results.getInt("doctor_id"));
 		visit.setEndTime(results.getTime("appointment_end_time"));
-		// visit.setPatientId(results.getInt("patient_id"));
+		visit.setPatientId(results.getInt("patient_id"));
 		visit.setStartTime(results.getTime("appointment_start_time"));
 		// visit.setStatusId(results.getString("status_id"));
 		// visit.setVisitId(results.getInt("visit_id"));
@@ -65,34 +65,23 @@ public class JDBCVisitDAO implements VisitDAO {
 
 	}
 
-
-	
 	@Override
-	public List<Visit> getListOfUpcomingAppointments() { 
+	public List<Visit> retrieveListOfUpcomingAppointments(int patient_id) {
 		// TODO Auto-generated method stub
-		List<Visit> visitList = new ArrayList<>();
+		List<Visit> futureAppointmentsList = new ArrayList<>();
 
-		String sql = "SELECT visit.date_of_visit, visit.start_appointment_time, visit.end_appointment_time " //Fix query statement
-				 + "FROM visit" + "ORDER BY visit.date_of_visit ";
+		String sql = "SELECT visit.date_of_visit, visit.start_time, visit.end_time " // Fix query statement																			
+				+ "FROM visit" + "ORDER BY visit.date_of_visit ";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		while (results.next()) {
 
-		Visit visit = new Visit();
-		visit.setStartTime(results.getTime("appointment_start_time"));
-		visit.setEndTime(results.getTime("appointment_end_time"));	
-		visit.setDateOfVisit(results.getDate("date_of_visit"));
-	
-		visitList.add(visit);
-}
-		return visitList;
+			Visit visit = new Visit();
+			visit.setStartTime(results.getTime("start_time"));
+			visit.setEndTime(results.getTime("end_time"));
+			visit.setDateOfVisit(results.getDate("date_of_visit"));
+
+			futureAppointmentsList.add(visit);
+		}
+		return futureAppointmentsList;
 	}
 }
-
-
-
-	
-
-
-		
-
-		
