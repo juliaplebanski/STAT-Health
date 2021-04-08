@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="main">
     <user-sub-nav id="nav" />
-    <div class="main">
+    <div id="doc-info">
       <doctor-info id="info" />
-      <doctor-availability id="dates" />
     </div>
+    <doctor-availability id="dates" />
   </div>
 </template>
 
@@ -23,17 +23,23 @@ export default {
 </script>
 
 <style scoped>
-div.main {
-  display: flex;
-  justify-content: flex-start;
-}
+/* div#main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+      "nav dates"
+      "info dates";
+} */
 div#nav {
+  /* grid-area: "nav"; */
   margin: 20px;
 }
-div#info {
+div#doc-info {
+  /* grid-area: "info"; */
   margin: 20px 40px 60px 60px;
 }
 div#dates {
+  /* grid-area: "dates"; */
   margin: 40px 40px 60px 60px;
 }
 </style>

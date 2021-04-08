@@ -10,9 +10,9 @@
         {{ date.text }}
       </option>
     </select>
-    <span>Selected: {{ selected }}</span> 
-    <div class="btn-group-vertical btn-group-lg" v-show="times.length > 0">
-      <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:value="time.startTime" v-bind:key="time.startTime">{{ time.startTime }}</button>
+    <!-- <span>Selected: {{ selected }}</span>  -->
+    <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
+      <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:value="time.startTime" v-bind:key="time.startTime" v-on:click="addVisit(time.startTime)">{{ time.startTime }}</button>
     </div>
   </div>
 </template>
@@ -30,7 +30,15 @@ export default {
         { text: "Wednesday, May 12, 2021", value: "5/12/2021" },
       ],
       dates: [],
-      times: []
+      times: [],
+      visit: {
+        startTime: '',
+        endTime: '',
+        doctorId: 0,
+        patientId: 0,
+        dateOfVisit: '',
+        statusId: ''
+      }
     };
   },
   created() {
@@ -91,7 +99,8 @@ export default {
     },
     getAvailability(selected) {
       const doctorId = this.$store.state.doctorId;
-      scheduleService.getAvailability(doctorId, selected).then((response) => {
+      const user = this.$store.state.user;
+      scheduleService.getAvailability(doctorId, selected, user).then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
             this.times = response.data;
@@ -101,8 +110,28 @@ export default {
           console.log(error + doctorId + selected);
         });
     },
+    createVisit(selectedTime) {
+      this.visit.doctorId = this.$store.state.doctorId;
+      this.visit.startTime = selectedTime;
+      this.visit.endDate = this.times.endDate;
+      this.visit.startDate = this.selected;
+      this.visit.statusId = 'a';
+      this.visit.patientId = this.times.patientId;
+      return this.visit;
+    }
   },
-};
+  addVisit(visit) {
+    scheduleService.addVisit(visit).then(response => {
+      if(response.status == '201') {
+            console.log(response.status + ' 2');
+          }
+       })
+       .catch(error => {
+         // handle an error 
+         console.log(error);
+       })
+  }
+}
 </script>
 
 <style scoped>
