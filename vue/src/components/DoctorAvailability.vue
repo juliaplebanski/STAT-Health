@@ -99,15 +99,15 @@ export default {
     },
     getAvailability(selected) {
       const doctorId = this.$store.state.doctorId;
-      const user = this.$store.state.user;
-      scheduleService.getAvailability(doctorId, selected, user).then((response) => {
+      const userId = this.$store.state.user.id;
+      scheduleService.getAvailability(doctorId, selected, userId).then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
             this.times = response.data;
           }
         })
         .catch((error) => {
-          console.log(error + doctorId + selected);
+          console.log(error + doctorId + selected + userId);
         });
     },
     createVisit(selectedTime) {
