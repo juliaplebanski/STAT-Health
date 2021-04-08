@@ -11,4 +11,7 @@ public interface VisitDAO {
 	// List<Visit>getAllScheduledVisitsForPatient(int patientId);
 	List<Visit> getAllAvailableVisitsByDoctorId(int doctorId, LocalDate dateOfVisit);
 	Visit bookAppointment(Visit visit);
+	//List <Visit>retrieveListOfUpcomingAppointments();
+	public List<Visit> getListOfUpcomingAppointments(); //no parameters on this method?
+
 }

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,9 @@ public class JDBCVisitDAO implements VisitDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	
+	
+	
 	@Override
 	public List<Visit> getAllAvailableVisitsByDoctorId(int doctorId, LocalDate dateOfVisit) {
 		// TODO Auto-generated method stub
@@ -34,6 +38,9 @@ public class JDBCVisitDAO implements VisitDAO {
 		return listOfAvailableVisitsByDoctorId;
 	}
 
+	
+	
+	
 	@Override
 	public Visit bookAppointment(Visit visit) {
 		// TODO Auto-generated method stub
@@ -59,4 +66,34 @@ public class JDBCVisitDAO implements VisitDAO {
 
 	}
 
+
+	
+	@Override
+	public List<Visit> getListOfUpcomingAppointments() { 
+		// TODO Auto-generated method stub
+		List<Visit> visitList = new ArrayList<>();
+
+		String sql = "SELECT visit.date_of_visit, visit.start_appointment_time, visit.end_appointment_time " //Fix query statement
+				 + "FROM visit" + "ORDER BY visit.date_of_visit ";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+		while (results.next()) {
+
+		Visit visit = new Visit();
+		visit.setStartTime(results.getTime("appointment_start_time"));
+		visit.setEndTime(results.getTime("appointment_end_time"));	
+		visit.setDateOfVisit(results.getDate("date_of_visit"));
+	
+		visitList.add(visit);
 }
+		return visitList;
+	}
+}
+
+
+
+	
+
+
+		
+
+		
