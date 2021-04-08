@@ -1,17 +1,17 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
         v-if="invalidCredentials"
-      >Invalid username and password!</div>
+      >Invalid username and password. Please try again.</div>
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      >Thank you for registering. Please sign in.</div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -31,8 +31,8 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
+      <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
   </div>
 </template>
@@ -75,40 +75,21 @@ export default {
 };
 </script>
 <style>
-/* #username{
-  width: auto;
-  
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  
-  background-color: green;
-  
-}
-#password{
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-grow: 2;
-  background-color: green;
-  
-} */
+
 .form-control {
-  /* width:auto;
+  
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: green; */
-  display: flex;
+  justify-content: space-between;
   align-items: center;
   width: auto;
   padding: 0%;
   color: #495057;
-  background-color: rgba(0, 217, 255, 0.899);
   border: 1px solid #ced4da;
-  
+  margin: 20px;
 }
+.form-signin {
+  background-color: rgb(232, 223, 159, 0.8);
+}
+
 
 </style>
