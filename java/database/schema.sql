@@ -26,6 +26,7 @@ CREATE TABLE users (
 CREATE TABLE patient (
   patient_id serial NOT NULL,
   user_id integer NOT NULL,
+  doctor_id integer NOT NULL,
   CONSTRAINT pk_patient_id PRIMARY KEY (patient_id),
   CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
@@ -73,8 +74,8 @@ CREATE TABLE doctor_schedule (
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
-INSERT INTO patient (user_id) VALUES (1);
-INSERT INTO patient (user_id) VALUES (1);
+INSERT INTO patient (user_id, doctor_id) VALUES (1,1);
+INSERT INTO patient (user_id, doctor_id) VALUES (1,1);
 INSERT INTO doctor (user_id,first_name,last_name) VALUES (2, 'Steve', 'Carmicheal');
 INSERT INTO visit_status (status_id,status_desc) VALUES ('a', 'approved');
 INSERT INTO visit_status (status_id, status_desc) VALUES ('p','pending');
