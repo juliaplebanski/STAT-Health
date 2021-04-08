@@ -29,8 +29,7 @@ public class JDBCVisitDAO implements VisitDAO {
 	public List<Visit> getAllAvailableVisitsByDoctorId(int doctorId, LocalDate dateOfVisit) {
 		// TODO Auto-generated method stub
 		List<Visit> listOfAvailableVisitsByDoctorId = new ArrayList<>();
-		String selectSQL = "SELECT doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time FROM doctor_schedule RIGHT OUTER JOIN visit ON visit.doctor_id = doctor_schedule.doctor_id WHERE visit.doctor_id = ? AND (visit.date_of_visit = ? AND doctor_schedule.appointment_start_time NOT IN (SELECT visit.start_time FROM visit)) OR ? NOT IN (SELECT visit.date_of_visit FROM visit); ";
-
+		String selectSQL = "SELECT doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time FROM doctor_schedule RIGHT OUTER JOIN visit ON visit.doctor_id = doctor_schedule.doctor_id WHERE visit.doctor_id = ? AND (visit.date_of_visit = ? AND doctor_schedule.appointment_start_time NOT IN (SELECT visit.start_time FROM visit)) OR ? NOT IN (SELECT visit.date_of_visit FROM visit) GROUP BY doctor_schedule.doctor_schedule_id, doctor_schedule.appointment_start_time, doctor_schedule.appointment_end_time ORDER BY doctor_schedule.doctor_schedule_id; " ;
 		SqlRowSet results = jdbcTemplate.queryForRowSet(selectSQL, doctorId, dateOfVisit, dateOfVisit);
 		while (results.next()) {
 			listOfAvailableVisitsByDoctorId.add(mapRowToAvailableVisits(results));
@@ -54,8 +53,8 @@ public class JDBCVisitDAO implements VisitDAO {
 	private Visit mapRowToAvailableVisits(SqlRowSet results) {
 		Visit visit = new Visit();
 		// only pull out what we need for our query
-		// visit.setDateOfVisit(results.getDate("date_of_visit"));
-		// visit.setDoctorId(results.getInt("doctor_id"));
+		//visit.setDateOfVisit(results.getDate("date_of_visit"));
+		//visit.setDoctorId(results.getInt("doctor_id"));
 		visit.setEndTime(results.getTime("appointment_end_time"));
 		// visit.setPatientId(results.getInt("patient_id"));
 		visit.setStartTime(results.getTime("appointment_start_time"));
