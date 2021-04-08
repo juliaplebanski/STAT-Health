@@ -1,7 +1,11 @@
 <template>
   <div id="main">
     <label for="dates">Select desired date:</label>
-    <select id="dates" v-model="selected" v-on:change="getAvailability(selected)">
+    <select
+      id="dates"
+      v-model="selected"
+      v-on:change="getAvailability(selected)"
+    >
       <option
         v-for="date in dates"
         v-bind:value="date.value"
@@ -12,7 +16,16 @@
     </select>
     <!-- <span>Selected: {{ selected }}</span>  -->
     <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
-      <button type="button" class="btn btn-secondary" v-for="time in times" v-bind:value="time.startTime" v-bind:key="time.startTime" v-on:click="addVisit(time.startTime)">{{ time.startTime }}</button>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        v-for="time in times"
+        v-bind:value="time.startTime"
+        v-bind:key="time.startTime"
+        v-on:click="createVisit(time.startTime)"
+      >
+        {{ time.startTime }}
+      </button>
     </div>
   </div>
 </template>
@@ -32,13 +45,13 @@ export default {
       dates: [],
       times: [],
       visit: {
-        startTime: '',
-        endTime: '',
-        doctorId: 0,
-        patientId: 0,
-        dateOfVisit: '',
-        statusId: ''
-      }
+        // startTime: '',
+        // endTime: "",
+        // doctorId: 0,
+        // patientId: 0,
+        // dateOfVisit: "",
+        // statusId: "",
+      },
     };
   },
   created() {
@@ -61,8 +74,8 @@ export default {
             currentDate.getDate() +
             " " +
             currentDate.getFullYear();
-          let valueDate = currentDate.toLocaleDateString('fr-CA');
-        
+          let valueDate = currentDate.toLocaleDateString("fr-CA");
+
           console.log(valueDate);
           aryDates.push({ text: dateString, value: valueDate });
         }
@@ -100,7 +113,9 @@ export default {
     getAvailability(selected) {
       const doctorId = this.$store.state.doctorId;
       const userId = this.$store.state.user.id;
-      scheduleService.getAvailability(doctorId, selected, userId).then((response) => {
+      scheduleService
+        .getAvailability(doctorId, selected, userId)
+        .then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
             this.times = response.data;
@@ -111,38 +126,47 @@ export default {
         });
     },
     createVisit(selectedTime) {
+      
       this.visit.doctorId = this.$store.state.doctorId;
       this.visit.startTime = selectedTime;
-      this.visit.endDate = this.times.endDate;
       this.visit.startDate = this.selected;
-      this.visit.statusId = 'a';
-      this.visit.patientId = this.times.patientId;
-      return this.visit;
-    }
-  },
-  addVisit(visit) {
-    scheduleService.addVisit(visit).then(response => {
-      if(response.status == '201') {
-            console.log(response.status + ' 2');
+      this.visit.statusId = "a";
+      this.times.forEach((time) => {
+        if (time.startTime == selectedTime) {
+          const time = time.endTime;
+          console.log(time);
+          this.visit.endTime = selectedTime.getMinutes() + 30;
+          this.visit.patientId = this.time.patientId;
+        }
+      });
+
+      this.addVisit(this.visit);
+    },
+
+    addVisit(visit) {
+      scheduleService
+        .addVisit(visit)
+        .then((response) => {
+          if (response.status == "201") {
+            console.log(response.status + " 2");
           }
-       })
-       .catch(error => {
-         // handle an error 
-         console.log(error);
-       })
-  }
-}
+        })
+        .catch((error) => {
+          // handle an error
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 button {
   background-color: #1e3250;
-  border-color:  #1e3250;
+  border-color: #1e3250;
 }
 button:hover {
-  background-color: #3863A0;
-  border-color:  #3863A0;
+  background-color: #3863a0;
+  border-color: #3863a0;
 }
-
 </style>
