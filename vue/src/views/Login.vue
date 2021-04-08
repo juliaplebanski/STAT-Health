@@ -105,7 +105,6 @@ export default {
   align-items: center;
   width: auto;
   padding: 0%;
-  justify-content: space-around;
   color: #495057;
   background-color: rgba(0, 217, 255, 0.899);
   border: 1px solid #ced4da;
