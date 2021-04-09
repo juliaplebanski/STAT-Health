@@ -132,15 +132,17 @@ export default {
       this.visit.startTime = selectedTime;
       this.visit.startDate = this.selected;
       this.visit.statusId = "a";
-      this.times.forEach((time) => {
-        if (time.startTime == selectedTime) {
-          const time = time.endTime;
-          console.log(time);
-          this.visit.endTime = selectedTime.getMinutes() + 30;
-          this.visit.patientId = this.time.patientId;
-        }
+      this.visit.patientId = 1;
+      this.visit.endTime = selectedTime;
+      // this.times.forEach((time) => {
+      //   if (time.startTime == selectedTime) {
+      //     const time = time.endTime;
+      //     console.log(time);
+      //     this.visit.endTime = selectedTime.getMinutes() + 30;
+      //     this.visit.patientId = this.time.patientId;
+      //   }
 
-      });
+      // });
 
       this.addVisit(this.visit);
     },
