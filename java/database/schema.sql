@@ -1,7 +1,9 @@
 BEGIN TRANSACTION;
-DROP TABLE IF EXISTS visit_reason;
+
+
 DROP TABLE IF EXISTS doctor_schedule;
 DROP TABLE IF EXISTS visit;
+DROP TABLE IF EXISTS visit_reason;
 DROP TABLE IF EXISTS visit_status;
 DROP TABLE IF EXISTS patient;
 DROP TABLE IF EXISTS doctor;
@@ -47,7 +49,7 @@ CREATE TABLE visit_status (
 
 CREATE TABLE visit_reason (
 	visit_reason_id SERIAL NOT NULL,
-	reason varchar(50) NOT NULL,	
+	reason varchar(50) UNIQUE,	
 	CONSTRAINT PK_visit_reason_id PRIMARY KEY (visit_reason_id)
 	
 );
@@ -59,9 +61,9 @@ CREATE TABLE visit (
   doctor_id integer NOT NULL,
   date_of_visit date NOT NULL,
   start_time time NOT NULL,
-  visit_reason varchar NOT NULL,
   status_id char(1) NOT NULL,
-  description varchar (2000) ,
+  visit_reason varchar(50) NOT NULL,
+  description varchar (2000),
 
   CONSTRAINT pk_visit_id PRIMARY KEY (visit_id),
   CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
@@ -92,6 +94,20 @@ INSERT INTO patient (user_id, doctor_id) VALUES (1,1);
 INSERT INTO doctor (user_id,first_name,last_name) VALUES (2, 'Steve', 'Carmicheal');
 INSERT INTO visit_status (status_id,status_desc) VALUES ('a', 'approved');
 INSERT INTO visit_status (status_id, status_desc) VALUES ('p','pending');
+
+INSERT INTO visit_reason (reason) VALUES ('Skin Disorders');
+INSERT INTO visit_reason (reason) VALUES ('Joint Pain and Osteoarthritis');
+INSERT INTO visit_reason (reason) VALUES ('Back Problems');
+INSERT INTO visit_reason (reason) VALUES ('Cholesterol Problems');
+INSERT INTO visit_reason (reason) VALUES ('Upper Respiratory Problems (not including asthma)');
+INSERT INTO visit_reason (reason) VALUES ('Anxiety, Bipolar Disorder and Depression');
+INSERT INTO visit_reason (reason) VALUES ('Chronic Neurology Disorders');
+INSERT INTO visit_reason (reason) VALUES ('High Blood Pressure');
+INSERT INTO visit_reason (reason) VALUES ('Migraines');
+INSERT INTO visit_reason (reason) VALUES ('Diabetes');
+
+
+
 INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/13/2021', '8:00', 'Skin Disorders', 'a', 'Acne');
 INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/13/2021', '9:00', 'Skin Disorders', 'a', 'Acne');
 INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/16/2021', '9:00', 'Skin Disorders', 'a', 'Acne');
@@ -111,8 +127,7 @@ INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '3:00
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '3:30');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:30');
-INSERT INTO visit_reason (reason) VALUES ('Back Problems');
-INSERT INTO visit_reason (reason) VALUES ('Migraines');
+
 
 
 /*INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, status_id) VALUES (1,1, '4/19/2021', '8:00', 'a');*/
