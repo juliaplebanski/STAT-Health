@@ -68,8 +68,8 @@ CREATE TABLE visit (
   CONSTRAINT pk_visit_id PRIMARY KEY (visit_id),
   CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
   CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id),
-  CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCES visit_status(status_id),
-  CONSTRAINT fk_visit_reason FOREIGN KEY (visit_reason) REFERENCES visit_reason(reason)
+  CONSTRAINT fk_status_id FOREIGN KEY (status_id) REFERENCES visit_status(status_id)
+  
 
 );
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Visit;
+import com.techelevator.model.VisitReason;
 
 @RestController
 @CrossOrigin
@@ -34,11 +35,19 @@ public class VisitController {
 
 	}
 	
+	@RequestMapping(path = "/scheduling", method = RequestMethod.GET)
+	public List<VisitReason> retrieveListOfVisitReasons() {
+		return visitDao.retrieveListOfVisitReasons();
+	
+	}
+	
 	@RequestMapping(path = "/scheduling", method = RequestMethod.POST)
 	public Visit bookAppointment (@RequestBody Visit visit) {
 		return visitDao.bookAppointment(visit);
 	
 	}
+	
+	
 
 	@RequestMapping(path = "", method = RequestMethod.GET) //fix to correct path 
 	public List<Visit> retrieveListOfUpcomingAppointments(@PathVariable int patientId) { //+ input parameters 
