@@ -2,8 +2,6 @@
   <div id="main">
     <h3 for="appointment" class="schedule-appointment">Schedule Appointment</h3>
     <div>
-      <label for="dates">Select desired date:</label>
-
       <select
         id="dates"
         v-model="selectedDate"
@@ -39,7 +37,7 @@
       <div>
         <h5>Patient Visit Form</h5>
         <label for="reason">Select reason for visit:</label>
-        <select id="reason" v-model="visit.reason">
+        <select id="reason" v-model="reason">
           <option
             v-for="reason in reasons"
             v-bind:value="reason.value"
@@ -55,7 +53,7 @@
           id="description"
           type="text"
           class="form-control"
-          v-model="visit.description"
+          v-model="description"
         >
 Enter description here
         </textarea>
@@ -77,6 +75,8 @@ export default {
     return {
       selectedDate: "",
       selectedTime: "",
+      reason: "",
+      description: "",
       doctorId: this.$store.state.doctorId,
       userId: this.$store.state.user.id,
       dates: [],
@@ -170,6 +170,8 @@ export default {
       this.visit.dateOfVisit = this.selectedDate;
       this.visit.statusId = "a";
       this.visit.patientId = this.userId;
+      this.visit.visitReason = this.reason;
+      this.visit.description = this.description;
       this.addVisit(this.visit);
     },
 
