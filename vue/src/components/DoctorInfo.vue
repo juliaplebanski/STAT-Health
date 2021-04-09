@@ -16,8 +16,8 @@
       />
       <div class="card-body">
         <h5 class="card-title">Primary Care Provider</h5>
-        <h5 class="card-text">Doctor Name</h5>
-        <h5 class="card-text">Office Name</h5>
+        <h5 class="card-text">Dr. Steve Carmichael</h5>
+        <h5 class="card-text">Ohio Tech Care</h5>
       </div>
     </div>
   </div>
@@ -30,5 +30,25 @@ export default {
 </script>
 
 <style>
+.card-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  padding: 0 20px;
+  color: teal;
+  white-space: nowrap;
+
+}
+ .card-text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  padding: 0 20px;
+  color: teal;
+  white-space: nowrap; 
+
+} 
 
 </style>

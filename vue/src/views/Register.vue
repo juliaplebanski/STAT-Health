@@ -90,4 +90,30 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.form-control {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  padding: 0%;
+  color: #495057;
+  border: 1px solid #ced4da;
+  margin: 20px;
+}
+.form-register {
+  background-color: rgb(232, 223, 159, 0.8);
+  height: 325px;
+}
+.btn-lg btn-primary btn-block {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  width: auto;
+  
+  margin: 20px;
+
+}
+
+</style>

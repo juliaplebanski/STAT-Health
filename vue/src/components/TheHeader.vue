@@ -1,6 +1,10 @@
 <template>
   <div id="main">
-    <h1>Logo</h1>
+    <img 
+      src="../assets/ScreenShot.png"
+      class="logo-img-top"
+      alt="Logo"
+    />
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"

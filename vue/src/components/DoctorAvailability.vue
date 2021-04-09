@@ -1,5 +1,6 @@
 <template>
   <div id="main">
+    <h3 for="appointment" class="schedule-appointment">Schedule Appointment</h3>
     <label for="dates">Select desired date:</label>
     <select
       id="dates"
@@ -138,6 +139,7 @@ export default {
           this.visit.endTime = selectedTime.getMinutes() + 30;
           this.visit.patientId = this.time.patientId;
         }
+
       });
 
       this.addVisit(this.visit);
@@ -168,5 +170,9 @@ button {
 button:hover {
   background-color: #3863a0;
   border-color: #3863a0;
+}
+.schedule-appointment {
+  padding: 0 20px;
+  color: teal;
 }
 </style>

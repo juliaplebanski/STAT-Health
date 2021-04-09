@@ -31,14 +31,14 @@ export default{
     grid-area: body;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 #footer {
   grid-area: footer;
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 #app {
   display: grid;

@@ -89,15 +89,16 @@ export default {
 }
 .form-signin {
   background-color: rgb(232, 223, 159, 0.8);
+  height: 250px;
+  
 }
 .sign-in {
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   width: auto;
-  
   margin: 20px;
-
+  
 }
 
 
