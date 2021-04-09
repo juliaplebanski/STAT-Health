@@ -15,7 +15,7 @@
         {{ date.text }}
       </option>
     </select>
-   <!-- <span>Selected: {{ selected }}</span>   -->
+    <!-- <span>Selected: {{ selected }}</span>   -->
     <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
       <button
         type="button"
@@ -47,7 +47,6 @@ export default {
       times: [],
       visit: {
         // startTime: '',
-        // endTime: "",
         // doctorId: 0,
         // patientId: 0,
         // dateOfVisit: "",
@@ -127,23 +126,11 @@ export default {
         });
     },
     createVisit(selectedTime) {
-      
       this.visit.doctorId = this.$store.state.doctorId;
       this.visit.startTime = selectedTime;
       this.visit.dateOfVisit = this.selected;
       this.visit.statusId = "a";
       this.visit.patientId = 1;
-      this.visit.endTime = selectedTime;
-      console.log(this.selected);
-      // this.times.forEach((time) => {
-      //   if (time.startTime == selectedTime) {
-      //     const time = time.endTime;
-      //     console.log(time);
-      //     this.visit.endTime = selectedTime.getMinutes() + 30;
-      //     this.visit.patientId = this.time.patientId;
-      //   }
-
-      
 
       this.addVisit(this.visit);
     },

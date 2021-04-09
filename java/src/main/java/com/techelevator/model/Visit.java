@@ -8,7 +8,7 @@ public class Visit {
 	//private int visitId;
 	private Date dateOfVisit;
 	private Time startTime;
-	private Time endTime;
+
 	private String statusId;
 	private int patientId;
 	private int doctorId;
@@ -61,12 +61,6 @@ public class Visit {
 		this.startTime = startTime;
 	}
 
-	public Time getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Time endTime) {
-		this.endTime = endTime;
-	}
+	
 
 }
