@@ -13,7 +13,7 @@ public interface VisitDAO {
 	List<Visit> getAllAvailableVisitsByDoctorId(int patientId, int doctorId, LocalDate dateOfVisit);
 	Visit bookAppointment(Visit visit);
 	//List <Visit>retrieveListOfUpcomingAppointments();
-	public List<Visit> retrieveListOfUpcomingAppointments(int patientId); //no parameters on this method? maybe patientid or doctorid?
+	public List<Visit> retrieveListOfUpcomingAppointments(); //no parameters on this method? maybe patientid or doctorid?
 	List<VisitReason> retrieveListOfVisitReasons();
 }
 

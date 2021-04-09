@@ -88,12 +88,12 @@ public class JDBCVisitDAO implements VisitDAO {
 	
 
 	@Override
-	public List<Visit> retrieveListOfUpcomingAppointments(int patient_id) {
+	public List<Visit> retrieveListOfUpcomingAppointments() {
 		// TODO Auto-generated method stub
 		List<Visit> futureAppointmentsList = new ArrayList<>();
 
-		String sql = "SELECT visit.date_of_visit, visit.start_time " // Fix query statement																			
-				+ "FROM visit" + "ORDER BY visit.date_of_visit ";
+		String sql = "SELECT visit.date_of_visit, visit.start_time FROM visit WHERE visit.date_of_visit > (SELECT CURRENT_DATE) ORDER BY visit.date_of_visit, visit.start_time; ";
+
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		while (results.next()) {
 

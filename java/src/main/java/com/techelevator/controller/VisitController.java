@@ -47,11 +47,10 @@ public class VisitController {
 	
 	}
 	
-	
 
-	@RequestMapping(path = "", method = RequestMethod.GET) //fix to correct path 
-	public List<Visit> retrieveListOfUpcomingAppointments(@PathVariable int patientId) { //+ input parameters 
-		return visitDao.retrieveListOfUpcomingAppointments(patientId);
+	@RequestMapping(path = "", method = RequestMethod.GET) 
+	public List<Visit> retrieveListOfUpcomingAppointments() { 
+		return visitDao.retrieveListOfUpcomingAppointments();
 	
 	}
 	
