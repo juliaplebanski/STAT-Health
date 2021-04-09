@@ -1,5 +1,5 @@
 package com.techelevator.controller;
-
+import org.springframework.http.HttpStatus;
 import java.time.LocalDate;
 import java.util.List;
 import com.techelevator.dao.VisitDAO;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Visit;
@@ -41,6 +42,7 @@ public class VisitController {
 	
 	}
 	
+	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(path = "/scheduling", method = RequestMethod.POST)
 	public Visit bookAppointment (@RequestBody Visit visit) {
 		return visitDao.bookAppointment(visit);
