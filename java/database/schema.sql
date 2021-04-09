@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS visit_status;
 DROP TABLE IF EXISTS patient;
 DROP TABLE IF EXISTS doctor;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS visit_reason;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
@@ -68,6 +69,15 @@ CREATE TABLE doctor_schedule (
   
   CONSTRAINT pk_doctor_schedule_id PRIMARY KEY (doctor_schedule_id),
   CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id)
+);
+
+
+CREATE TABLE visit_reason (
+	visit_reason_id int SERIAL NULL,
+	reason varchar(50) NOT NULL,
+	description varchar NOT NULL,
+	
+	CONSTRAINT PK_visit_reason_id PRIMARY KEY (visit_reason_id)
 );
 
 
