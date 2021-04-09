@@ -4,20 +4,20 @@
     <div id="doc-info">
       <doctor-info id="info" />
     </div>
-    <doctor-availability id="dates" />
+    <booking id="dates" />
   </div>
 </template>
 
 <script>
 import DoctorInfo from "../components/DoctorInfo.vue";
 import UserSubNav from "../components/UserSubNav.vue";
-import DoctorAvailability from "../components/DoctorAvailability.vue";
+import Booking from "../components/Booking.vue";
 
 export default {
   components: {
     DoctorInfo,
     UserSubNav,
-    DoctorAvailability,
+    Booking,
   },
 };
 </script>
