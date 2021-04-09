@@ -132,6 +132,7 @@ export default {
       this.visit.startTime = selectedTime;
       this.visit.startDate = this.selected;
       this.visit.statusId = "a";
+      this.visit.patientId = 1;
       this.times.forEach((time) => {
         if (time.startTime == selectedTime) {
           const time = time.endTime;
