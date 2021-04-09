@@ -57,7 +57,7 @@ public class JDBCVisitDAO implements VisitDAO {
 	public Visit bookAppointment(Visit visit) {
 		// TODO Auto-generated method stub
 		String insertSql = "INSERT INTO visit(patient_id, doctor_id,  date_of_visit, start_time, status_id, visit_reason, description)  VALUES (?,?,?,?,?,?, ?); ";
-		jdbcTemplate.update(insertSql, visit.getPatientId(), visit.getDoctorId(), visit.getDateOfVisit(), visit.getStartTime(), visit.getStatusId(), visit.getDescription(), visit.getVisitReason());
+		jdbcTemplate.update(insertSql, visit.getPatientId(), visit.getDoctorId(), visit.getDateOfVisit(), visit.getStartTime(), visit.getStatusId(), visit.getVisitReason(),visit.getDescription());
 	
 		return visit;
 	}
