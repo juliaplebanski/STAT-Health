@@ -133,6 +133,7 @@ export default {
       this.visit.startDate = this.selected;
       this.visit.statusId = "a";
       this.visit.patientId = 1;
+
       this.visit.endTime = selectedTime;
       // this.times.forEach((time) => {
       //   if (time.startTime == selectedTime) {
@@ -142,7 +143,7 @@ export default {
       //     this.visit.patientId = this.time.patientId;
       //   }
 
-      // });
+      
 
       this.addVisit(this.visit);
     },
