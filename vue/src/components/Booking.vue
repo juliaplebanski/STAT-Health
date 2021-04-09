@@ -1,21 +1,24 @@
 <template>
   <div id="main">
     <h3 for="appointment" class="schedule-appointment">Schedule Appointment</h3>
-    <label for="dates">Select desired date:</label>
-    <select
-      id="dates"
-      v-model="selected"
-      v-on:change="getAvailability(selected)"
-    >
-      <option
-        v-for="date in dates"
-        v-bind:value="date.value"
-        v-bind:key="date.value"
+    <div>
+      <label for="dates">Select desired date:</label>
+
+      <select
+        id="dates"
+        v-model="selectedDate"
+        v-on:change="getAvailability(selectedDate)"
       >
-        {{ date.text }}
-      </option>
-    </select>
-    <!-- <span>Selected: {{ selected }}</span>   -->
+        <option value="" disabled selected>Select desired date</option>
+        <option
+          v-for="date in dates"
+          v-bind:value="date.value"
+          v-bind:key="date.value"
+        >
+          {{ date.text }}
+        </option>
+      </select>
+    </div>
     <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
       <button
         type="button"
@@ -23,11 +26,45 @@
         v-for="time in times"
         v-bind:value="time.startTime"
         v-bind:key="time.startTime"
-        v-on:click="createVisit(time.startTime)"
+        v-on:click="setSelectedTime(time.startTime)"
       >
         {{ time.startTime }}
       </button>
     </div>
+    <form
+      v-show="selectedTime"
+      v-on:submit.prevent="createVisit()"
+      class="homeForm"
+    >
+      <div>
+        <h5>Patient Visit Form</h5>
+        <label for="reason">Select reason for visit:</label>
+        <select id="reason" v-model="visit.reason">
+          <option
+            v-for="reason in reasons"
+            v-bind:value="reason.value"
+            v-bind:key="reason.value"
+          >
+            {{ reason.text }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description">Add detailed description (optional):</label>
+        <textarea
+          id="description"
+          type="text"
+          class="form-control"
+          v-model="visit.description"
+        >
+Enter description here
+        </textarea>
+      </div>
+      <button class="btn btn-submit">Submit</button>
+      <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm()">
+        Cancel
+      </button>
+    </form>
   </div>
 </template>
 
@@ -35,23 +72,21 @@
 import scheduleService from "../services/ScheduleService.js";
 
 export default {
-  name: "doctor-availability",
+  name: "booking",
   data() {
     return {
-      selected: "",
-      options: [
-        { text: "Wednesday, May 5, 2021", value: "5/5/2021" },
-        { text: "Wednesday, May 12, 2021", value: "5/12/2021" },
-      ],
+      selectedDate: "",
+      selectedTime: "",
+      doctorId: this.$store.state.doctorId,
+      userId: this.$store.state.user.id,
       dates: [],
       times: [],
-      visit: {
-        // startTime: '',
-        // doctorId: 0,
-        // patientId: 0,
-        // dateOfVisit: "",
-        // statusId: "",
-      },
+      visit: {},
+      reasons: [
+        { text: "Annual Checkup", value: "Annual Checkup" },
+        { text: "Back Problems", value: "Back Problems" },
+        { text: "Diabetes Testing", value: "Diabetes Testing" },
+      ],
     };
   },
   created() {
@@ -110,11 +145,11 @@ export default {
       weekdays[6] = "Saturday";
       return weekdays[dayIndex];
     },
-    getAvailability(selected) {
-      const doctorId = this.$store.state.doctorId;
-      const userId = this.$store.state.user.id;
+    getAvailability(selectedDate) {
+      // const doctorId = this.$store.state.doctorId;
+      // const userId = this.$store.state.user.id;
       scheduleService
-        .getAvailability(doctorId, selected, userId)
+        .getAvailability(this.doctorId, selectedDate, this.userId)
         .then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
@@ -122,16 +157,19 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error + doctorId + selected + userId);
+          console.log(error);
         });
     },
-    createVisit(selectedTime) {
-      this.visit.doctorId = this.$store.state.doctorId;
-      this.visit.startTime = selectedTime;
-      this.visit.dateOfVisit = this.selected;
+    setSelectedTime(selectedTime) {
+      this.selectedTime = selectedTime;
+      this.times = [];
+    },
+    createVisit() {
+      this.visit.doctorId = this.doctorId;
+      this.visit.startTime = this.selectedTime;
+      this.visit.dateOfVisit = this.selectedDate;
       this.visit.statusId = "a";
-      this.visit.patientId = 1;
-
+      this.visit.patientId = this.userId;
       this.addVisit(this.visit);
     },
 
@@ -141,6 +179,8 @@ export default {
         .then((response) => {
           if (response.status == "201") {
             console.log(response.status + " 2");
+            this.selectedTime = "";
+            this.visit = {};
           }
         })
         .catch((error) => {
@@ -148,14 +188,24 @@ export default {
           console.log(error);
         });
     },
+    cancelForm() {
+      this.selectedTime = "";
+     
+    },
   },
 };
 </script>
 
 <style scoped>
+#main {
+  display: flex;
+  flex-direction: column;
+}
 button {
+  margin: 5px;
   background-color: #1e3250;
   border-color: #1e3250;
+  color: whitesmoke;
 }
 button:hover {
   background-color: #3863a0;
@@ -164,5 +214,42 @@ button:hover {
 .schedule-appointment {
   padding: 0 20px;
   color: teal;
+}
+form input {
+  width: 100%;
+}
+
+.homeForm {
+  padding: 30px;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.form-control {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  height: 30px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+textarea.form-control {
+  height: 75px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+select.form-control {
+  width: 20%;
+  display: inline-block;
+  margin: 10px 20px 10px 10px;
 }
 </style>
