@@ -12,6 +12,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Visit;
+import com.techelevator.model.VisitReason;
 
 @Component
 public class JDBCVisitDAO implements VisitDAO {
@@ -41,12 +42,27 @@ public class JDBCVisitDAO implements VisitDAO {
 	}
 
 	@Override
+	public List<VisitReason> retrieveListOfVisitReasons() {
+		List<VisitReason> listOfVisitReasons = new ArrayList<>();
+		String seletSQL = "SELECT visit_reason_id, reason FROM visit_reason;";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(seletSQL);
+		while (result.next()) {
+			listOfVisitReasons.add(mapRowToVisitReasons(result));
+		}
+		
+		return listOfVisitReasons;
+	}
+	
+	@Override
 	public Visit bookAppointment(Visit visit) {
 		// TODO Auto-generated method stub
-		String insertSql = "INSERT INTO visit(patient_id, doctor_id, start_time, date_of_visit, status_id)  VALUES (?,?,?,?,?); ";
-		jdbcTemplate.update(insertSql, visit.getPatientId(), visit.getDoctorId(), visit.getStartTime(), visit.getDateOfVisit(), visit.getStatusId());
+		String insertSql = "INSERT INTO visit(patient_id, doctor_id,  date_of_visit, start_time, status_id, visit_reason, description)  VALUES (?,?,?,?,?,?, ?); ";
+		jdbcTemplate.update(insertSql, visit.getPatientId(), visit.getDoctorId(), visit.getDateOfVisit(), visit.getStartTime(), visit.getStatusId(), visit.getDescription(), visit.getVisitReason());
+	
 		return visit;
 	}
+	
+	
 
 	/** used to map the results row to properties of the venueSpace class */
 	private Visit mapRowToAvailableVisits(SqlRowSet results) {
@@ -63,14 +79,21 @@ public class JDBCVisitDAO implements VisitDAO {
 		return visit;
 
 	}
+	private VisitReason mapRowToVisitReasons(SqlRowSet result) {
+	VisitReason visitReason = new VisitReason();
+	visitReason.setReason(result.getString("reason"));
+	visitReason.setVisitReasonId(result.getInt("visit_reason_id"));
+	return visitReason;
+	}
+	
 
 	@Override
-	public List<Visit> retrieveListOfUpcomingAppointments(int patient_id) {
+	public List<Visit> retrieveListOfUpcomingAppointments() {
 		// TODO Auto-generated method stub
 		List<Visit> futureAppointmentsList = new ArrayList<>();
 
-		String sql = "SELECT visit.date_of_visit, visit.start_time " // Fix query statement																			
-				+ "FROM visit" + "ORDER BY visit.date_of_visit ";
+		String sql = "SELECT visit.date_of_visit, visit.start_time FROM visit WHERE visit.date_of_visit > (SELECT CURRENT_DATE) ORDER BY visit.date_of_visit, visit.start_time; ";
+
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 		while (results.next()) {
 
@@ -83,4 +106,6 @@ public class JDBCVisitDAO implements VisitDAO {
 		}
 		return futureAppointmentsList;
 	}
+
+	
 }

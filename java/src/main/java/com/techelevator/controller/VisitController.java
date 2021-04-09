@@ -1,5 +1,5 @@
 package com.techelevator.controller;
-
+import org.springframework.http.HttpStatus;
 import java.time.LocalDate;
 import java.util.List;
 import com.techelevator.dao.VisitDAO;
@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Visit;
+import com.techelevator.model.VisitReason;
 
 @RestController
 @CrossOrigin
@@ -34,15 +36,23 @@ public class VisitController {
 
 	}
 	
+	@RequestMapping(path = "/scheduling", method = RequestMethod.GET)
+	public List<VisitReason> retrieveListOfVisitReasons() {
+		return visitDao.retrieveListOfVisitReasons();
+	
+	}
+	
+	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(path = "/scheduling", method = RequestMethod.POST)
 	public Visit bookAppointment (@RequestBody Visit visit) {
 		return visitDao.bookAppointment(visit);
 	
 	}
+	
 
-	@RequestMapping(path = "", method = RequestMethod.GET) //fix to correct path 
-	public List<Visit> retrieveListOfUpcomingAppointments(@PathVariable int patientId) { //+ input parameters 
-		return visitDao.retrieveListOfUpcomingAppointments(patientId);
+	@RequestMapping(path = "", method = RequestMethod.GET) 
+	public List<Visit> retrieveListOfUpcomingAppointments() { 
+		return visitDao.retrieveListOfUpcomingAppointments();
 	
 	}
 	

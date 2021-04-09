@@ -8,10 +8,30 @@ public class Visit {
 	//private int visitId;
 	private Date dateOfVisit;
 	private Time startTime;
-
 	private String statusId;
 	private int patientId;
 	private int doctorId;
+	private String visitReason;
+	private String description;
+	
+	public String getVisitReason() {
+		return visitReason;
+	}
+
+	public void setVisitReason(String visitReason) {
+		this.visitReason = visitReason;
+	}
+
+
+	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public int getPatientId() {
 		return patientId;
