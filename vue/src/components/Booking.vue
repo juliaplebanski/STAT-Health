@@ -7,7 +7,7 @@
         v-model="selectedDate"
         v-on:change="getAvailability(selectedDate)"
       >
-        <option value="" disabled selected>Select desired date</option>
+        <option value="0" disabled selected>Select desired date</option>
         <option
           v-for="date in dates"
           v-bind:value="date.value"
@@ -36,14 +36,18 @@
     >
       <div>
         <h5>Patient Visit Form</h5>
-        <label for="reason">Select reason for visit:</label>
+        <p>{{ username }}</p>
+        <p>{{ selectedDateText }}</p>
+        <p>{{ selectedTime }}</p>
+
         <select id="reason" v-model="reason">
+          <option value="0" disabled selected>Select reason for visit</option>
           <option
             v-for="reason in reasons"
-            v-bind:value="reason.value"
-            v-bind:key="reason.value"
+            v-bind:value="reason.reason"
+            v-bind:key="reason.reason"
           >
-            {{ reason.text }}
+            {{ reason.reason }}
           </option>
         </select>
       </div>
@@ -74,19 +78,18 @@ export default {
   data() {
     return {
       selectedDate: "",
+      selectedDateText: "",
       selectedTime: "",
       reason: "",
       description: "",
       doctorId: this.$store.state.doctorId,
       userId: this.$store.state.user.id,
+      username: this.$store.state.user.username,
       dates: [],
       times: [],
       visit: {},
-      reasons: [
-        { text: "Annual Checkup", value: "Annual Checkup" },
-        { text: "Back Problems", value: "Back Problems" },
-        { text: "Diabetes Testing", value: "Diabetes Testing" },
-      ],
+      reasons: [],
+    
     };
   },
   created() {
@@ -146,8 +149,6 @@ export default {
       return weekdays[dayIndex];
     },
     getAvailability(selectedDate) {
-      // const doctorId = this.$store.state.doctorId;
-      // const userId = this.$store.state.user.id;
       scheduleService
         .getAvailability(this.doctorId, selectedDate, this.userId)
         .then((response) => {
@@ -163,6 +164,22 @@ export default {
     setSelectedTime(selectedTime) {
       this.selectedTime = selectedTime;
       this.times = [];
+      this.getSelectedDateText();
+      this.getReasons();
+      
+    },
+    getReasons() {
+      scheduleService
+        .getReasons()
+        .then((response) => {
+          if (response.status == "200") {
+            console.log(response.status + " 3");
+            this.reasons = response.data;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     createVisit() {
       this.visit.doctorId = this.doctorId;
@@ -183,6 +200,7 @@ export default {
             console.log(response.status + " 2");
             this.selectedTime = "";
             this.visit = {};
+            this.reset();
           }
         })
         .catch((error) => {
@@ -192,8 +210,19 @@ export default {
     },
     cancelForm() {
       this.selectedTime = "";
-     
+      this.reset();
     },
+    reset() {
+      const dropDown = document.getElementById("dates");
+      dropDown.selectedIndex = "0";
+    },
+    getSelectedDateText() {
+      return this.dates.forEach(date => {
+        if(this.selectedDate == date.value){
+          this.selectedDateText = date.text;
+        }
+      })
+    }
   },
 };
 </script>
@@ -253,5 +282,9 @@ select.form-control {
   width: 20%;
   display: inline-block;
   margin: 10px 20px 10px 10px;
+}
+p {
+  padding: 0px;
+  margin: 0px;
 }
 </style>

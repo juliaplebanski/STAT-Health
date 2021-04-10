@@ -8,5 +8,8 @@ export default {
   },
   addVisit(visit) {
     return axios.post('/home/scheduling', visit)
-  }
+  },
+  getReasons(){
+    return axios.get('/home/scheduling')
+  },
 }
