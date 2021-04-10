@@ -105,6 +105,7 @@ INSERT INTO visit_reason (reason) VALUES ('Chronic Neurology Disorders');
 INSERT INTO visit_reason (reason) VALUES ('High Blood Pressure');
 INSERT INTO visit_reason (reason) VALUES ('Migraines');
 INSERT INTO visit_reason (reason) VALUES ('Diabetes');
+INSERT INTO visit_reason (reason) VALUES ('Other');
 
 
 

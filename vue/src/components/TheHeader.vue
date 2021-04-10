@@ -1,7 +1,7 @@
 <template>
   <div id="main">
     <img 
-      src="../assets/ScreenShot.png"
+      src="../assets/stat logo.png"
       class="logo-img-top"
       alt="Logo"
     />
@@ -30,5 +30,8 @@ div#main{
   display: flex;
   justify-content: space-between;
 }
-
+img {
+  height: 150px;
+  width: auto;
+}
 </style>
