@@ -12,4 +12,7 @@ export default {
   getReasons(){
     return axios.get('/home/scheduling')
   },
+  getUpcomingVisits(patientId) {
+    return axios.get(`/home/${patientId}`)
+  },
 }
