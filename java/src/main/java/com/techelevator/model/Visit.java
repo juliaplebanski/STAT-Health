@@ -11,6 +11,8 @@ public class Visit {
 	private String statusId;
 	private int patientId;
 	private int doctorId;
+	private String doctorFirstName;
+	private String doctorLastName;
 	private String visitReason;
 	private String description;
 	
@@ -79,6 +81,22 @@ public class Visit {
 
 	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
+	}
+
+	public String getDoctorFirstName() {
+		return doctorFirstName;
+	}
+
+	public void setDoctorFirstName(String doctorFirstName) {
+		this.doctorFirstName = doctorFirstName;
+	}
+
+	public String getDoctorLastName() {
+		return doctorLastName;
+	}
+
+	public void setDoctorLastName(String doctorLastName) {
+		this.doctorLastName = doctorLastName;
 	}
 
 	

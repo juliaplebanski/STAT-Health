@@ -50,9 +50,9 @@ public class VisitController {
 	}
 	
 
-	@RequestMapping(path = "", method = RequestMethod.GET) 
-	public List<Visit> retrieveListOfUpcomingAppointments() { 
-		return visitDao.retrieveListOfUpcomingAppointments();
+	@RequestMapping(path = "/{patientId}", method = RequestMethod.GET) 
+	public List<Visit> retrieveListOfUpcomingAppointments(@PathVariable int patientId) { 
+		return visitDao.retrieveListOfUpcomingAppointments(patientId);
 	
 	}
 	
