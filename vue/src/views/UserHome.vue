@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <user-sub-nav id="nav" />
     <doctor-info />
     <upcoming-visits />
   </div>
@@ -10,10 +9,15 @@
 
 import UpcomingVisits from '../components/UpcomingVisits.vue';
 import DoctorInfo from '../components/DoctorInfo.vue';
-import UserSubNav from "../components/UserSubNav.vue";
 export default {
-  components: { UpcomingVisits, DoctorInfo, UserSubNav },
+  components: { UpcomingVisits, DoctorInfo },
 
   name: "user-home"
 };
 </script>
+<style>
+.home {
+display:flex;
+justify-content: space-evenly;
+}
+</style>

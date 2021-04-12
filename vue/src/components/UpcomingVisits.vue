@@ -1,16 +1,24 @@
 <template>
   <div>
-    <div class="card" v-for="upcomingVisit in upcomingVisits" v-bind:value="upcomingVisit.patientId" v-bind:key="upcomingVisit.patientId">
-      <h5 class="card-header">{{ upcomingVisit.dateOfVisit }} @ {{ upcomingVisit.startTime }}</h5>
+    <div
+      class="card"
+      v-for="upcomingVisit in upcomingVisits"
+      v-bind:value="upcomingVisit.patientId"
+      v-bind:key="upcomingVisit.patientId"
+    >
+      <h5 class="card-header">
+        {{ upcomingVisit.dateOfVisit }} @ {{ upcomingVisit.startTime }}
+      </h5>
       <div class="card-body">
-        <h5 class="card-title">Dr. {{ upcomingVisit.doctorFirstName }} {{ upcomingVisit.doctorLastName }}</h5>
+        <h5 class="card-title">
+          Dr. {{ upcomingVisit.doctorFirstName }}
+          {{ upcomingVisit.doctorLastName }}
+        </h5>
         <p class="card-text">
           Reason for visit: {{ upcomingVisit.visitReason }}
         </p>
-        <p class="card-text">
-          Visit details: {{ upcomingVisit.description }}
-        </p>
-        <a href="#" class="btn btn-primary">View Details</a>
+        <p class="card-text">Visit details: {{ upcomingVisit.description }}</p>
+        <!-- <a href="#" class="btn btn-primary">View Details</a> -->
       </div>
     </div>
   </div>
@@ -26,7 +34,7 @@ export default {
       upcomingVisits: [],
     };
   },
-  created(){
+  created() {
     this.getUpcomingVisits();
   },
   methods: {
@@ -38,6 +46,7 @@ export default {
             console.log(response.status + " 2");
             this.upcomingVisits = response.data;
             this.getDates();
+            this.formatAvailableTimes();
           }
         })
         .catch((error) => {
@@ -56,8 +65,25 @@ export default {
           date.getDate() +
           " " +
           date.getFullYear();
-          visit.dateOfVisit = dateString;
-          console.log(dateString);
+        visit.dateOfVisit = dateString;
+        console.log(dateString);
+      });
+    },
+    formatAvailableTimes() {
+      return this.upcomingVisits.forEach((visit) => {
+        if (visit.startTime[0] == 0 && visit.startTime[1] < 5) {
+          let formattedTime = visit.startTime.substring(1, 5) + " PM";
+          visit.startTime = formattedTime;
+        } else if (visit.startTime[0] == 0 && visit.startTime[1] > 7) {
+          let formattedTime = visit.startTime.substring(1, 5) + " AM";
+          visit.startTime = formattedTime;
+        } else if (visit.startTime.substring(0, 2) == 12) {
+          let formattedTime = visit.startTime.substring(0, 5) + " PM";
+          visit.startTime = formattedTime;
+        } else {
+          let formattedTime = visit.startTime.substring(0, 5) + " AM";
+          visit.startTime = formattedTime;
+        }
       });
     },
 
@@ -94,4 +120,20 @@ export default {
 </script>
 
 <style>
+.card-title,
+.card-text {
+  text-align: left !important;
+  padding: 5px;
+  color: #1e3250;
+  background-color: white !important;
+  font-weight: normal;
+}
+.card-header {
+  background-color: #badee0;
+  color: #1e3250;
+  font-weight: bold;
+}
+.card {
+  margin: 20px;
+}
 </style>

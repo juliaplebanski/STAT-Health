@@ -27,13 +27,13 @@ export default {
 
 <style>
 .card-title {
-  text-align: center;
+  text-align: center !important;
   font-family: 'Oswald', sans-serif;
   font-weight: bold;
   font-size: 1.4rem;
   line-height: 1.1rem;
   padding: 10px;
-  color: #46a7ad;
+  background-color: #badee0 !important;
   white-space: nowrap;
   border-bottom: 1px solid #e3e8ed;
 
@@ -53,7 +53,12 @@ p {
   margin: 3px;
 }
 i {
-  color: #46a7ad;
+  color: #46a7ad !important;
+  position: relative;
+  top: 5px;
+  left: 5px;
 }
+
+
 
 </style>

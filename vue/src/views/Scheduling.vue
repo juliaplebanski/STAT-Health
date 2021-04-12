@@ -22,10 +22,21 @@ export default {
 </script>
 
 <style>
-#main {
-  display: flex;
-  flex-direction: column;
+#booking {
+  grid-area: booking;
+  
 }
+#info {
+  grid-area: info;
+}
+#main {
+  display: grid;
+  grid-template-columns: 1fr 2fr ;
+  grid-template-areas: 
+  "info booking";
+  /* ". booking"; */
+}
+
 
 </style>
 

@@ -1,35 +1,38 @@
 <template>
   <div id="main">
-    <div>
-      <h3 class="schedule-visit">Schedule a Visit</h3>
-      <select
-        id="dates"
-        v-model="selectedDate"
-        v-on:change="getAvailability(selectedDate)"
-      >
-        <option value="" disabled selected>Select desired date</option>
-        <option
-          v-for="date in dates"
-          v-bind:value="date.value"
-          v-bind:key="date.value"
+    <div id="booking">
+      <div>
+        <h3 class="schedule-visit">Schedule a Visit</h3>
+        <select
+          id="dates"
+          v-model="selectedDate"
+          v-on:change="getAvailability(selectedDate)"
         >
-          {{ date.text }}
-        </option>
-      </select>
+          <option value="" disabled selected>Select desired date</option>
+          <option
+            v-for="date in dates"
+            v-bind:value="date.value"
+            v-bind:key="date.value"
+          >
+            {{ date.text }}
+          </option>
+        </select>
+      </div>
+      <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          v-for="time in formattedTimes"
+          v-bind:value="time.value"
+          v-bind:key="time.value"
+          v-on:click="setSelectedTime(time.value, time.text)"
+        >
+          {{ time.text }}
+        </button>
+      </div>
     </div>
-    <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
-      <button
-        type="button"
-        class="btn btn-secondary"
-        v-for="time in times"
-        v-bind:value="time.startTime"
-        v-bind:key="time.startTime"
-        v-on:click="setSelectedTime(time.startTime)"
-      >
-        {{ time.startTime }}
-      </button>
-    </div>
-    <form
+    <form 
+      id="form"
       v-show="selectedTime"
       v-on:submit.prevent="createVisit()"
       class="homeForm"
@@ -38,7 +41,7 @@
         <h5>Patient Visit Form</h5>
         <p>{{ username }}</p>
         <p>{{ selectedDateText }}</p>
-        <p>{{ selectedTime }}</p>
+        <p>{{ selectedTimeText }}</p>
 
         <select id="reason" v-model="reason">
           <option value="0" disabled selected>Select reason for visit</option>
@@ -80,8 +83,10 @@ export default {
       selectedDate: "",
       selectedDateText: "",
       selectedTime: "",
+      selectedTimeText: "",
       reason: "",
       description: "",
+      formattedTimes: [],
       doctorId: this.$store.state.doctorId,
       userId: this.$store.state.user.id,
       username: this.$store.state.user.username,
@@ -89,7 +94,6 @@ export default {
       times: [],
       visit: {},
       reasons: [],
-    
     };
   },
   created() {
@@ -155,18 +159,19 @@ export default {
           if (response.status == "200") {
             console.log(response.status + " 2");
             this.times = response.data;
+            this.formatAvailableTimes();
           }
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    setSelectedTime(selectedTime) {
+    setSelectedTime(selectedTime, selectedTimeText) {
       this.selectedTime = selectedTime;
+      this.selectedTimeText = selectedTimeText;
       this.times = [];
       this.getSelectedDateText();
       this.getReasons();
-      
     },
     getReasons() {
       scheduleService
@@ -217,21 +222,52 @@ export default {
       dropDown.selectedIndex = "0";
     },
     getSelectedDateText() {
-      return this.dates.forEach(date => {
-        if(this.selectedDate == date.value){
+      return this.dates.forEach((date) => {
+        if (this.selectedDate == date.value) {
           this.selectedDateText = date.text;
         }
-      })
-    }
+      });
+    },
+    formatAvailableTimes() {
+      return this.times.forEach((time) => {
+        if (time.startTime[0] == 0 && time.startTime[1] < 5) {
+          let formattedTime = time.startTime.substring(1, 5) + " PM";
+          this.formattedTimes.push({
+            text: formattedTime,
+            value: time.startTime,
+          });
+        } else if (time.startTime[0] == 0 && time.startTime[1] > 7) {
+          let formattedTime = time.startTime.substring(1, 5) + " AM";
+          this.formattedTimes.push({
+            text: formattedTime,
+            value: time.startTime,
+          });
+        } else if (time.startTime.substring(0, 2) == 12) {
+          let formattedTime = time.startTime.substring(0, 5) + " PM";
+          this.formattedTimes.push({
+            text: formattedTime,
+            value: time.startTime,
+          });
+        } else {
+          let formattedTime = time.startTime.substring(0, 5) + " AM";
+          this.formattedTimes.push({
+            text: formattedTime,
+            value: time.startTime,
+          });
+        }
+      });
+    },
   },
 };
 </script>
 
-<style scoped>
-/* #main {
+<style>
+ #main {
   display: flex;
-  flex-direction: column;
-} */
+  /* flex-direction: column; */
+  justify-content: flex-start;
+  align-content: flex-start;
+} 
 button {
   margin: 5px;
   background-color: #1e3250;
