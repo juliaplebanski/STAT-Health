@@ -22,27 +22,17 @@ export default{
 <style>
 #header {
   grid-area: header;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; 
 }
 #body {
     grid-area: body;
-    display: flex;
-    justify-content: center;
-    /* flex-wrap: wrap; */
+
 }
 #footer {
   grid-area: footer;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    /* flex-wrap: wrap; */
 }
 #app {
   display: grid;
-  grid-template-rows: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
   grid-template-areas: 
       "header"
       "body"

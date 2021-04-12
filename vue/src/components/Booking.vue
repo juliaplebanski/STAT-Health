@@ -1,13 +1,13 @@
 <template>
   <div id="main">
-    <h3 for="appointment" class="schedule-appointment">Schedule Appointment</h3>
     <div>
+      <h3 class="schedule-visit">Schedule a Visit</h3>
       <select
         id="dates"
         v-model="selectedDate"
         v-on:change="getAvailability(selectedDate)"
       >
-        <option value="0" disabled selected>Select desired date</option>
+        <option value="" disabled selected>Select desired date</option>
         <option
           v-for="date in dates"
           v-bind:value="date.value"
@@ -228,10 +228,10 @@ export default {
 </script>
 
 <style scoped>
-#main {
+/* #main {
   display: flex;
   flex-direction: column;
-}
+} */
 button {
   margin: 5px;
   background-color: #1e3250;
@@ -242,20 +242,18 @@ button:hover {
   background-color: #3863a0;
   border-color: #3863a0;
 }
-.schedule-appointment {
-  padding: 0 20px;
-  color: teal;
+.schedule-visit {
+  padding: 0 10px;
+  color: #46a7ad;
 }
 form input {
   width: 100%;
 }
-
 .homeForm {
   padding: 30px;
   margin-bottom: 10px;
   border: 1px solid gray;
 }
-
 .form-group {
   margin-bottom: 10px;
   margin-top: 10px;
@@ -288,3 +286,4 @@ p {
   margin: 0px;
 }
 </style>
+

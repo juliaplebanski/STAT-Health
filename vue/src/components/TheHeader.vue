@@ -1,14 +1,19 @@
 <template>
-  <div id="main">
-    <img 
-      src="../assets/stat logo.png"
-      class="logo-img-top"
-      alt="Logo"
-    />
+  <div id="header">
+    <img id="logo" src="../assets/logo_stat.png" alt="Logo" />
+    <div id="usernav" v-show="userId">
+      <nav>
+        <i class="fa fa-clinic-medical"></i> <a href="#">Visits</a> &nbsp;&nbsp;
+        <i class="fa fa-syringe"></i> <a href="#">Test Results</a> &nbsp;&nbsp;
+        <i class="fa fa-prescription-bottle"></i>
+        <a href="#">Medications</a> &nbsp;&nbsp;
+        <i class="fa fa-clipboard-list"></i> <a href="#">Billing & Insurance</a>
+      </nav>
+    </div>
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
-        >Login</router-link
+      <router-link class="links" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;&nbsp;|&nbsp;&nbsp;
+      <router-link class="links" v-bind:to="{ name: 'login' }" v-if="$store.state.token == ''"
+        >Sign In</router-link
       >
       <router-link
         v-bind:to="{ name: 'logout' }"
@@ -22,17 +27,29 @@
 <script>
 export default {
   name: "the-header",
+  data() {
+    return {
+      userId: this.$store.state.user.id
+    }
+  }
 };
 </script>
 
 <style>
-div#main{
+#nav {
+  align-self: center;
+  color: white;
+  margin: 0px 20px 0px 0px;
+}
+#header {
   display: flex;
   justify-content: space-between;
-
-}
-img {
+  font-size: 1.4em;
+  border-bottom: 20px solid #3863a0;
   height: 150px;
-  width: auto;
+  background-color: #46a7ad;
+}
+.links {
+  color: white;
 }
 </style>
