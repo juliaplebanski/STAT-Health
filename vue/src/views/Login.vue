@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+      <h1>Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -31,8 +31,9 @@
         v-model="user.password"
         required
       />
-      <button type="submit" class="sign-in">Sign in</button>
-      <router-link :to="{ name: 'register' }" class="sign-in">Need an account?</router-link>
+      <button type="submit" id="submit">Sign in</button>
+      <p id="sign-in">New Patient?</p>
+      <router-link :to="{ name: 'register' }" id="register">Create Account</router-link>
     </form>
   </div>
 </template>
@@ -75,31 +76,47 @@ export default {
 };
 </script>
 <style>
-
-.form-control {
-  
+#id {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+h1 {
+  color: #1e3250;
+  margin: 100px 20px 20px 20px;
+}
+.form-control {
   align-items: center;
-  width: auto;
   padding: 0%;
   color: #495057;
-  border: 1px solid #ced4da;
+  border: 1px solid #e3e8ed;
   margin: 20px;
 }
-.form-signin {
-  background-color: rgb(232, 223, 159, 0.8);
-  height: 250px;
-  
+#submit{
+  border: 1px solid #e3e8ed;
+  color: #1e3250;
+  background-color:  #cdeaec;
+  padding: 5px 30px 5px 30px;
+  font-size: 1.1em;
 }
-.sign-in {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
-  margin: 20px;
-  
+#register{
+  border: 1px solid #e3e8ed;
+  color: #1e3250;
+  background-color:  #cdeaec;
+  padding: 10px 30px 10px 30px;
+  font-size: 1.1em;
 }
-
+#register {
+  text-decoration: none;
+}
+#submit:hover, #register:hover {
+  background-color:  #46a7ad;
+}
+#sign-in {
+  margin: 20px 0px 20px 0px;
+  color: #1e3250;
+}
+input {
+  size: 400px;
+}
 
 </style>

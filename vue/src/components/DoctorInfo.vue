@@ -1,23 +1,19 @@
 <template>
   <div>
-    <!-- <h3>Primary Care Provider</h3>
-    <img src="../assets/docinfo.png" alt="doctor logo">
-    <p>Doctor Name</p>
-    <p>Office Name</p>
-    <p>Street Address</p>
-    <p>City, State, Zipcode</p>
-    <p>Doctor Email</p>
-    <p>Doctor Phone</p> -->
-    <div class="card" style="width: 15rem">
+    <div class="card" style="width: 22rem">
+      <h3 class="card-title">Primary Care Provider</h3>
       <img
-        src="../assets/docinfo.png"
+        src="../assets/doctor_coach.png"
         class="card-img-top"
         alt="Photo of Doctor"
       />
       <div class="card-body">
-        <h5 class="card-title">Primary Care Provider</h5>
-        <h5 class="card-text">Dr. Steve Carmichael</h5>
-        <h5 class="card-text">Ohio Tech Care</h5>
+        <h5 class="card-text">Dr. Steve "Coach" Carmichael</h5>
+        <p class="card-text">Ohio Tech Care</p>
+        <p class="card-text">4 Loop Lane</p>
+        <p class="card-text">Columbus, OH 43232</p>
+        <i class="fa fa-envelope"></i><p class="card-text">dr.coach.steve@otc.com</p>
+        <i class="fa fa-phone"></i><p class="card-text">(555) 555 - 5555</p>
       </div>
     </div>
   </div>
@@ -31,25 +27,33 @@ export default {
 
 <style>
 .card-title {
+  text-align: center;
   font-family: 'Oswald', sans-serif;
-  font-weight: 300;
-  font-size: 1.1rem;
+  font-weight: bold;
+  font-size: 1.4rem;
   line-height: 1.1rem;
-  padding: 0 20px;
-  color: teal;
+  padding: 10px;
+  color: #46a7ad;
   white-space: nowrap;
+  border-bottom: 1px solid #e3e8ed;
 
 }
  .card-text {
   font-family: 'Oswald', sans-serif;
-  font-weight: 300;
+  font-weight: 600;
   font-size: 1.1rem;
   line-height: 1.1rem;
   padding: 0 20px;
-  color: teal;
+  color: #1e3250;
   white-space: nowrap; 
 
 } 
-
+p {
+  padding: 3px;
+  margin: 3px;
+}
+i {
+  color: #46a7ad;
+}
 
 </style>
