@@ -29,6 +29,7 @@ export default {
 div#main{
   display: flex;
   justify-content: space-between;
+
 }
 img {
   height: 150px;
