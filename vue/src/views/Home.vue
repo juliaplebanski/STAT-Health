@@ -50,24 +50,27 @@
               services your insurance covers.
             </p>
           </div>
+          <p id = "widget-header"> See what you need before booking an appointment</p>
           <iframe
-            src="https://public.domo.com/cards/bWxVg"
-            width="100%"
-            height="600"
-            marginheight="0"
-            marginwidth="0"
+            src="https://www.health.gov/myhealthfinder?widget=true"
+            name="myhealthfinderframe"
             frameborder="0"
-            class="covid-widget"
-          ></iframe>
-          <iframe
-            src="https://public.domo.com/cards/aAR5B"
+            id="myhealthfinderframe"
+            scrolling="yes"
+            height="485"
             width="100%"
-            height="600"
             marginheight="0"
+            title="myhealthfinder widget"
             marginwidth="0"
-            frameborder="0"
-            class="covid-widget"
-          ></iframe>
+            ><p>Your browser does not support iframes.</p></iframe
+          >
+          <div
+            class="bingwidget"
+            data-type="covid19"
+            data-market="en-us"
+            data-language="en-us"
+            data-app="bingwidget"
+          ></div>
         </nav>
       </div>
     </div>
@@ -81,11 +84,11 @@ export default {
 </script>
 <style>
 #home-page {
-    width: 100%;
-    height: auto;
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden; 
+  width: 100%;
+  height: auto;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
 .container {
   padding: 0px;
@@ -105,7 +108,6 @@ export default {
   color: #46a7ad;
   background-color: white;
   font-size: 20px;
- 
 }
 
 .emergency {
@@ -122,11 +124,13 @@ export default {
 #slogan {
   grid-area: slogan;
   font-style: italic;
+  color: #1e3250;
 }
 
 #scheduling-section {
   grid-area: scheduling-section;
   font-style: italic;
+  color:#1e3250
 }
 #Visit {
   grid-area: visit;
@@ -138,7 +142,7 @@ export default {
   border-color: #46a7ad;
   border-width: 7px;
   border-radius: 10px;
-   float: left;
+  float: left;
   width: 25%;
 }
 #Test-Results {
@@ -151,7 +155,7 @@ export default {
   border-color: #46a7ad;
   border-width: 7px;
   border-radius: 10px;
-   float: left;
+  float: left;
   width: 25%;
 }
 #Medications {
@@ -178,11 +182,19 @@ export default {
   border-width: 7px;
   border-radius: 10px;
   float: left;
-  width: 10%;
+  width: 17%;
 }
 .description {
-  color: black;
+  color: #1e3250;
   font-size: 12px;
+}
+#myhealthfinderframe {
+  padding-bottom: 20px;
+}
+#widget-header {
+  color:#1e3250;
+  padding-left: 10px;
+  font-weight: bold;
 }
 </style>
 
