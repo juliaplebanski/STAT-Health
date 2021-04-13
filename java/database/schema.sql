@@ -109,10 +109,9 @@ INSERT INTO visit_reason (reason) VALUES ('Other');
 
 
 
-INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/13/2021', '8:00', 'Skin Disorders', 'a', 'Acne');
-INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/13/2021', '9:00', 'Skin Disorders', 'a', 'Acne');
-INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/16/2021', '9:00', 'Skin Disorders', 'a', 'Acne');
-INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/19/2021', '8:00', 'Skin Disorders', 'a', '');
+INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/13/2021', '8:00', 'Skin Disorders', 'a', 'For the past ten years, I had bad acne and I am interested in taking accutane');
+INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '5/13/2021', '9:00', 'Other', 'a', 'Last year, I realized I had small apetite, and was not eating much, my doctor recommended me Aptemin, so today I am booking a follow up');
+
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '8:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '8:30');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '9:00');
@@ -131,7 +130,5 @@ INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:30
 
 
 
-/*INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, status_id) VALUES (1,1, '4/19/2021', '8:00', 'a');*/
-/*INSERT INTO visit_reason*/
 
 COMMIT TRANSACTION;
