@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div id="uv-main">
+    <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }">Schedule a Visit</router-link>
+    <h4 id="upcoming-visits">Upcoming Visits</h4>
     <div
       class="card"
       v-for="upcomingVisit in upcomingVisits"
@@ -120,6 +122,40 @@ export default {
 </script>
 
 <style>
+.card {
+  grid-area:card;
+  margin: 20px;
+}
+#upcoming-visits {
+  grid-area: upcoming;
+  font-style: italic;
+  color: #1e3250;
+}
+#book-visit {
+  grid-area: book;
+  min-width: 200px;
+  height: 40px;
+  border: 1px solid #D1DAE4;
+  color: #1E3250;
+  background-color:  #CDEAEC;
+  padding: 10px 30px 10px 30px;
+  font-size: 1.1em;
+  text-decoration: none;
+  padding-bottom: 10px;
+}
+#book-visit:hover {
+  background-color:  #46A7AD;
+  color:white;
+}
+#uv-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    ". book"
+    "upcoming ."
+    "card card";
+}
+
 .card-title,
 .card-text {
   text-align: left !important;
@@ -133,7 +169,5 @@ export default {
   color: #1e3250;
   font-weight: bold;
 }
-.card {
-  margin: 20px;
-}
+
 </style>
