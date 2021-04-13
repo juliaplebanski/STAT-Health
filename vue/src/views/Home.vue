@@ -79,8 +79,14 @@ export default {
   name: "home",
 };
 </script>
-
 <style>
+#home-page {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
 .container {
   padding: 0px;
   margin: 0px;
@@ -99,10 +105,7 @@ export default {
   color: #46a7ad;
   background-color: white;
   font-size: 20px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+ 
 }
 
 .emergency {
@@ -135,6 +138,8 @@ export default {
   border-color: #46a7ad;
   border-width: 7px;
   border-radius: 10px;
+   float: left;
+  width: 25%;
 }
 #Test-Results {
   grid-area: test-results;
@@ -146,6 +151,8 @@ export default {
   border-color: #46a7ad;
   border-width: 7px;
   border-radius: 10px;
+   float: left;
+  width: 25%;
 }
 #Medications {
   grid-area: medications;
@@ -157,6 +164,8 @@ export default {
   border-color: #46a7ad;
   border-width: 7px;
   border-radius: 10px;
+  float: left;
+  width: 25%;
 }
 #Billing-Insurance {
   grid-area: billing-insurance;
@@ -168,9 +177,13 @@ export default {
   border-color: #46a7ad;
   border-width: 7px;
   border-radius: 10px;
+  float: left;
+  width: 10%;
 }
 .description {
   color: black;
   font-size: 12px;
 }
 </style>
+
+

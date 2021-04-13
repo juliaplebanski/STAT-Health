@@ -97,15 +97,7 @@ export default {
 color: #1e3250;
   margin: 100px 20px 20px 20px;
   }
-.text-center {
-  border-bottom: 6px solid #000000;
-    color: #000000;
-    display: block;
-    line-height: 50px;
-    list-style-type: none;
-    margin: 20px 0;
-    text-decoration: none;
-}
+
 .text-center {
   justify-content: center;
     border: 6px solid #46a7ad;
