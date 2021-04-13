@@ -104,7 +104,7 @@ color: #1e3250;
     border-radius: 10px; 
     background-color: #f5f4f4;
     display: block;
-    margin: 70px 350px 200px 350px;
+    margin: 20px 400px 200px 400px;
     text-decoration: none;
 }
 .submit-button {

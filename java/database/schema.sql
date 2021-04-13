@@ -91,7 +91,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 
 INSERT INTO patient (user_id, doctor_id) VALUES (1,1);
 INSERT INTO patient (user_id, doctor_id) VALUES (1,1);
-INSERT INTO doctor (user_id,first_name,last_name) VALUES (2, 'Steve', 'Carmicheal');
+INSERT INTO doctor (user_id,first_name,last_name) VALUES (2, 'Steve', 'Carmichael');
 INSERT INTO visit_status (status_id,status_desc) VALUES ('a', 'approved');
 INSERT INTO visit_status (status_id, status_desc) VALUES ('p','pending');
 
@@ -109,8 +109,8 @@ INSERT INTO visit_reason (reason) VALUES ('Other');
 
 
 
-INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/13/2021', '8:00', 'Skin Disorders', 'a', 'For the past ten years, I had bad acne and I am interested in taking accutane');
-INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '5/13/2021', '9:00', 'Other', 'a', 'Last year, I realized I had small apetite, and was not eating much, my doctor recommended me Aptemin, so today I am booking a follow up');
+INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '4/19/2021', '8:00', 'Skin Disorders', 'a', 'For the past ten years, I had bad acne and I am interested in taking accutane');
+INSERT INTO visit (patient_id,doctor_id, date_of_visit, start_time, visit_reason, status_id, description) VALUES (1,1, '5/13/2021', '9:00', 'Other', 'a', 'Last year, I realized I had small appetite, and was not eating much, my doctor recommended me Aptemin, so today I am booking a follow up');
 
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '8:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '8:30');

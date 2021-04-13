@@ -13,7 +13,7 @@
         />
         <h2 id="slogan">
           Making Healthcare Better, <br />
-          <b>Together</b>
+          <em>Together</em>
         </h2>
       </div>
       <h3 id="scheduling-section">Schedule the care you need</h3>
@@ -22,49 +22,45 @@
           <div id="Visit">
             <i class="fa fa-clinic-medical"></i>
             <p class="details">Visits</p>
-            &nbsp;&nbsp;
+
             <p class="description">
               View past visits, <br />
               view upcoming visits, <br />
               and schedule a visit.
             </p>
-           
           </div>
 
           <div id="Test-Results">
             <i class="fa fa-syringe"></i>
             <p class="details">Test Results</p>
-            &nbsp;&nbsp;
+
             <p class="description">
               View past test result information, <br />
               directly sent from your doctor.
             </p>
-           
           </div>
           <div id="Medications">
             <i class="fa fa-prescription-bottle"></i>
             <p class="details">Medications</p>
-            &nbsp;&nbsp;
+
             <p class="description">
               View current prescriptions, <br />
               and request refills.
             </p>
-            
           </div>
 
           <div id="Billing-Insurance">
             <i class="fa fa-clipboard-list"></i>
             <p class="details">Billing & Insurance</p>
-            <p class="description">
+            <p class="description" id="billing-insurance-description">
               View your bill and pay, <br />
               for a recent visit as well as see what <br />
               services your insurance covers.
             </p>
-            <p></p>
           </div>
         </nav>
       </div>
-
+      <!-- html code for slideshow -->
       <!-- Slideshow container -->
       <div class="slideshow-container">
         <!-- Full-width images with number and caption text -->
@@ -133,6 +129,13 @@ export default {
   grid-area: icon-information;
   color: #46a7ad;
   background-color: white;
+  font-size: 70px;
+  text-align: center;
+}
+.details {
+  font-size: 26px;
+}
+#billing-insurance-description {
   font-size: 20px;
 }
 
@@ -151,15 +154,17 @@ export default {
 #doctor-picture {
   height: 500px;
   width: 1440px;
-  filter: blur(3.5px);
-  -webkit-filter: blur(3.5px);
+  /* filter: blur(1px);
+  -webkit-filter: blur(1px); */
+  filter: brightness(50%);
 }
 #slogan {
   font-size: 60px;
-  color: #1e3250;
+  color: rgb(230, 226, 226);
+   text-shadow: 4px 4px 4px #1e3250;
   position: absolute;
-  top: 80%;
-  left: 50%;
+  top: 50%;
+  left: 35%;
   transform: translate(-50%, -50%);
 }
 
@@ -182,7 +187,9 @@ export default {
   /* border-width: 4px; */
   border-radius: 10px;
   float: left;
-  width: 23.5%;
+
+  height: 300px;
+  width: 300px;
 }
 #Test-Results {
   grid-area: test-results;
@@ -196,7 +203,9 @@ export default {
   background-color: #ebfbfc;
   border-radius: 10px;
   float: left;
-  width: 23.5%;
+
+  height: 300px;
+  width: 300px;
 }
 #Medications {
   grid-area: medications;
@@ -210,7 +219,9 @@ export default {
   background-color: #ebfbfc;
   border-radius: 10px;
   float: left;
-  width: 23.5%;
+
+  height: 300px;
+  width: 300px;
 }
 #Billing-Insurance {
   grid-area: billing-insurance;
@@ -224,11 +235,14 @@ export default {
   background-color: #ebfbfc;
   border-radius: 20px;
   float: left;
-  width: 23.5%;
+
+  height: 300px;
+  width: 300px;
 }
 .description {
   color: #1e3250;
-  font-size: 15px;
+  font-size: 20px;
+  text-align: center;
 }
 .picture-and-slogan {
   grid-area: doctor-picture;
@@ -239,9 +253,7 @@ export default {
 * {
   box-sizing: border-box;
 }
-
-/* Slideshow container */
-.slideshow-container {
+Slideshow container .slideshow-container {
   max-width: 1000px;
   height: 600px;
   width: 600px;
@@ -347,8 +359,12 @@ export default {
   to {
     opacity: 1;
   }
-} 
+}
 </style>
+
+
+
+
 
 
 
