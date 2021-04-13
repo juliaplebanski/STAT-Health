@@ -99,12 +99,10 @@ export default {
 #register{
   border: 1px solid #e3e8ed;
   color: #1e3250;
+  text-decoration: none;
   background-color:  #cdeaec;
   padding: 10px 30px 10px 30px;
   font-size: 1.1em;
-}
-#register {
-  text-decoration: none;
 }
 #submit:hover, #register:hover {
   background-color:  #46a7ad;

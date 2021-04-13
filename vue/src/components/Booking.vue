@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="booking-main">
     <div id="booking">
       <div>
         <h3 class="schedule-visit">Schedule a Visit</h3>
@@ -21,6 +21,7 @@
       <div class="btn-group-vertical btn-group-sm" v-show="times.length > 0">
         <button
           type="button"
+          id="time-btn"
           class="btn btn-secondary"
           v-for="time in formattedTimes"
           v-bind:value="time.value"
@@ -32,19 +33,19 @@
       </div>
     </div>
     <form 
-      id="form"
+      id="patient-form"
       v-show="selectedTime"
       v-on:submit.prevent="createVisit()"
       class="homeForm"
     >
       <div>
         <h5>Patient Visit Form</h5>
-        <p id="form-input">{{ username }}</p>
-        <p id="form-input">>{{ selectedDateText }}</p>
-        <p id="form-input">>{{ selectedTimeText }}</p>
+        <p id="form-input">Name: {{ username }}</p>
+        <p id="form-input">Date: {{ selectedDateText }}</p>
+        <p id="form-input">Time: {{ selectedTimeText }}</p>
 
-        <select id="reason" v-model="reason">
-          <option value="0" disabled selected>Select reason for visit</option>
+        <select id="reason" v-model="reason" required>
+          <option value="" disabled selected>Select reason for visit</option>
           <option
             v-for="reason in reasons"
             v-bind:value="reason.reason"
@@ -54,7 +55,7 @@
           </option>
         </select>
       </div>
-      <div class="form-group">
+      <div id="desc" class="form-group">
         <label for="description">Add detailed description (optional):</label>
         <textarea
           id="description"
@@ -262,19 +263,18 @@ export default {
 </script>
 
 <style>
- #main {
+ #booking-main {
   display: flex;
-  /* flex-direction: column; */
   justify-content: flex-start;
-  align-content: flex-start;
 } 
-button {
+
+button, #time-btn {
   margin: 5px;
   background-color: #1e3250;
   border-color: #1e3250;
   color: whitesmoke;
 }
-button:hover {
+button:hover, #time-btn:hover {
   background-color: #3863a0;
   border-color: #3863a0;
 }
@@ -287,8 +287,8 @@ form input {
 }
 .homeForm {
   padding: 30px;
-  margin-bottom: 10px;
-  border: 1px solid gray;
+  margin: 10px 0px 0px 20px;
+  border: 1px solid #ced4da;
 }
 .form-group {
   margin-bottom: 10px;
@@ -320,6 +320,16 @@ select.form-control {
 #form-input {
   padding: 0px;
   margin: 0px;
+}
+#reason, #dates {
+  margin-top: 10px;
+  padding: 5px 0px 5px 0px;
+}
+#desc {
+  margin: 20px 0px 20px 0px;
+}
+#booking {
+  margin: 10px 20px 0px 20px;
 }
 </style>
 

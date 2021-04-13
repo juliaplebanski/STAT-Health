@@ -1,41 +1,39 @@
 <template>
-  <div id="main">
-    <div id="info">
-    <doctor-info />
-    </div>
-    <div id="booking">
+  <div id="sched-main">
+    <div id="booking-visit">
     <booking />
     </div>
   </div>
 </template>
 
 <script>
-import DoctorInfo from "../components/DoctorInfo.vue";
+// import DoctorInfo from "../components/DoctorInfo.vue";
 import Booking from "../components/Booking.vue";
 
 export default {
   components: {
-    DoctorInfo,
+    // DoctorInfo,
     Booking,
   },
 };
 </script>
 
 <style>
-#booking {
+
+/* #booking-visit {
   grid-area: booking;
   
 }
 #info {
   grid-area: info;
 }
-#main {
+#sched-main {
   display: grid;
   grid-template-columns: 1fr 2fr ;
   grid-template-areas: 
   "info booking";
-  /* ". booking"; */
-}
+  
+} */
 
 
 </style>
