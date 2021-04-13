@@ -3,40 +3,49 @@
     <img id="logo" src="../assets/jghealthsystems_logo.png" alt="Our Logo" />
     <p id="copyright">&#169;2021 JG Health Systems</p>
     <div id="about">
-      <h5>About JG Health Systems</h5>
-      <a href="#" target="_blank">About Us</a>
-      <a href="#" target="_blank">Our Doctors</a>
-      <a href="#" target="_blank">Privacy Policy</a>
-      <a href="#" target="_blank">Terms & Conditions</a>
+      <h5 class="titles-in-footer">About JG Health Systems</h5>
+      <a href="#" target="_blank" id="links-for-footer">About Us</a>
+      <a href="#" target="_blank" id="links-for-footer">Our Doctors</a>
+      <a href="#" target="_blank" id="links-for-footer">Privacy Policy</a>
+      <a href="#" target="_blank" id="links-for-footer">Terms & Conditions</a>
     </div>
     <div id="patients">
-      <h5>For Patients</h5>
-      <a href="#" target="_blank">Preparing for your Visit</a>
-      <a href="#" target="_blank">Patient Education</a>
-      <a href="#" target="_blank">Virtual Health</a>
+      <h5 class="titles-in-footer">For Patients</h5>
+      <a href="#" target="_blank" id="links-for-footer"
+        >Preparing for your Visit</a
+      >
+      <a href="#" target="_blank" id="links-for-footer">Patient Education</a>
+      <a href="#" target="_blank" id="links-for-footer">Virtual Health</a>
     </div>
- 
-<div id="contact-us">
-      <h5> <i class="icomoon icon-question"></i> Contact Us</h5>
-      <p id= "contact-info">
+
+    <div id="contact-us">
+      <h5 class="titles-in-footer">
+        <i class="icomoon icon-question"></i> Contact Us
+      </h5>
+      <p id="contact-info">
         Phone Number: 1-800-JGHELPS <br />
         Email: Help@jghealthsystems.com <br />
         Hours: M-F 9am-5pm
       </p>
     </div>
 
-
     <div id="social">
-      <h5>Follow Us</h5>
+      <h5 class="titles-in-footer">Follow Us</h5>
       <ul id="social-icons">
-        <li>
-          <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
+        <li id="lists-for-social-media-icons">
+          <a href="#" id="links-for-footer"
+            ><i class="fab fa-facebook fa-3x" id="social-media-icon"></i
+          ></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
+          <a href="#" id="links-for-footer"
+            ><i class="fab fa-instagram fa-3x" id="social-media-icon"></i
+          ></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
+          <a href="#" id="links-for-footer"
+            ><i class="fab fa-twitter fa-3x" id="social-media-icon"></i
+          ></a>
         </li>
       </ul>
     </div>
@@ -58,14 +67,14 @@ export default {
 }
 #copyright {
   grid-area: copyright;
-  margin: 0px 0px 0px 0px 10px ;
+  margin: 0px 0px 0px 0px 10px;
 }
 #about {
   grid-area: about;
   display: flex;
   flex-direction: column;
 }
-#contact-us{
+#contact-us {
   grid-area: contact-us;
   display: flex;
   flex-direction: column;
@@ -103,29 +112,29 @@ ul#social-icons {
   display: flex;
   text-align: center;
 }
-.fab {
+#social-media-icon {
   background-color: #46a7ad;
   color: white;
   margin: 5px;
 }
-.fab:hover {
+#social-media-icon:hover {
   color: #1e3250;
 }
-a {
-  color:white;
+#links-for-footer {
+  color: white;
 }
-a:hover {
+#links-for-footer:hover {
   color: #1e3250;
 }
-li {
-    background-color: #46a7ad;
+#lists-for-social-media-icons {
+  background-color: #46a7ad;
 }
 
-h5 {
-  color: #3863A0;
+.titles-in-footer {
+  color: #1e3250;
 }
 
-#contact-info{
+#contact-info {
   color: white;
 }
 </style>

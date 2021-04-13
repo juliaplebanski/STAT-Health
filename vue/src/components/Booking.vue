@@ -39,9 +39,9 @@
     >
       <div>
         <h5>Patient Visit Form</h5>
-        <p>{{ username }}</p>
-        <p>{{ selectedDateText }}</p>
-        <p>{{ selectedTimeText }}</p>
+        <p id="form-input">{{ username }}</p>
+        <p id="form-input">>{{ selectedDateText }}</p>
+        <p id="form-input">>{{ selectedTimeText }}</p>
 
         <select id="reason" v-model="reason">
           <option value="0" disabled selected>Select reason for visit</option>
@@ -317,7 +317,7 @@ select.form-control {
   display: inline-block;
   margin: 10px 20px 10px 10px;
 }
-p {
+#form-input {
   padding: 0px;
   margin: 0px;
 }

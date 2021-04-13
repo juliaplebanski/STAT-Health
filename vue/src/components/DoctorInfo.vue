@@ -9,11 +9,11 @@
       />
       <div class="card-body">
         <h5 class="card-text">Dr. Steve "Coach" Carmichael</h5>
-        <p class="card-text">Ohio Tech Care</p>
-        <p class="card-text">4 Loop Lane</p>
-        <p class="card-text">Columbus, OH 43232</p>
-        <i class="fa fa-envelope"></i><p class="card-text">dr.coach.steve@otc.com</p>
-        <i class="fa fa-phone"></i><p class="card-text">(555) 555 - 5555</p>
+        <p class="card-text" id = "text-for-doctor-info">Ohio Tech Care</p>
+        <p class="card-text" id = "text-for-doctor-info">4 Loop Lane</p>
+        <p class="card-text" id = "text-for-doctor-info">Columbus, OH 43232</p>
+        <i class="fa fa-envelope" id = "icon-for-doctor-info"></i><p class="card-text">dr.coach.steve@otc.com</p>
+        <i class="fa fa-phone" id = "icon-for-doctor-info"></i><p class="card-text">(555) 555 - 5555</p>
       </div>
     </div>
   </div>
@@ -48,11 +48,11 @@ export default {
   white-space: nowrap; 
 
 } 
-p {
+#text-for-doctor-info {
   padding: 3px;
   margin: 3px;
 }
-i {
+#icon-for-doctor-info {
   color: #46a7ad !important;
   position: relative;
   top: 5px;

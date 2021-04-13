@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1>Sign In</h1>
+      <h1 id="sign-in-title">Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -16,7 +16,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="form-control-login"
         placeholder="Username"
         v-model="user.username"
         required
@@ -26,7 +26,7 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="form-control-login"
         placeholder="Password"
         v-model="user.password"
         required
@@ -80,11 +80,11 @@ export default {
   display: flex;
   justify-content: center;
 }
-h1 {
+#sign-in-title {
   color: #1e3250;
   margin: 100px 20px 20px 20px;
 }
-.form-control {
+.form-control-login {
   align-items: center;
   padding: 0%;
   color: #495057;

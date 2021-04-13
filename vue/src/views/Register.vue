@@ -9,7 +9,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="form-control-register"
         placeholder="Username"
         v-model="user.username"
         required
@@ -19,7 +19,7 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="form-control-register"
         placeholder="Password"
         v-model="user.password"
         required
@@ -27,7 +27,7 @@
       <input
         type="password"
         id="confirmPassword"
-        class="form-control"
+        class="form-control-register"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style>
-.form-control {
+.form-control-register {
   
   display: flex;
   justify-content: space-between;

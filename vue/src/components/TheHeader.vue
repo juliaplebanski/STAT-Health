@@ -4,10 +4,10 @@
     <div id="usernav">
       <nav v-if="$store.state.token != ''">
         <ul class="nav nav-pills">
-        <li class="nav-item"><i class="fa fa-clinic-medical"></i> <a href="#">Visits</a></li> &nbsp;&nbsp;&nbsp; 
-        <li class="nav-item"><i class="fa fa-syringe"></i> <a href="#">Test Results</a></li> &nbsp;&nbsp;&nbsp;
-        <li class="nav-item"><i class="fa fa-prescription-bottle"></i> <a href="#">Medications</a></li> &nbsp;&nbsp;&nbsp;
-        <li class="nav-item"><i class="fa fa-clipboard-list"></i> <a href="#">Billing & Insurance</a></li>
+        <li class="nav-item"><i class="fa fa-clinic-medical" id ="icons-in-header"></i> <a href="#">Visits</a></li> &nbsp;&nbsp;&nbsp; 
+        <li class="nav-item"><i class="fa fa-syringe" id ="icons-in-header"></i> <a href="#">Test Results</a></li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item"><i class="fa fa-prescription-bottle" id ="icons-in-header"></i> <a href="#">Medications</a></li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item"><i class="fa fa-clipboard-list" id ="icons-in-header"></i> <a href="#">Billing & Insurance</a></li>
         </ul>
       </nav>
     </div>
@@ -60,8 +60,8 @@ export default {
   color: white;
   margin: 10px;
 }
-.fa  {
-  color:white !important;
+#icons-in-header  {
+  color:white;
 }
 .nav-item {
   margin: 15px;
