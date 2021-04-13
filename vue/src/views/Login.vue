@@ -31,7 +31,9 @@
         v-model="user.password"
         required
       />
+      <p>
       <button type="submit" id="submit">Sign in</button>
+      </p>
       <p id="sign-in">New Patient?</p>
       <router-link :to="{ name: 'register' }" id="register">Create Account</router-link>
     </form>
@@ -76,20 +78,16 @@ export default {
 };
 </script>
 <style>
-#id {
-  display: flex;
-  justify-content: center;
-}
+
 #sign-in-title {
   color: #1e3250;
   margin: 100px 20px 20px 20px;
 }
-.form-control-login {
-  align-items: center;
-  padding: 0%;
-  color: #495057;
-  border: 1px solid #e3e8ed;
-  margin: 20px;
+.text-center {
+  justify-content: center;
+    border: 6px solid #46a7ad;
+    border-radius: 10px;
+    margin: 200px 300px 200px 300px;
 }
 #submit{
   border: 1px solid #e3e8ed;
@@ -117,6 +115,16 @@ export default {
 }
 input {
   size: 400px;
+}
+input[type="text"],
+input[type="password"] {
+  width: 51%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid #e3e8ed;
+  border-radius: 10px;
+  background: white;
 }
 
 </style>

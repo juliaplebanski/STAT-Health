@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="create-account">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -32,8 +32,10 @@
         v-model="user.confirmPassword"
         required
       />
+      <p>
       <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      </p>
+      <button class="submit-button" type="submit">
         Create Account
       </button>
     </form>
@@ -91,29 +93,47 @@ export default {
 </script>
 
 <style>
-.form-control-register {
-  
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: auto;
-  padding: 0%;
-  color: #495057;
-  border: 1px solid #ced4da;
-  margin: 20px;
+.create-account {
+color: #1e3250;
+  margin: 100px 20px 20px 20px;
+  }
+.text-center {
+  border-bottom: 6px solid #000000;
+    color: #000000;
+    display: block;
+    line-height: 50px;
+    list-style-type: none;
+    margin: 20px 0;
+    text-decoration: none;
 }
-.form-register {
-  background-color: rgb(232, 223, 159, 0.8);
-  height: 325px;
+.text-center {
+  justify-content: center;
+    border: 6px solid #46a7ad;
+    border-radius: 10px;
+    display: block;
+    line-height: 50px;
+    list-style-type: none;
+    margin: 200px 300px 200px 300px;
+    text-decoration: none;
 }
-.btn-lg btn-primary btn-block {
-  display: flex;
-  justify-content: space-between;
-  align-items:center;
-  width: auto;
-  
-  margin: 20px;
-
+.submit-button {
+  border: 1px solid #e3e8ed;
+  color: #1e3250;
+  background-color:  #cdeaec;
+  padding: 10px 30px 10px 30px;
+  font-size: 1.1em;
 }
-
+.submit-button:hover {
+  background-color:  #46a7ad;
+}
+input[type="text"],
+input[type="password"] {
+  width: 51%;
+  padding: 10px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 1px solid #e3e8ed;
+  border-radius: 10px;
+  background: white;
+}
 </style>
