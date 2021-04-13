@@ -100,12 +100,11 @@ color: #1e3250;
 
 .text-center {
   justify-content: center;
-    border: 6px solid #46a7ad;
-    border-radius: 10px;
+    border: 1px solid #dfdfdf; 
+    border-radius: 10px; 
+    background-color: #f5f4f4;
     display: block;
-    line-height: 50px;
-    list-style-type: none;
-    margin: 200px 300px 200px 300px;
+    margin: 70px 350px 200px 350px;
     text-decoration: none;
 }
 .submit-button {
