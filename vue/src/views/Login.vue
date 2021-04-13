@@ -2,16 +2,16 @@
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
       <h1 id="sign-in-title">Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password. Please try again.</div>
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+        Invalid username and password. Please try again.
+      </div>
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >Thank you for registering. Please sign in.</div>
+      >
+        Thank you for registering. Please sign in.
+      </div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -32,10 +32,12 @@
         required
       />
       <p>
-      <button type="submit" id="submit">Sign in</button>
+        <button type="submit" id="submit">Sign in</button>
       </p>
       <p id="sign-in">New Patient?</p>
-      <router-link :to="{ name: 'register' }" id="register">Create Account</router-link>
+      <router-link :to="{ name: 'register' }" id="register"
+        >Create Account</router-link
+      >
     </form>
   </div>
 </template>
@@ -50,62 +52,60 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
       },
-      invalidCredentials: false
+      invalidCredentials: false,
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then(response => {
+        .then((response) => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/home");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           const response = error.response;
 
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
-
 #sign-in-title {
   color: #1e3250;
   margin: 100px 20px 20px 20px;
 }
-.text-center {
-  justify-content: center;
-    border: 6px solid #46a7ad;
-    border-radius: 10px;
-    margin: 200px 300px 200px 300px;
-}
-#submit{
+
+
+#submit {
   border: 1px solid #e3e8ed;
   color: #1e3250;
-  background-color:  #cdeaec;
+  background-color: #cdeaec;
   padding: 5px 30px 5px 30px;
   font-size: 1.1em;
 }
-#register{
+#register {
   border: 1px solid #e3e8ed;
   color: #1e3250;
-  text-decoration: none;
-  background-color:  #cdeaec;
+  background-color: #cdeaec;
   padding: 10px 30px 10px 30px;
   font-size: 1.1em;
 }
-#submit:hover, #register:hover {
-  background-color:  #46a7ad;
+#register {
+  text-decoration: none;
+}
+#submit:hover,
+#register:hover {
+  background-color: #57babf;
 }
 #sign-in {
   margin: 20px 0px 20px 0px;
@@ -124,5 +124,4 @@ input[type="password"] {
   border-radius: 10px;
   background: white;
 }
-
 </style>
