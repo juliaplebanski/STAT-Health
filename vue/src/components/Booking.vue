@@ -66,11 +66,21 @@
 Enter description here
         </textarea>
       </div>
-      <button class="btn btn-submit">Submit</button>
+      <button class="btn btn-submit" v-on:click="showConfirmation()">Submit</button>
       <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm()">
         Cancel
       </button>
     </form>
+    <div id="confirmation" v-show="confirmed">
+      <i id="confo-check" class="fa fa-check-circle"></i>
+      <h3 id="confo-header">Your appointment is confirmed!</h3>
+      <p class="confo-page">Dr. Steve "Coach" Carmichael</p>
+      <p class="no-space"><span class="confo-page-title">Date: </span><span class="confo-page"> {{ selectedDateText }}</span></p>
+      <p class="no-space"><span class="confo-page-title">Time: </span><span class="confo-page">{{ selectedTimeText }}</span></p>
+      <p class="no-space"><span class="confo-page-title">Reason: </span><span class="confo-page"> {{ reason }}</span></p>
+      <p class="no-space"><span class="confo-page-title">Visit Details: </span><span class="confo-page"> {{ description}}</span></p>
+      <router-link id="return-home" v-bind:to="{ name: 'user-home' }">Return to Home</router-link>
+    </div>
   </div>
 </template>
 
@@ -88,6 +98,7 @@ export default {
       reason: "",
       description: "",
       formattedTimes: [],
+      confirmed: false,
       doctorId: this.$store.state.doctorId,
       userId: this.$store.state.user.id,
       username: this.$store.state.user.username,
@@ -205,7 +216,7 @@ export default {
           if (response.status == "201") {
             console.log(response.status + " 2");
             this.selectedTime = "";
-            this.visit = {};
+            // this.visit = {};
             this.reset();
           }
         })
@@ -258,12 +269,16 @@ export default {
         }
       });
     },
+    showConfirmation() {
+      this.confirmed = true;
+      document.getElementById("dates").disabled = true;
+    }
   },
 };
 </script>
 
 <style>
- #booking-main {
+#booking-main {
   display: flex;
   justify-content: flex-start;
 } 
@@ -329,6 +344,44 @@ select.form-control {
   margin: 20px 0px 20px 0px;
 }
 #booking {
-  margin: 10px 20px 0px 20px;
+  margin: 10px 20px 0px 40px;
+}
+#confirmation {
+  margin-left: 30px;
+}
+#confo-check {
+  color: #46a7ad;
+  font-size: 150px;
+}
+#confo-header {
+  color: #1e3250;
+}
+.confo-page-title {
+  font-weight: bold;
+  color: #1e3250;
+  font-size: 20px;
+}
+.confo-page {
+  color: #1e3250;
+  font-size: 20px;
+}
+.no-space {
+  padding: 1px;
+  margin: 1px;
+}
+#return-home {
+  min-width: 200px;
+  height: 40px;
+  border: 1px solid #D1DAE4;
+  color: white;
+  background-color:  #46a7ad;
+  padding: 10px 30px 10px 30px;
+  margin: 40px 0px 0px 0px;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+#return-home:hover {
+  background-color:  #CDEAEC;
+  color:#1e3250;
 }
 </style>
