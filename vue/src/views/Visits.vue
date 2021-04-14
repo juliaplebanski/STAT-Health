@@ -30,8 +30,8 @@ export default {
   margin-top: 50px;
   margin-bottom: 50px;
   grid-area: uh-view;
-  display:flex;
-  justify-content: space-evenly;
+  /* display:flex;
+  justify-content: space-evenly; */
 }
 #footer {
   grid-area: footer;
