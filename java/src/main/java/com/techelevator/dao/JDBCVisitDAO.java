@@ -104,7 +104,7 @@ public class JDBCVisitDAO implements VisitDAO {
 	private Visit mapRowToUpcomingAppointments(SqlRowSet results) {
 		Visit visit = new Visit();
 		visit.setPatientId(results.getInt("patient_id"));
-		visit.setDateOfVisit(results.getDate("date_of_visit"));
+		visit.setDateOfVisit(results.getDate("date_of_visit").toLocalDate());
 		visit.setStartTime(results.getTime("start_time"));
 		visit.setStatusId(results.getString("status_id"));
 		visit.setVisitReason(results.getString("visit_reason"));
