@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.model.Prescription;
 import com.techelevator.model.Visit;
 import com.techelevator.model.VisitReason;
 
@@ -113,4 +114,29 @@ public class JDBCVisitDAO implements VisitDAO {
 		return visit;
 	}
 
+	@Override
+	public List<Prescription> viewListOfPrescriptions(int patientId) {
+		List<Prescription> prescriptionList = new ArrayList<>();
+
+		String sql = "SELECT prescription.patient_id, prescription.prescription_name, prescription.dosage_amount FROM prescription;";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
+		while (results.next()) {
+		prescriptionList.add(mapRowToPrescriptionList(results));
+		
+
+}
+		return prescriptionList;
+	}
+
+
+private Prescription mapRowToPrescriptionList(SqlRowSet results) {
+	Prescription prescription = new Prescription();
+	prescription.setPrescriptionName(results.getString("prescription_name"));
+	prescription.setPrescriptionId(results.getInt("prescription_id"));
+	prescription.setDosageAmount(results.getInt("dosage_amount"));
+	prescription.setPatientId(results.getInt("patient_id"));
+	prescription.setDoctorId(results.getInt("doctor_id"));
+	
+	return prescription;
+}
 }

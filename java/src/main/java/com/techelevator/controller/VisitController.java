@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.techelevator.model.Prescription;
 import com.techelevator.model.Visit;
 import com.techelevator.model.VisitReason;
 
@@ -55,5 +56,13 @@ public class VisitController {
 		return visitDao.retrieveListOfUpcomingAppointments(patientId);
 	
 	}
+	
+	
+	@RequestMapping(path = "/scheduling", method = RequestMethod.GET) 
+	public List<Prescription> viewListOfPrescriptions(@PathVariable int patientId) { 
+		return visitDao.viewListOfPrescriptions(patientId);
+	
+	}
+	
 	
 }
