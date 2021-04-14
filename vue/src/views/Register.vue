@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <the-header />
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="create-account">Create Account</h1>
@@ -40,13 +42,18 @@
       <button class="submit-button" type="submit">Create Account</button>
     </form>
   </div>
+  </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
+import TheHeader from '../components/TheHeader.vue';
 
 export default {
   name: "register",
+  components: {
+    TheHeader
+  },
   data() {
     return {
       user: {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="doctor-main">
     <div class="card" style="width: 22rem">
       <img
         src="../assets/doctor_coach.png"

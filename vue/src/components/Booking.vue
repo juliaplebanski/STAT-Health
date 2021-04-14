@@ -402,6 +402,7 @@ select.form-control {
   border-radius: 10px;
   justify-self: center;
   min-width: 400px;
+  max-width: 400px;
   min-height: 400px;
   padding-top: 20px;
   padding-left: 80px;
@@ -470,6 +471,10 @@ select.form-control {
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
   "message message"
+  "booking forms"
   "booking forms";
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-around; */
 }
 </style>

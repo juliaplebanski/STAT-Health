@@ -1,7 +1,11 @@
 <template>
-  <div class="home">
+  <div id="uh-home">
+    <the-header id="header"/>
+    <div id="uh-view">
     <doctor-info />
     <upcoming-visits />
+    </div>
+    <the-footer id="footer"/>
   </div>
 </template>
 
@@ -9,15 +13,36 @@
 
 import UpcomingVisits from '../components/UpcomingVisits.vue';
 import DoctorInfo from '../components/DoctorInfo.vue';
+import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
+
 export default {
-  components: { UpcomingVisits, DoctorInfo },
+  components: { UpcomingVisits, DoctorInfo, TheHeader, TheFooter },
 
   name: "user-home"
 };
 </script>
 <style>
-.home {
-display:flex;
-justify-content: space-evenly;
+#header {
+  grid-area: header;
 }
+#uh-view {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  grid-area: uh-view;
+  display:flex;
+  justify-content: space-evenly;
+}
+#footer {
+  grid-area: footer;
+}
+#uh-home {
+  display: grid;
+  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-areas: 
+      "header"
+      "uh-view"
+      "footer";
+}
+
 </style>

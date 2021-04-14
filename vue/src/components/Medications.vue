@@ -1,10 +1,12 @@
 <template>
   <div id="med-main">
-    <span id="med-message">
+    <div id="med-message">
+    <span>
       These are your medications currently on file. Please contact the office at
       (555) 555-5555 if you have any questions.
     </span>
     <span id="emergency">Call 911 if you have an emergency. </span>
+    </div>
     <div
       class="card"
       v-for="medication in medications"
@@ -66,18 +68,8 @@ export default {
   margin: 20px;
 }
 #refill-btn {
-  /* min-width: 200px;
-  max-width: 200px;
-  height: 40px; */
   color: white;
   background-color: #46a7ad;
-  /* padding-top: 8px;
-  padding-left: 30px;
-  font-size: 1.1em;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 8px;
-  align-self: flex-end; */
 }
 #refill-btn:hover {
   background-color: #92dce0;
@@ -102,17 +94,17 @@ export default {
   font-weight: normal;
 }
 #med-message {
-  margin-left: 200px;
+  margin-left: 20px;
   margin-bottom: 40px;
   font-size: 1.2em;
   font-weight: bold;
   color: #1e3250;
 }
 #emergency {
-  margin-left: 200px;
-  margin-bottom: 40px;
   color: rgb(186, 39, 39);
-  font-size: 1.2em;
-  font-weight: bold;
+}
+#med-main {
+  margin-left: 40px;
+  margin-right: 40px;
 }
 </style>
