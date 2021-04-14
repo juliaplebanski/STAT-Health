@@ -118,7 +118,7 @@ public class JDBCVisitDAO implements VisitDAO {
 	public List<Prescription> viewListOfPrescriptions(int patientId) {
 		List<Prescription> prescriptionList = new ArrayList<>();
 
-		String sql = "SELECT prescription.patient_id, prescription.prescription_name, prescription.dosage_amount FROM prescription;";
+		String sql = "SELECT prescription.patient_id, prescription.prescription_name, prescription.dosage_amount FROM prescription WHERE patient_id = ?;";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, patientId);
 		while (results.next()) {
 		prescriptionList.add(mapRowToPrescriptionList(results));
