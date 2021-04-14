@@ -33,7 +33,7 @@
         required
       />
       <p>
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link :to="{ name: 'login' }" id="register-link">Have an account?</router-link>
       </p>
       <button class="submit-button" type="submit">
         Create Account
@@ -116,6 +116,11 @@ color: #1e3250;
 }
 .submit-button:hover {
   background-color:  #46a7ad;
+  color: white;
+}
+#register-link {
+  color: #1e3250;
+  text-decoration: underline;
 }
 input[type="text"],
 input[type="password"] {

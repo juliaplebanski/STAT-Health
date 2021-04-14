@@ -18,6 +18,6 @@ export default {
 <style>
 .home {
 display:flex;
-justify-content: space-evenly;
+justify-content: space-around;
 }
 </style>

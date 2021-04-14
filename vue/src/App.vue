@@ -32,7 +32,7 @@ export default{
 }
 #app {
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
+  grid-template-rows: 1fr 6fr 1fr;
   grid-template-areas: 
       "header"
       "body"

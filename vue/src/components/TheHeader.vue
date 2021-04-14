@@ -4,10 +4,10 @@
     <div id="usernav">
       <nav v-if="$store.state.token != ''">
         <ul class="nav nav-pills">
-        <li class="nav-item"><i class="fa fa-clinic-medical" id ="icons-in-header"></i> <a href="#">Visits</a></li> &nbsp;&nbsp;&nbsp; 
-        <li class="nav-item"><i class="fa fa-syringe" id ="icons-in-header"></i> <a href="#">Test Results</a></li> &nbsp;&nbsp;&nbsp;
-        <li class="nav-item"><i class="fa fa-prescription-bottle" id ="icons-in-header"></i> <a href="#">Medications</a></li> &nbsp;&nbsp;&nbsp;
-        <li class="nav-item"><i class="fa fa-clipboard-list" id ="icons-in-header"></i> <a href="#">Billing & Insurance</a></li>
+        <li class="nav-item"><i class="fa fa-clinic-medical" id="visit-icon"></i><a href="#" class="links">Visits</a></li> &nbsp;&nbsp;&nbsp; 
+        <li class="nav-item"><i class="fa fa-syringe" id="results-icon"></i><a href="#" class="links">Test Results</a></li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item"><i class="fa fa-prescription-bottle" id="meds-icon"></i><a href="#" class="links">Medications</a></li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item"><i class="fa fa-clipboard-list" id="billing-icon"></i><a href="#" class="links">Billing & Insurance</a></li>
         </ul>
       </nav>
     </div>
@@ -18,6 +18,7 @@
         >Sign In</router-link
       >
       <router-link
+        class="links"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
@@ -46,7 +47,7 @@ export default {
 #usernav {
   align-self: center;
   color: white;
-  margin: 0px 20px 0px 0px;
+  margin: 0px 10px 0px 0px;
 }
 #header {
   display: flex;
@@ -60,7 +61,7 @@ export default {
   color: white;
   margin: 10px;
 }
-#icons-in-header  {
+#visit-icon, #results-icon, #meds-icon, #billing-icon  {
   color:white;
 }
 .nav-item {

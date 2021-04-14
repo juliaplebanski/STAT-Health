@@ -1,19 +1,25 @@
 <template>
   <div>
     <div class="card" style="width: 22rem">
-      <h3 class="card-title">Primary Care Provider</h3>
       <img
         src="../assets/doctor_coach.png"
         class="card-img-top"
         alt="Photo of Doctor"
       />
+      <h3 id="doc-title" class="card-title">Primary Care Provider</h3>
       <div class="card-body">
-        <h5 class="card-text">Dr. Steve "Coach" Carmichael</h5>
-        <p class="card-text" id = "text-for-doctor-info">Ohio Tech Care</p>
-        <p class="card-text" id = "text-for-doctor-info">4 Loop Lane</p>
-        <p class="card-text" id = "text-for-doctor-info">Columbus, OH 43232</p>
-        <i class="fa fa-envelope" id = "icon-for-doctor-info"></i><p class="card-text">dr.coach.steve@otc.com</p>
-        <i class="fa fa-phone" id = "icon-for-doctor-info"></i><p class="card-text">(555) 555 - 5555</p>
+        <h5 id="doc-name" class="card-text">Dr. Steve "Coach" Carmichael</h5>
+        <p class="card-text" id="doc-loc">Ohio Tech Care</p>
+        <p class="card-text" id="doc-street">4 Loop Lane</p>
+        <p class="card-text" id="doc-state">Columbus, OH 43232</p>
+        <p class="doc-icons">
+          <i class="fa fa-envelope" id="email-icon"></i
+          ><span class="card-text" id="doc-email">dr.coach.steve@otc.com</span>
+        </p>
+        <p class="doc-icons">
+          <i class="fa fa-phone" id="phone-icon"></i
+          ><span class="card-text" id="doc-phone">(555) 555 - 5555</span>
+        </p>
       </div>
     </div>
   </div>
@@ -26,39 +32,39 @@ export default {
 </script>
 
 <style>
-.card-title {
-  text-align: center !important;
-  font-family: 'Oswald', sans-serif;
+#doc-title {
+  text-align: center;
   font-weight: bold;
   font-size: 1.4rem;
-  line-height: 1.1rem;
+  color: #4674ad;
   padding: 10px;
-  background-color: #badee0 !important;
+  background-color: #93cacd;
   white-space: nowrap;
-  border-bottom: 1px solid #e3e8ed;
-
 }
- .card-text {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 600;
+#doc-name {
+  color: #1e3250;
+  font-weight: bold;
+}
+#doc-loc,
+#doc-street,
+#doc-state,
+#doc-email,
+#doc-phone {
+  font-family: "Oswald", sans-serif;
   font-size: 1.1rem;
   line-height: 1.1rem;
-  padding: 0 20px;
+  padding: 1px;
+  margin: 0px;
   color: #1e3250;
-  white-space: nowrap; 
-
-} 
-#text-for-doctor-info {
-  padding: 3px;
-  margin: 3px;
+  white-space: nowrap;
 }
-#icon-for-doctor-info {
-  color: #46a7ad !important;
+.doc-icons {
+  margin: 10px;
+}
+#email-icon,
+#phone-icon {
+  color: #46a7ad;
   position: relative;
-  top: 5px;
-  left: 5px;
+  margin-right: 8px;
 }
-
-
-
 </style>

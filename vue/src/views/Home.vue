@@ -361,11 +361,3 @@ Slideshow container .slideshow-container {
   }
 }
 </style>
-
-
-
-
-
-
-
-

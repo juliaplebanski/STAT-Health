@@ -8,7 +8,9 @@
           v-model="selectedDate"
           v-on:change="getAvailability(selectedDate)"
         >
-          <option value="" disabled selected>Select desired date</option>
+          <option id="time-options" value="" disabled selected>
+            Select desired date
+          </option>
           <option
             v-for="date in dates"
             v-bind:value="date.value"
@@ -32,54 +34,86 @@
         </button>
       </div>
     </div>
-    <form 
-      id="patient-form"
-      v-show="selectedTime"
-      v-on:submit.prevent="createVisit()"
-      class="homeForm"
-    >
-      <div>
-        <h5>Patient Visit Form</h5>
-        <p id="form-input">Name: {{ username }}</p>
-        <p id="form-input">Date: {{ selectedDateText }}</p>
-        <p id="form-input">Time: {{ selectedTimeText }}</p>
+    <div id="forms">
+      <form
+        id="patient-form"
+        v-show="selectedTime"
+        v-on:submit.prevent="createVisit()"
+        class="homeForm"
+      >
+        <h5 id="patient-header">Patient Visit Form</h5>
+        <div>
+          <p class="no-space">
+            <span class="patient-titles">Name: </span
+            ><span>{{ username }}</span>
+          </p>
+          <p class="no-space">
+            <span class="patient-titles">Date: </span
+            ><span>{{ selectedDateText }}</span>
+          </p>
+          <p class="no-space">
+            <span class="patient-titles">Time: </span
+            ><span>{{ selectedTimeText }}</span>
+          </p>
 
-        <select id="reason" v-model="reason" required>
-          <option value="" disabled selected>Select reason for visit</option>
-          <option
-            v-for="reason in reasons"
-            v-bind:value="reason.reason"
-            v-bind:key="reason.reason"
+          <select id="reason" v-model="reason" required>
+            <option value="" disabled selected>Select reason for visit</option>
+            <option
+              v-for="reason in reasons"
+              v-bind:value="reason.reason"
+              v-bind:key="reason.reason"
+            >
+              {{ reason.reason }}
+            </option>
+          </select>
+        </div>
+        <div id="desc" class="form-group">
+          <label for="description" class="patient-titles"
+            >Add detailed description (optional):</label
           >
-            {{ reason.reason }}
-          </option>
-        </select>
-      </div>
-      <div id="desc" class="form-group">
-        <label for="description">Add detailed description (optional):</label>
-        <textarea
-          id="description"
-          type="text"
-          class="form-control"
-          v-model="description"
-        >
+          <textarea
+            id="description"
+            type="text"
+            class="form-control"
+            v-model="description"
+          >
 Enter description here
-        </textarea>
+        </textarea
+          >
+        </div>
+        <button class="btn btn-submit" v-on:click="showConfirmation()">
+          Submit
+        </button>
+        <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm()">
+          Cancel
+        </button>
+      </form>
+      <div id="confirmation" v-show="confirmed">
+        <i id="confo-check" class="fa fa-check-circle"></i>
+        <h3 id="confo-header">Your appointment is confirmed!</h3>
+        <p id="doc-name" class="no-space">Dr. Steve "Coach" Carmichael</p>
+        <p class="no-space">
+          <span class="confo-page-title">Date: </span
+          ><span class="confo-page"> {{ selectedDateText }}</span>
+        </p>
+        <p class="no-space">
+          <span class="confo-page-title">Time: </span
+          ><span class="confo-page">{{ selectedTimeText }}</span>
+        </p>
+        <p class="no-space">
+          <span class="confo-page-title">Reason: </span
+          ><span class="confo-page"> {{ reason }}</span>
+        </p>
+        <p class="no-space">
+          <span class="confo-page-title">Visit Details: </span
+          ><span class="confo-page"> {{ description }}</span>
+        </p>
+        <div id="home-button">
+          <router-link id="return-home" v-bind:to="{ name: 'user-home' }"
+            >Return Home</router-link
+          >
+        </div>
       </div>
-      <button class="btn btn-submit" v-on:click="showConfirmation()">Submit</button>
-      <button class="btn btn-cancel" type="cancel" v-on:click="cancelForm()">
-        Cancel
-      </button>
-    </form>
-    <div id="confirmation" v-show="confirmed">
-      <i id="confo-check" class="fa fa-check-circle"></i>
-      <h3 id="confo-header">Your appointment is confirmed!</h3>
-      <p class="confo-page">Dr. Steve "Coach" Carmichael</p>
-      <p class="no-space"><span class="confo-page-title">Date: </span><span class="confo-page"> {{ selectedDateText }}</span></p>
-      <p class="no-space"><span class="confo-page-title">Time: </span><span class="confo-page">{{ selectedTimeText }}</span></p>
-      <p class="no-space"><span class="confo-page-title">Reason: </span><span class="confo-page"> {{ reason }}</span></p>
-      <p class="no-space"><span class="confo-page-title">Visit Details: </span><span class="confo-page"> {{ description}}</span></p>
-      <router-link id="return-home" v-bind:to="{ name: 'user-home' }">Return to Home</router-link>
     </div>
   </div>
 </template>
@@ -272,35 +306,33 @@ export default {
     showConfirmation() {
       this.confirmed = true;
       document.getElementById("dates").disabled = true;
-    }
+    },
   },
 };
 </script>
 
 <style>
-#booking-main {
-  display: flex;
-  justify-content: flex-start;
-} 
-
-button, #time-btn {
+button {
   margin: 5px;
-  background-color: #1e3250;
-  border-color: #1e3250;
-  color: whitesmoke;
+  background-color: #4674ad;
+  color: white;
 }
-button:hover, #time-btn:hover {
-  background-color: #3863a0;
-  border-color: #3863a0;
+button:hover,
+#time-btn:hover {
+  background-color: #1e3250;
+}
+#time-btn {
+  margin: 10px 0px 0px 40px;
+  background-color: #4674ad;
+  color: white;
 }
 .schedule-visit {
   padding: 0 10px;
   color: #46a7ad;
 }
-form input {
-  width: 100%;
-}
 .homeForm {
+  min-width: 500px;
+  max-width: 500px;
   padding: 30px;
   margin: 10px 0px 0px 20px;
   border: 1px solid #ced4da;
@@ -309,7 +341,6 @@ form input {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-
 .form-control {
   display: flex;
   align-items: flex-start;
@@ -320,7 +351,7 @@ form input {
   font-weight: 400;
   line-height: 1.5;
   color: #495057;
-  border: 1px solid #ced4da;
+  border: 1px solid #bfc8d1;
   border-radius: 0.25rem;
 }
 textarea.form-control {
@@ -332,21 +363,35 @@ select.form-control {
   display: inline-block;
   margin: 10px 20px 10px 10px;
 }
-#form-input {
-  padding: 0px;
-  margin: 0px;
+#patient-header {
+  text-align: center;
+  color: #1e3250;
+  font-weight: bold;
+  padding-bottom: 20px;
 }
-#reason, #dates {
+.patient-titles {
+  color: #1e3250;
+  font-weight: bold;
+}
+#reason,
+#dates {
   margin-top: 10px;
   padding: 5px 0px 5px 0px;
 }
 #desc {
   margin: 20px 0px 20px 0px;
 }
+#forms {
+  grid-area: forms;
+}
 #booking {
+  grid-area: booking;
+  justify-self: center;
+  width: 300px;
   margin: 10px 20px 0px 40px;
 }
 #confirmation {
+  grid-area: confirmation;
   margin-left: 30px;
 }
 #confo-check {
@@ -355,6 +400,8 @@ select.form-control {
 }
 #confo-header {
   color: #1e3250;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .confo-page-title {
   font-weight: bold;
@@ -365,6 +412,11 @@ select.form-control {
   color: #1e3250;
   font-size: 20px;
 }
+#doc-name {
+  color: #1e3250;
+  font-size: 20px;
+  font-weight: bold;
+}
 .no-space {
   padding: 1px;
   margin: 1px;
@@ -372,16 +424,27 @@ select.form-control {
 #return-home {
   min-width: 200px;
   height: 40px;
-  border: 1px solid #D1DAE4;
+  border-radius: 4px;
   color: white;
-  background-color:  #46a7ad;
+  background-color: #46a7ad;
+  font-weight: bold;
   padding: 10px 30px 10px 30px;
-  margin: 40px 0px 0px 0px;
-  font-size: 1.1em;
   text-decoration: none;
 }
 #return-home:hover {
-  background-color:  #CDEAEC;
-  color:#1e3250;
+  background-color: #cdeaec;
+  color: #1e3250;
+}
+#home-button {
+  margin-top: 30px;
+}
+#dates {
+  align-self: center;
+  color: #1e3250;
+}
+#booking-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "booking forms";
 }
 </style>

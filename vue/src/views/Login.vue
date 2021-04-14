@@ -106,6 +106,7 @@ export default {
 #submit:hover,
 #register:hover {
   background-color: #57babf;
+  color: white;
 }
 #sign-in {
   margin: 20px 0px 20px 0px;

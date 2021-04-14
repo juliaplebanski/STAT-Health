@@ -1,26 +1,33 @@
 <template>
   <div id="uv-main">
-    <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }">Schedule a Visit</router-link>
-    <h4 id="upcoming-visits">Upcoming Visits</h4>
-    <div
-      class="card"
-      v-for="upcomingVisit in upcomingVisits"
-      v-bind:value="upcomingVisit.patientId"
-      v-bind:key="upcomingVisit.patientId"
+    <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }"
+      >Schedule a Visit</router-link
     >
-      <h5 class="card-header">
-        {{ upcomingVisit.dateOfVisit }} @ {{ upcomingVisit.startTime }}
-      </h5>
-      <div class="card-body">
-        <h5 class="card-title">
-          Dr. {{ upcomingVisit.doctorFirstName }}
-          {{ upcomingVisit.doctorLastName }}
+    <div id="uv-list">
+      <h4 id="upcoming-visits">Upcoming Visits</h4>
+      <p v-show="upcomingVisits.length == 0" class="uv-text">No upcoming visits at this time.<p>
+      <div
+        class="card"
+        v-for="upcomingVisit in upcomingVisits"
+        v-bind:value="upcomingVisit.patientId"
+        v-bind:key="upcomingVisit.patientId"
+      >
+        <h5 id="uv-header" class="card-header">
+          {{ upcomingVisit.dateOfVisit }} @ {{ upcomingVisit.startTime }}
         </h5>
-        <p class="card-text">
-          Reason for visit: {{ upcomingVisit.visitReason }}
-        </p>
-        <p class="card-text">Visit details: {{ upcomingVisit.description }}</p>
-        <!-- <a href="#" class="btn btn-primary">View Details</a> -->
+        <div class="card-body">
+          <!-- <h5 id="uv-doc" class="card-title">
+            Dr. {{ upcomingVisit.doctorFirstName }}
+            {{ upcomingVisit.doctorLastName }}
+          </h5> -->
+          <p class="uv-title"><span>
+            Reason for visit: </span><span class="uv-text">{{ upcomingVisit.visitReason }}</span>
+          </p>
+          <p class="uv-title"><span>
+            Visit details: </span><span class="uv-text">{{ upcomingVisit.description }}</span>
+          </p>
+          <!-- <a href="#" class="btn btn-primary">View Details</a> -->
+        </div>
       </div>
     </div>
   </div>
@@ -123,51 +130,58 @@ export default {
 
 <style>
 .card {
-  grid-area:card;
   margin: 20px;
 }
 #upcoming-visits {
-  grid-area: upcoming;
   font-style: italic;
   color: #1e3250;
 }
-#book-visit {
-  grid-area: book;
-  min-width: 200px;
-  height: 40px;
-  border: 1px solid #D1DAE4;
-  color: #1E3250;
-  background-color:  #CDEAEC;
-  padding: 10px 30px 10px 30px;
-  font-size: 1.1em;
-  text-decoration: none;
-  padding-bottom: 10px;
-}
-#book-visit:hover {
-  background-color:  #46A7AD;
-  color:white;
-}
-#uv-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    ". book"
-    "upcoming ."
-    "card card";
+#uv-list {
+  max-width: 600px;
+  justify-self: baseline;
 }
 
-.card-title,
-.card-text {
-  text-align: left !important;
-  padding: 5px;
-  color: #1e3250;
-  background-color: white !important;
-  font-weight: normal;
+#book-visit {
+  min-width: 200px;
+  max-width: 200px;
+  height: 40px;
+  color: white;
+  background-color: #46a7ad;
+  padding-top: 8px;
+  padding-left: 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  align-self: flex-end;
 }
-.card-header {
-  background-color: #badee0;
+#book-visit:hover {
+  background-color: #92dce0;
+  color: white;
+}
+#uv-main {
+  display: flex;
+  flex-direction: column;
+}
+#uv-header {
+  background-color: #4674ad;
+  text-align: left;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+}
+.uv-title {
   color: #1e3250;
   font-weight: bold;
 }
-
+.uv-text {
+  text-align: left;
+  padding: 5px;
+  color: #1e3250;
+  background-color: white;
+  font-weight: normal;
+}
+.uv-doc {
+  color: #1e3250;
+}
 </style>

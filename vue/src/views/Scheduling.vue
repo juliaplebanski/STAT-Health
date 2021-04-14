@@ -1,8 +1,8 @@
 <template>
   <div id="sched-main">
-    <div id="booking-visit">
+    <!-- <div id="booking-visit"> -->
     <booking />
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -19,22 +19,9 @@ export default {
 </script>
 
 <style>
-
-/* #booking-visit {
-  grid-area: booking;
-  
-}
-#info {
-  grid-area: info;
-}
 #sched-main {
-  display: grid;
-  grid-template-columns: 1fr 2fr ;
-  grid-template-areas: 
-  "info booking";
-  
-} */
-
-
+  display: flex;
+  align-content: center;
+}
 </style>
 
