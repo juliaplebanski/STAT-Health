@@ -123,6 +123,13 @@ export default {
   width: 100%;
   height: auto;
   overflow-x: hidden;
+  /* display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: 
+      "header header header"
+      "body body body"
+      "footer footer footer"; */
+
 }
 .container {
   padding: 0px;
