@@ -9,6 +9,7 @@ import Scheduling from '../views/Scheduling.vue'
 import UserHome from '../views/UserHome.vue'
 import PatientMed from '../views/PatientMed.vue'
 import Visits from '../views/Visits.vue'
+import HealthStats from '../views/HealthStats.vue'
 
 Vue.use(Router)
 
@@ -88,9 +89,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/home/health-stats",
+      name: "health-stats",
+      component: HealthStats,
+      meta: {
+        requiresAuth: false
+      }
     }
-
-  ]
+  ],
 })
 
 router.beforeEach((to, from, next) => {
