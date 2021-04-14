@@ -1,5 +1,8 @@
 <template>
   <div id="home-page">
+    
+    <the-header id="header"/>
+    
     <div class="container">
       <!-- <p class="emergency">
         IF THIS IS AN EMERGENCY <br />
@@ -69,14 +72,14 @@
             src="../assets/nbc_news_covid_map.png"
             alt="COVID map"
           />
-          <figcaption>
+          <p id=covid-map>
             MAP: Covid-19 vaccination tracker across the U.S.
             <a
               href="https://www.nbcnews.com/health/health-news/map-covid-19-vaccination-tracker-across-u-s-n1252085"
               target="_blank"
-              >Link to article</a
+              ><br/>Link to article</a
             >
-          </figcaption>
+          </p>
 
           <img
             class="quarentine"
@@ -84,53 +87,63 @@
             alt="quarentine"
           />
 
-          <figcaption>
+          <p id=quarentine-caption>
             Covid vaccines mean the end of quarantine is in sight.<br />
             For some, the view doesn't look so good
             <a
               href="https://www.nbcnews.com/think/opinion/covid-vaccines-mean-end-quarantine-sight-some-view-doesn-t-ncna1262192"
               target="_blank"
-              >Link to article</a
+              ><br/>Link to article</a
             >
-          </figcaption>
+          </p>
 
           <img
             class="no-hate"
             src="../assets/nbc_news_no_hate.png"
             alt="no hate"
           />
-          <figcaption>
+          <p id=no-hate>
             CDC says racism is a 'serious threat' to public health
             <a
               href="https://www.nbcnews.com/health/health-news/cdc-says-racism-serious-threat-public-health-n1263547"
               target="_blank"
               >Link to article</a
             >
-          </figcaption>
+          </p>
         </div>
       </div>
     </div>
+    <div>
+    <the-footer id="footer"/> 
+  </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "home",
-};
+import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
+
+export default{
+  name: 'home',
+  components:{
+    TheHeader,
+    TheFooter
+  }
+}
 </script>
 <style>
-#home-page {
+/* #home-page {
   width: 100%;
   height: auto;
   overflow-x: hidden;
-  /* display: grid;
+  display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas: 
       "header header header"
       "body body body"
-      "footer footer footer"; */
+      "footer footer footer";
 
-}
+} */
 .container {
   padding: 0px;
   margin: 0px;
@@ -138,12 +151,13 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1f 1fr 1fr;
   grid-template-areas:
-    ". . . emergency"
+    "header header header header"
     "doctor-picture doctor-picture doctor-picture doctor-picture"
     "scheduling-section . . ."
     "icon-information icon-information icon-information icon-information"
     /* "news-section news-section news-section news-section" */
-    "carousel carousel carousel carousel";
+    "carousel carousel carousel carousel"
+    "footer footer footer footer";
 }
 #news-section {
   grid-area: news-section;
@@ -186,9 +200,10 @@ export default {
   margin-left: 12px;
 }
 #doctor-picture {
-  height: 500px;
-  width: 1440px;
+  height: 525px;
+  width: 100%;
   filter: brightness(50%);
+  
 }
 #slogan {
   font-size: 60px;
@@ -333,6 +348,21 @@ export default {
   border: 6px;
   border-style: solid;
   border-color: #46a7ad;
+}
+#header {
+  grid-area: header;
+}
+#footer {
+  grid-area: footer;
+}
+#quarentine-caption {
+  margin-left: 100px;
+}
+#covid-map {
+  margin-left: 33px;
+}
+#no-hate {
+  margin-left: 31px;
 }
 </style>
 

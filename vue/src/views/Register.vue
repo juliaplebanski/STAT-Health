@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <the-header />
-  <div id="register" class="text-center">
+<div id="register-page">
+  <the-header id="header"/>
+  <div class="text-center">
     <form class="form-register" @submit.prevent="register">
       <h1 class="create-account">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -42,18 +42,19 @@
       <button class="submit-button" type="submit">Create Account</button>
     </form>
   </div>
-  </div>
+  <the-footer id="footer"/>
+  </div> 
 </template>
 
 <script>
 import authService from "../services/AuthService";
 import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
 
 export default {
   name: "register",
-  components: {
-    TheHeader
-  },
+  components:
+   {TheHeader, TheFooter},
   data() {
     return {
       user: {
@@ -110,9 +111,13 @@ export default {
   border-radius: 10px;
   background-color: #f5f4f4;
   display: block;
-  margin: 20px 400px 200px 400px;
+  padding-bottom: 50px;
+  margin: 50px 350px 150px 350px;
   text-decoration: none;
+  
 }
+
+
 .submit-button {
   border: 1px solid #e3e8ed;
   color: #1e3250;
@@ -137,5 +142,13 @@ input[type="password"] {
   border: 1px solid #e3e8ed;
   border-radius: 10px;
   background: white;
+}
+#register-page {
+  display: grid;
+  grid-template-rows: 1fr 1f;
+  grid-template-areas:
+  "header header header"
+  "login login login";
+  /* "footer footer footer"; */
 }
 </style>

@@ -1,5 +1,8 @@
 <template>
+<div id= "login-page">
+  <the-header id="header"/>
   <div id="login" class="text-center">
+     
     <form class="form-signin" @submit.prevent="login">
       <h1 id="sign-in-title">Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
@@ -39,15 +42,22 @@
         >Create Account</router-link
       >
     </form>
+    
+  </div>
+  
+  <the-footer id="footer"/> 
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
+import TheHeader from '../components/TheHeader.vue';
+import TheFooter from '../components/TheFooter.vue';
 
 export default {
   name: "login",
-  components: {},
+  components: {TheHeader,
+    TheFooter},
   data() {
     return {
       user: {
@@ -80,6 +90,24 @@ export default {
 };
 </script>
 <style>
+#login-page {
+  display: grid;
+  grid-template-rows: 1fr 1f 1fr;
+  grid-template-areas:
+  "header header header"
+  "login login login"
+  "footer footer footer";
+}
+#header {
+  grid-area: header;
+}
+#footer {
+  grid-area: footer;
+}
+#login {
+  grid-area: login;
+}
+
 #sign-in-title {
   color: #1e3250;
   margin: 100px 20px 20px 20px;
@@ -97,10 +125,9 @@ export default {
   background-color: #cdeaec;
   padding: 10px 30px 10px 30px;
   font-size: 1.1em;
-}
-#register {
   text-decoration: none;
 }
+
 #submit:hover,
 #register:hover {
   background-color: #57babf;
