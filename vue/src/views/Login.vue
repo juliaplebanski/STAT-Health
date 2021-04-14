@@ -84,8 +84,6 @@ export default {
   color: #1e3250;
   margin: 100px 20px 20px 20px;
 }
-
-
 #submit {
   border: 1px solid #e3e8ed;
   color: #1e3250;

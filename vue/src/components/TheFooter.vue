@@ -99,7 +99,7 @@ export default {
     "logo about patients contact-us social"
     "copyright . . . .";
   color: #1e3250;
-  border-top: 20px solid #3863a0;
+  border-top: 20px solid #4674ad;
   padding: 10px;
   background-color: #46a7ad;
 }

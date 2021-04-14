@@ -11,6 +11,7 @@
         <h5 id="doc-name" class="card-text">Dr. Steve "Coach" Carmichael</h5>
         <p class="card-text" id="doc-loc">Ohio Tech Care</p>
         <p class="card-text" id="doc-street">4 Loop Lane</p>
+        <p class="card-text" id="doc-street">Suite 404</p>
         <p class="card-text" id="doc-state">Columbus, OH 43232</p>
         <p class="doc-icons">
           <i class="fa fa-envelope" id="email-icon"></i
@@ -36,7 +37,7 @@ export default {
   text-align: center;
   font-weight: bold;
   font-size: 1.4rem;
-  color: #4674ad;
+  color: #1e3250;
   padding: 10px;
   background-color: #93cacd;
   white-space: nowrap;
@@ -60,6 +61,7 @@ export default {
 }
 .doc-icons {
   margin: 10px;
+  font-size: 20px;
 }
 #email-icon,
 #phone-icon {

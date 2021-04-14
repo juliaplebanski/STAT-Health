@@ -1,5 +1,8 @@
 <template>
   <div id="booking-main">
+    <div id="patient-message">
+      <h5>If you need to schedule a visit more than 2 weeks in advance, please call the office at (555) 555-5555.</h5>
+    </div>
     <div id="booking">
       <div>
         <h3 class="schedule-visit">Schedule a Visit</h3>
@@ -41,7 +44,7 @@
         v-on:submit.prevent="createVisit()"
         class="homeForm"
       >
-        <h5 id="patient-header">Patient Visit Form</h5>
+        <h3 id="patient-header">Patient Visit Form</h3>
         <div>
           <p class="no-space">
             <span class="patient-titles">Name: </span
@@ -328,12 +331,15 @@ button:hover,
 }
 .schedule-visit {
   padding: 0 10px;
-  color: #46a7ad;
+  color: #278b90;
 }
-.homeForm {
+#patient-form {
   min-width: 500px;
   max-width: 500px;
-  padding: 30px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
   margin: 10px 0px 0px 20px;
   border: 1px solid #ced4da;
 }
@@ -373,6 +379,12 @@ select.form-control {
   color: #1e3250;
   font-weight: bold;
 }
+#patient-message {
+  grid-area: message;
+  margin-left: 200px;
+  margin-bottom: 40px;
+  color: #1e3250;
+}
 #reason,
 #dates {
   margin-top: 10px;
@@ -386,8 +398,14 @@ select.form-control {
 }
 #booking {
   grid-area: booking;
+  background-color: #e0f5f6;
+  border-radius: 10px;
   justify-self: center;
-  width: 300px;
+  min-width: 400px;
+  min-height: 400px;
+  padding-top: 20px;
+  padding-left: 80px;
+  padding-bottom: 20px;
   margin: 10px 20px 0px 40px;
 }
 #confirmation {
@@ -441,10 +459,17 @@ select.form-control {
 #dates {
   align-self: center;
   color: #1e3250;
+  border: 1px solid rgb(202, 195, 195);
+}
+#reason {
+  color: #1e3250;
+  border: 1px solid rgb(202, 195, 195);
 }
 #booking-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "booking forms";
+  grid-template-areas: 
+  "message message"
+  "booking forms";
 }
 </style>

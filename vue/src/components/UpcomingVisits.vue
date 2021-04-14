@@ -138,6 +138,7 @@ export default {
 }
 #uv-list {
   max-width: 600px;
+  min-width: 600px;
   justify-self: baseline;
 }
 

@@ -6,7 +6,7 @@
         <ul class="nav nav-pills">
         <li class="nav-item"><i class="fa fa-clinic-medical" id="visit-icon"></i><a href="#" class="links">Visits</a></li> &nbsp;&nbsp;&nbsp; 
         <li class="nav-item"><i class="fa fa-syringe" id="results-icon"></i><a href="#" class="links">Test Results</a></li> &nbsp;&nbsp;&nbsp;
-        <li class="nav-item"><i class="fa fa-prescription-bottle" id="meds-icon"></i><a href="#" class="links">Medications</a></li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item"><router-link class="links" v-bind:to="{ name: 'patient-med' }"><i class="fa fa-prescription-bottle" id="meds-icon"></i>Medications</router-link></li> &nbsp;&nbsp;&nbsp;
         <li class="nav-item"><i class="fa fa-clipboard-list" id="billing-icon"></i><a href="#" class="links">Billing & Insurance</a></li>
         </ul>
       </nav>
@@ -53,9 +53,16 @@ export default {
   display: flex;
   justify-content: space-between;
   font-size: 1.4em;
-  border-bottom: 20px solid #3863a0;
+  border-bottom: 20px solid #4674ad;
   height: 150px;
   background-color: #46a7ad;
+  position:fixed; /* fixing the position takes it out of html flow - knows
+                   nothing about where to locate itself except by browser
+                   coordinates */
+  left:0;           /* top left corner should start at leftmost spot */
+  top:0;            /* top left corner should start at topmost spot */
+  width:100vw;      /* take up the full browser width */
+  z-index:200;  /* high z index so other content scrolls underneath */
 }
 .links {
   color: white;
@@ -63,6 +70,9 @@ export default {
 }
 #visit-icon, #results-icon, #meds-icon, #billing-icon  {
   color:white;
+}
+#meds-icon {
+  margin-right: 7px;
 }
 .nav-item {
   margin: 15px;

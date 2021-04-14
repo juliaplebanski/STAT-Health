@@ -58,7 +58,7 @@ public class VisitController {
 	}
 	
 	
-	@RequestMapping(path = "/scheduling", method = RequestMethod.GET) 
+	@RequestMapping(path = "/medications", method = RequestMethod.GET) 
 	public List<Prescription> viewListOfPrescriptions(@PathVariable int patientId) { 
 		return visitDao.viewListOfPrescriptions(patientId);
 	
