@@ -89,6 +89,8 @@ CREATE TABLE prescription (
   dosage_amount varchar NOT NULL,
   patient_id integer NOT NULL,
   doctor_id integer NOT NULL,
+  description varchar NOT NULL,
+  instructions varchar NOT NULL,
   
   CONSTRAINT pk_prescription_id PRIMARY KEY (prescription_id),
   CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
@@ -139,10 +141,10 @@ INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '3:30
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:30');
 
-INSERT INTO prescription (prescription_name, dosage_amount, patient_id, doctor_id) VALUES ('Adderall', '20mg', '1', '1' );
-INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id) VALUES ('Ibuprofen', '500mg', '1', '1');
-INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id) VALUES ('Albuterol', '90mcg', '1', '1');
-INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id) VALUES ('Glyburide', '20mg', '1', '1');
+INSERT INTO prescription (prescription_name, dosage_amount, patient_id, doctor_id, description, instructions) VALUES ('Adderall', '20mg', '1', '1', 'Adderall is a combination prescription drug that contains amphetamine and dextroamphetamine, two stimulants that affect the bodys impulse control and hyperactivity, and treat attention deficit hyperactivity disorder (ADHD)','Take this medication by mouth with or without food as needed, usually 1 to 3 times a day.');
+INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id, description, instructions) VALUES ('Ibuprofen', '500mg', '1', '1', 'Ibuprofen is used to reduce fever and treat pain or inflammation caused by many conditions such as headache, toothache, back pain, arthritis, menstrual cramps, or minor injury.', 'Please take this medication 5 times daily');
+INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id,description, instructions) VALUES ('Albuterol', '90mcg', '1', '1', 'Albuterol is used to prevent and treat wheezing, difficulty breathing, chest tightness, and coughing caused by lung diseases such as asthma and chronic obstructive pulmonary disease.', 'Take ibuprofen tablets and capsules as needed with food or a drink of milk to reduce the chance of an upset stomach.');
+INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id, description, instructions) VALUES ('Glyburide', '20mg', '1', '1', 'Glyburide lowers blood sugar by causing the pancreas to produce insulin (a natural substance that is needed to break down sugar in the body, and reduces diabetes.) ', 'Please take this medication 5 times daily');
 
 
 
