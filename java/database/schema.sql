@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-
+DROP TABLE IF EXISTS prescription;
 DROP TABLE IF EXISTS doctor_schedule;
 DROP TABLE IF EXISTS visit;
 DROP TABLE IF EXISTS visit_reason;
@@ -83,7 +83,18 @@ CREATE TABLE doctor_schedule (
   CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id)
 );
 
+CREATE TABLE prescription (
+  prescription_id serial,
+  prescription_name varchar NOT NULL,
+  dosage_amount varchar NOT NULL,
+  patient_id integer NOT NULL,
+  doctor_id integer NOT NULL,
+  
+  CONSTRAINT pk_prescription_id PRIMARY KEY (prescription_id),
+  CONSTRAINT fk_patient_id FOREIGN KEY (patient_id) REFERENCES patient(patient_id),
+  CONSTRAINT fk_doctor_id FOREIGN KEY (doctor_id) REFERENCES doctor(doctor_id)
 
+);
 
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
@@ -128,6 +139,10 @@ INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '3:30
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:00');
 INSERT INTO doctor_schedule (doctor_id, appointment_start_time) VALUES (1, '4:30');
 
+INSERT INTO prescription (prescription_name, dosage_amount, patient_id, doctor_id) VALUES ('Adderall', '20mg', '1', '1' );
+INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id) VALUES ('Ibuprofen', '500mg', '1', '1');
+INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id) VALUES ('Albuterol', '90mcg', '1', '1');
+INSERT INTO prescription (prescription_name, dosage_amount,patient_id, doctor_id) VALUES ('Glyburide', '20mg', '1', '1');
 
 
 
