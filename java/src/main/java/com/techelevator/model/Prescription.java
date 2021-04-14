@@ -5,10 +5,32 @@ public class Prescription {
 	
 	private String prescriptionName;
 	private int prescriptionId;
-	private int dosageAmount;
+	private String dosageAmount;
 	private int patientId;
 	private int doctorId;
+	private String description;
+	private String instructions;
 	
+	public String getDescription() {
+		return description;
+	}
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+	public String getInstructions() {
+		return instructions;
+	}
+
+
+	public void setInstructions(String instructions) {
+		this.instructions = instructions;
+	}
+
+
 	public void setPrescriptionName(String prescriptionName) {
 		this.prescriptionName = prescriptionName;
 	}
@@ -19,7 +41,7 @@ public class Prescription {
 	}
 
 
-	public void setDosageAmount(int dosageAmount) {
+	public void setDosageAmount(String dosageAmount) {
 		this.dosageAmount = dosageAmount;
 	}
 
@@ -47,7 +69,7 @@ public class Prescription {
 	
 	
 	
-	public int getDosageAmount() {
+	public String getDosageAmount() {
 		return dosageAmount;
 	}
 	
