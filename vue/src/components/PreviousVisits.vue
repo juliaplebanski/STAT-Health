@@ -1,26 +1,23 @@
 <template>
-  <div id="uv-main">
-    <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }"
-      >Schedule a Visit</router-link
-    >
-    <div id="uv-list">
-      <h4 id="upcoming-visits">Upcoming Visits</h4>
-      <p v-show="upcomingVisits.length == 0" class="uv-text">No upcoming visits at this time.<p>
+  <div id="pv-main">
+    <div id="pv-list">
+      <h4 id="previous-visits">Previous Visits</h4>
+      <p v-show="previousVisits.length == 0" class="pv-text">No previous visits.<p>
       <div
         class="card"
-        v-for="upcomingVisit in upcomingVisits"
-        v-bind:value="upcomingVisit.patientId"
-        v-bind:key="upcomingVisit.patientId"
+        v-for="previousVisit in previousVisits"
+        v-bind:value="previousVisit.patientId"
+        v-bind:key="previousVisit.patientId"
       >
-        <h5 id="uv-header" class="card-header">
-          {{ upcomingVisit.dateOfVisit }} @ {{ upcomingVisit.startTime }}
+        <h5 id="pv-header" class="card-header">
+          {{ previousVisit.dateOfVisit }} @ {{ previousVisit.startTime }}
         </h5>
         <div class="card-body">
-          <p class="uv-title"><span>
-            Reason for visit: </span><span class="uv-text">{{ upcomingVisit.visitReason }}</span>
+          <p class="pv-title"><span>
+            Reason for visit: </span><span class="pv-text">{{ previousVisit.visitReason }}</span>
           </p>
-          <p class="uv-title"><span>
-            Visit details: </span><span class="uv-text">{{ upcomingVisit.description }}</span>
+          <p class="pv-title"><span>
+            Visit details: </span><span class="pv-text">{{ previousVisit.description }}</span>
           </p>
         </div>
       </div>
@@ -31,26 +28,26 @@
 <script>
 import scheduleService from "../services/ScheduleService.js";
 export default {
-  name: "upcoming-visits",
+  name: "previous-visits",
   data() {
     return {
       userId: this.$store.state.user.id,
-      upcomingVisits: [],
+      previousVisits: [],
     };
   },
   created() {
-    this.getUpcomingVisits();
+    this.getPreviousVisits();
   },
   methods: {
-    getUpcomingVisits() {
+    getPreviousVisits() {
       scheduleService
-        .getUpcomingVisits(this.userId)
+        .getPreviousVisits(this.userId)
         .then((response) => {
           if (response.status == "200") {
             console.log(response.status + " 2");
-            this.upcomingVisits = response.data;
+            this.previousVisits = response.data;
             this.getDates();
-            this.formatAvailableTimes();
+            this.formatTimes();
           }
         })
         .catch((error) => {
@@ -58,7 +55,7 @@ export default {
         });
     },
     getDates() {
-      return this.upcomingVisits.forEach((visit) => {
+      return this.previousVisits.forEach((visit) => {
         let date = new Date(visit.dateOfVisit);
         let day = this.dayAsString(date.getDay());
         let dateString =
@@ -73,8 +70,8 @@ export default {
         console.log(dateString);
       });
     },
-    formatAvailableTimes() {
-      return this.upcomingVisits.forEach((visit) => {
+    formatTimes() {
+      return this.previousVisits.forEach((visit) => {
         if (visit.startTime[0] == 0 && visit.startTime[1] < 5) {
           let formattedTime = visit.startTime.substring(1, 5) + " PM";
           visit.startTime = formattedTime;
@@ -126,11 +123,11 @@ export default {
 .card {
   margin: 20px;
 }
-#upcoming-visits {
+#previous-visits {
   font-style: italic;
   color: #1e3250;
 }
-#uv-list {
+#pv-list {
   max-width: 600px;
   min-width: 600px;
   justify-self: baseline;
@@ -154,29 +151,29 @@ export default {
   background-color: #92dce0;
   color: white;
 }
-#uv-main {
+#pv-main {
   display: flex;
   flex-direction: column;
 }
-#uv-header {
+#pv-header {
   background-color: #4674ad;
   text-align: left;
   padding: 10px;
   color: white;
   font-weight: bold;
 }
-.uv-title {
+.pv-title {
   color: #1e3250;
   font-weight: bold;
 }
-.uv-text {
+.pv-text {
   text-align: left;
   padding: 5px;
   color: #1e3250;
   background-color: white;
   font-weight: normal;
 }
-.uv-doc {
+.pv-doc {
   color: #1e3250;
 }
 </style>

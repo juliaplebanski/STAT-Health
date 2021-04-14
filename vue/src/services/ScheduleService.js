@@ -15,6 +15,9 @@ export default {
   getUpcomingVisits(patientId) {
     return axios.get(`/home/${patientId}`)
   },
+  getPreviousVisits(patientId) {
+    return axios.get(`/home/visits/${patientId}`)
+  },
   getMedications(patientId) {
     return axios.get(`/home/medications/${patientId}`)
   },

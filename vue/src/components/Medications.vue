@@ -1,8 +1,9 @@
 <template>
   <div id="med-main">
     <div id="med-message">
+     <h3><i id="med-bottle" class="fa fa-prescription-bottle"></i> Medications</h3>
     <span>
-      These are your medications currently on file. Please contact the office at
+       These are the medications onfile for you. Please contact the office at
       (555) 555-5555 if you have any questions.
     </span>
     <span id="emergency">Call 911 if you have an emergency. </span>
@@ -15,7 +16,7 @@
       v-show="medications.length > 0"
     >
       <h5 id="med-header" class="card-header">
-        {{ medication.prescriptionName }} {{ medication.dosageAmount }}
+        {{ medication.prescriptionName }} {{ medication.dosageAmount }} <i id="med-pill" class="fa fa-pills"></i>
       </h5>
       <div class="card-body">
         <p class="med-title">
@@ -70,6 +71,7 @@ export default {
 #refill-btn {
   color: white;
   background-color: #46a7ad;
+  border: none;
 }
 #refill-btn:hover {
   background-color: #92dce0;
@@ -97,14 +99,22 @@ export default {
   margin-left: 20px;
   margin-bottom: 40px;
   font-size: 1.2em;
-  font-weight: bold;
+  font-weight: 600;
   color: #1e3250;
 }
 #emergency {
   color: rgb(186, 39, 39);
+  font-weight: bold;
 }
 #med-main {
   margin-left: 40px;
   margin-right: 40px;
+}
+#med-pill {
+  margin-left: 10px;
+}
+#med-bottle {
+  color: #46a7ad;
+  font-size: 1.5em;
 }
 </style>

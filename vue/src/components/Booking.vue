@@ -1,18 +1,18 @@
 <template>
   <div id="booking-main">
     <div id="patient-message">
+      <h3><i id="med-visit-icon" class="fa fa-clinic-medical"></i> Schedule a Visit</h3>
       <h5>If you need to schedule a visit more than 2 weeks in advance, please call the office at (555) 555-5555.</h5>
     </div>
     <div id="booking">
       <div>
-        <h3 class="schedule-visit">Schedule a Visit</h3>
+        <h4 id="schedule-visit">Select a date to begin</h4>
         <select
           id="dates"
           v-model="selectedDate"
           v-on:change="getAvailability(selectedDate)"
         >
           <option id="time-options" value="" disabled selected>
-            Select desired date
           </option>
           <option
             v-for="date in dates"
@@ -329,8 +329,8 @@ button:hover,
   background-color: #4674ad;
   color: white;
 }
-.schedule-visit {
-  padding: 0 10px;
+#schedule-visit {
+  /* padding: 0 10px; */
   color: #278b90;
 }
 #patient-form {
@@ -458,7 +458,7 @@ select.form-control {
   margin-top: 30px;
 }
 #dates {
-  align-self: center;
+  margin-left: 8px;
   color: #1e3250;
   border: 1px solid rgb(202, 195, 195);
 }
@@ -473,8 +473,9 @@ select.form-control {
   "message message"
   "booking forms"
   "booking forms";
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-around; */
+}
+#med-visit-icon {
+  color: #46a7ad;
+  font-size: 1.3em;
 }
 </style>
