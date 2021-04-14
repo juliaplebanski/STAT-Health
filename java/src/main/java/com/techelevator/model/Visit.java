@@ -3,9 +3,7 @@ package com.techelevator.model;
 import java.sql.Time;
 import java.time.LocalDate;
 
-
 public class Visit {
-	//private int visitId;
 	private LocalDate dateOfVisit;
 	private Time startTime;
 	private String statusId;
@@ -15,7 +13,7 @@ public class Visit {
 	private String doctorLastName;
 	private String visitReason;
 	private String description;
-	
+
 	public String getVisitReason() {
 		return visitReason;
 	}
@@ -23,9 +21,6 @@ public class Visit {
 	public void setVisitReason(String visitReason) {
 		this.visitReason = visitReason;
 	}
-
-
-	
 
 	public String getDescription() {
 		return description;
@@ -59,14 +54,6 @@ public class Visit {
 		this.statusId = statusId;
 	}
 
-//	public int getVisitId() {
-//		return visitId;
-//	}
-//
-//	public void setVisitId(int visitId) {
-//		this.visitId = visitId;
-//	}
-
 	public LocalDate getDateOfVisit() {
 		return dateOfVisit;
 	}
@@ -98,7 +85,5 @@ public class Visit {
 	public void setDoctorLastName(String doctorLastName) {
 		this.doctorLastName = doctorLastName;
 	}
-
-	
 
 }

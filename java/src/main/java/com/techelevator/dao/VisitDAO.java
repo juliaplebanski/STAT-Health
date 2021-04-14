@@ -9,14 +9,15 @@ import com.techelevator.model.VisitReason;
 
 public interface VisitDAO {
 
-	// List<Visit>getAllScheduledVisitsForDoctor(int doctorId);
-	// List<Visit>getAllScheduledVisitsForPatient(int patientId);
-	List<Visit> getAllAvailableVisitsByDoctorId(int patientId, int doctorId, LocalDate dateOfVisit);
-	Visit bookAppointment(Visit visit);
-	//List <Visit>retrieveListOfUpcomingAppointments();
-	public List<Visit> retrieveListOfUpcomingAppointments(int patientId); //no parameters on this method? maybe patientid or doctorid?
-	List<VisitReason> retrieveListOfVisitReasons();
-	public List<Prescription> viewListOfPrescriptions(int patientId); 
-}
+	public List<Visit> getAllAvailableVisitsByDoctorId(int patientId, int doctorId, LocalDate dateOfVisit);
 
-//SELECT * from visit WHERE patient_id = ? AND date_of_visit > current date
+	public Visit bookAppointment(Visit visit);
+
+	public List<Visit> retrieveListOfUpcomingAppointments(int patientId);
+
+	public List<VisitReason> retrieveListOfVisitReasons();
+
+	public List<Prescription> viewListOfPrescriptions(int patientId);
+
+	public List<Visit> retrieveListOfPreviousAppointments(int patientId);
+}
