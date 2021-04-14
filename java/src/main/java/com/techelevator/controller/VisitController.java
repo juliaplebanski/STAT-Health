@@ -46,6 +46,7 @@ public class VisitController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(path = "/scheduling", method = RequestMethod.POST)
 	public Visit bookAppointment (@RequestBody Visit visit) {
+		System.out.println(visit.getDateOfVisit());
 		return visitDao.bookAppointment(visit);
 	
 	}
@@ -58,7 +59,7 @@ public class VisitController {
 	}
 	
 	
-	@RequestMapping(path = "/medications", method = RequestMethod.GET) 
+	@RequestMapping(path = "/medications/{patientId}", method = RequestMethod.GET) 
 	public List<Prescription> viewListOfPrescriptions(@PathVariable int patientId) { 
 		return visitDao.viewListOfPrescriptions(patientId);
 	

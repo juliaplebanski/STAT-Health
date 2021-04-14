@@ -60,9 +60,8 @@ public class Prescription {
 	public int getDoctorId() {
 		return doctorId;
 	}
-	
-	
-	
+
+
 	
 	
 	

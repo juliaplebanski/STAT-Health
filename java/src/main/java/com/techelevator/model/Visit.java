@@ -1,12 +1,12 @@
 package com.techelevator.model;
 
 import java.sql.Time;
+import java.time.LocalDate;
 
-import java.util.Date;
 
 public class Visit {
 	//private int visitId;
-	private Date dateOfVisit;
+	private LocalDate dateOfVisit;
 	private Time startTime;
 	private String statusId;
 	private int patientId;
@@ -67,11 +67,11 @@ public class Visit {
 //		this.visitId = visitId;
 //	}
 
-	public Date getDateOfVisit() {
+	public LocalDate getDateOfVisit() {
 		return dateOfVisit;
 	}
 
-	public void setDateOfVisit(Date dateOfVisit) {
+	public void setDateOfVisit(LocalDate dateOfVisit) {
 		this.dateOfVisit = dateOfVisit;
 	}
 
