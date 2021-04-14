@@ -8,12 +8,12 @@
     <div
       class="card"
       v-for="medication in medications"
-      v-bind:value="medicaton.prescriptionId"
+      v-bind:value="medication.prescriptionId"
       v-bind:key="medication.prescriptionId"
       v-show="medications.length > 0"
     >
       <h5 id="med-header" class="card-header">
-        {{ medication.prescription_name }} {{ medication.dosage_amount }}
+        {{ medication.prescriptionName }} {{ medication.dosageAmount }}
       </h5>
       <div class="card-body">
         <p class="med-title">
