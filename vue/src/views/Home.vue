@@ -1,10 +1,10 @@
 <template>
   <div id="home-page">
     <div class="container">
-      <p class="emergency">
+      <!-- <p class="emergency">
         IF THIS IS AN EMERGENCY <br />
         PLEASE DIAL 9-1-1 <i class="fa fa-ambulance" id="emergency_icon"></i>
-      </p>
+      </p> -->
       <div class="picture-and-slogan">
         <img
           id="doctor-picture"
@@ -60,40 +60,55 @@
           </div>
         </nav>
       </div>
-      <!-- html code for slideshow -->
-      <!-- Slideshow container -->
-      <div class="slideshow-container">
-        <!-- Full-width images with number and caption text -->
-        <div class="mySlides">
-          <div class="numbertext">1 / 3</div>
-          <img src="../assets/nbc_news_covid_map.png" style="width: 100%" />
-          <div class="text">Caption Text</div>
-        </div>
 
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img src="../assets/nbc_news_quarentine.png" style="width: 100%" />
-          <div class="text">Caption Two</div>
-        </div>
+      <div class="carousel" id="photo-caption">
+        <h3 id="news-section">Keep up to date on the latest health news</h3>
+        <div class="news">
+          <img
+            class="covid-map"
+            src="../assets/nbc_news_covid_map.png"
+            alt="COVID map"
+          />
+          <figcaption>
+            MAP: Covid-19 vaccination tracker across the U.S.
+            <a
+              href="https://www.nbcnews.com/health/health-news/map-covid-19-vaccination-tracker-across-u-s-n1252085"
+              target="_blank"
+              >Link to article</a
+            >
+          </figcaption>
 
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img src="../assets/nbc_news_no_hate.png" style="width: 100%" />
-          <div class="text">Caption Three</div>
-        </div>
+          <img
+            class="quarentine"
+            src="../assets/nbc_news_quarentine.png"
+            alt="quarentine"
+          />
 
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <figcaption>
+            Covid vaccines mean the end of quarantine is in sight.<br />
+            For some, the view doesn't look so good
+            <a
+              href="https://www.nbcnews.com/think/opinion/covid-vaccines-mean-end-quarantine-sight-some-view-doesn-t-ncna1262192"
+              target="_blank"
+              >Link to article</a
+            >
+          </figcaption>
+
+          <img
+            class="no-hate"
+            src="../assets/nbc_news_no_hate.png"
+            alt="no hate"
+          />
+          <figcaption>
+            CDC says racism is a 'serious threat' to public health
+            <a
+              href="https://www.nbcnews.com/health/health-news/cdc-says-racism-serious-threat-public-health-n1263547"
+              target="_blank"
+              >Link to article</a
+            >
+          </figcaption>
+        </div>
       </div>
-      <br />
-
-      <!-- The dots/circles -->
-      <!-- <div style="text-align: center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>  -->
     </div>
   </div>
 </template>
@@ -107,8 +122,6 @@ export default {
 #home-page {
   width: 100%;
   height: auto;
-  margin: 0px;
-  padding: 0px;
   overflow-x: hidden;
 }
 .container {
@@ -122,9 +135,22 @@ export default {
     "doctor-picture doctor-picture doctor-picture doctor-picture"
     "scheduling-section . . ."
     "icon-information icon-information icon-information icon-information"
-    "slide-show slide-show slide-show slide-show";
+    /* "news-section news-section news-section news-section" */
+    "carousel carousel carousel carousel";
 }
-
+#news-section {
+  grid-area: news-section;
+  margin-top: 40px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+  font-style: italic;
+  color: #1e3250;
+}
+.news {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "covid-map quarentine no-hate";
+}
 .icon-information {
   grid-area: icon-information;
   color: #46a7ad;
@@ -141,6 +167,7 @@ export default {
 
 .emergency {
   grid-area: emergency;
+  margin-top: 0px;
   margin-right: 15px;
   font-size: 15px;
   color: red;
@@ -154,14 +181,12 @@ export default {
 #doctor-picture {
   height: 500px;
   width: 1440px;
-  /* filter: blur(1px);
-  -webkit-filter: blur(1px); */
   filter: brightness(50%);
 }
 #slogan {
   font-size: 60px;
   color: rgb(230, 226, 226);
-   text-shadow: 4px 4px 4px #1e3250;
+  text-shadow: 4px 4px 4px #1e3250;
   position: absolute;
   top: 50%;
   left: 35%;
@@ -180,7 +205,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 10px;
+  margin-left: 20px;
+  margin-right: 30px;
   /* border-style: solid; */
   /* border-color: #46a7ad; */
   background-color: #ebfbfc;
@@ -196,7 +222,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
   /* border-style: solid;
   border-color: #46a7ad;
   border-width: 7px; */
@@ -212,7 +239,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
   /* border-style: solid;
   border-color: #46a7ad;
   border-width: 7px; */
@@ -228,7 +256,8 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  margin: 10px;
+  margin-left: 30px;
+  margin-right: 20px;
   /* border-style: solid;
   border-color: #46a7ad;
   border-width: 7px; */
@@ -250,114 +279,57 @@ export default {
   text-align: left;
   color: white;
 }
-* {
-  box-sizing: border-box;
-}
-Slideshow container .slideshow-container {
-  max-width: 1000px;
-  height: 600px;
-  width: 600px;
-  grid-area: slide-show;
-  position: relative;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.carousel {
+  grid-area: carousel;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "news-section news-section news-section"
+    "covid-map quarentine no-hate";
+  padding: 30px;
 }
 
-/* Hide the images by default */
-.mySlides {
-  display: all;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
+.covid-map {
+  grid-area: covid-map;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
   width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+  padding: 20px;
+  margin: 30px;
+  border: 6px;
+  border-style: solid;
+  border-color: #46a7ad;
 }
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+.quarentine {
+  grid-area: quarentine;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: auto;
+  padding: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 30px;
+  border: 6px;
+  border-style: solid;
+  border-color: #46a7ad;
 }
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  /* transition: background-color 0.6s ease; */
-}
-
-.active,
-.dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-/* .fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}*/
-
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
+.no-hate {
+  grid-area: no-hate;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: auto;
+  padding: 20px;
+  margin: 30px;
+  border: 6px;
+  border-style: solid;
+  border-color: #46a7ad;
 }
 </style>
+
+
+
+
+
