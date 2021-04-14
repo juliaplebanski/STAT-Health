@@ -12,7 +12,7 @@
           alt="Weight Graph"
         />
         <img id="bmi-range" src="../assets/bmi-range.png" alt="BMI chart" />
-     
+<p>View your BMI calculation below!</p>
       <iframe
         src="https://www.mealpro.net/bmi/?color=34a6b0"
         frameborder="0"
@@ -52,12 +52,23 @@ export default {
   display: flex;
   flex-direction: row;
 }
+
 #bmi-range {
-  width: 400px;
+  width: 600px;
   height: 400px;
 }
 #weight-graph {
-  width: 400px;
+  width: 600px;
   height: 400px;
+}
+P{
+  font-style: italic;
+  align-items: center;
+}
+#bmi-widget{
+justify-content: center;
+height: 535px;
+width: 150%;
+
 }
 </style>
