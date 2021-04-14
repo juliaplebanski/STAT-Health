@@ -5,9 +5,9 @@
       <nav v-if="$store.state.token != ''">
         <ul class="nav nav-pills">
         <li class="nav-item"><router-link class="links" v-bind:to="{ name: 'visits' }"><i class="fa fa-clinic-medical" id="visit-icon"></i>Visits</router-link></li> &nbsp;&nbsp;&nbsp; 
-        <li class="nav-item"><i class="fa fa-syringe" id="results-icon"></i><a href="#" class="links">Test Results</a></li> &nbsp;&nbsp;&nbsp;
+        <li class="nav-item"><router-link class="links" v-bind:to="{ name: 'health-stats' }"><i class="fa fa-heartbeat" id = "health-stats-icon"></i>Health Stats</router-link></li> 
         <li class="nav-item"><router-link class="links" v-bind:to="{ name: 'patient-med' }"><i class="fa fa-prescription-bottle" id="meds-icon"></i>Medications</router-link></li> &nbsp;&nbsp;&nbsp;
-        <li class="nav-item"><i class="fa fa-clipboard-list" id="billing-icon"></i><a href="#" class="links">Billing & Insurance</a></li>
+        <li class="nav-item"><i class="fa fa-clipboard-list" id = "billing-insurance"></i><a href="#" class="links">Billing & Insurance</a></li> &nbsp;&nbsp;&nbsp;
         </ul>
       </nav>
     </div>
@@ -63,9 +63,6 @@ export default {
 }
 #visit-icon, #results-icon, #meds-icon, #billing-icon  {
   color:white;
-}
-#visit-icon {
-  margin-right: 7px;
 }
 #meds-icon {
   margin-right: 7px;

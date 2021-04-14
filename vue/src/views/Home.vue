@@ -33,13 +33,14 @@
             </p>
           </div>
 
-          <div id="Test-Results">
-            <i class="fa fa-syringe"></i>
-            <p class="details">Test Results</p>
+          <div id="Health-Stats">
+            <i class="fa fa-heartbeat"></i>
+            <p class="details">Health Stats</p>
 
-            <p class="description">
-              View past test result information, <br />
-              directly sent from your doctor.
+            <p class="description" id="health-stats-description">
+              View important information on  <br />
+              how your health has changed over time <br />
+              
             </p>
           </div>
           <div id="Medications">
@@ -60,6 +61,7 @@
               for a recent visit as well as see what <br />
               services your insurance covers.
             </p>
+          
           </div>
         </nav>
       </div>
@@ -182,7 +184,7 @@ export default{
 .details {
   font-size: 26px;
 }
-#billing-insurance-description {
+#health-stats-description {
   font-size: 20px;
 }
 
@@ -239,7 +241,7 @@ export default{
   height: 300px;
   width: 300px;
 }
-#Test-Results {
+#Health-Stats {
   grid-area: test-results;
   display: flex;
   flex-direction: column;
@@ -274,7 +276,7 @@ export default{
   width: 300px;
 }
 #Billing-Insurance {
-  grid-area: billing-insurance;
+  grid-area: health-stats;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -365,8 +367,6 @@ export default{
   margin-left: 31px;
 }
 </style>
-
-
 
 
 
