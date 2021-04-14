@@ -64,6 +64,9 @@ export default {
 #visit-icon, #results-icon, #meds-icon, #billing-icon  {
   color:white;
 }
+#visit-icon {
+  margin-right: 7px;
+}
 #meds-icon {
   margin-right: 7px;
 }
