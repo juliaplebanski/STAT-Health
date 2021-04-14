@@ -99,11 +99,11 @@ CREATE TABLE prescription (
 );
 
 
-INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('Kevin Teos','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
-INSERT INTO users (username,password_hash,role) VALUES ('Traci Stocker','$2a$10$.TRVhjXJ7d3xGblUQ/jnIeTcLNvOJ8yU9G.D7sq9Wu7j2IemiowPi','ROLE_USER');
 
-INSERT INTO patient (user_id, doctor_id) VALUES (3,1);
+
+INSERT INTO patient (user_id, doctor_id) VALUES (1,1);
 
 INSERT INTO doctor (user_id,first_name,last_name) VALUES (2, 'Steve', 'Carmichael');
 INSERT INTO visit_status (status_id,status_desc) VALUES ('a', 'approved');
