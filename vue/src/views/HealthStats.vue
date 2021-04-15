@@ -16,11 +16,11 @@
               />
               <h3 id="weight-note">A note from your doctor:</h3>
               <p id="weight-graph-text">
-                Kevin, you have made great job over these past 6 months!
+                Kevin, you have made great progress over these past 6 months!
                 <br />You've lost a total of 20lbs, which now puts you in the
                 healthy weight range <br />for your age and height. I believe if
                 you continue exercising regularly <br />
-                and eating you will continue to lose weight and your test
+                and eating you well you will continue to lose weight and your test
                 results will improve. <br />
                 Your cholestoral will be within a normal range and your average
                 heart rate <br />
