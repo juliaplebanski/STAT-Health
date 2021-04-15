@@ -1,31 +1,100 @@
 <template>
   <div id="health-stats-page">
     <the-header id="header" />
-    <div id="h-stats-view">
-    <h3><i id="heart-icon" class="fa fa-heartbeat"></i> Health Stats</h3>
-    <h5>
+    <div id="health-stats-page-body">
+      <div id=health-message>
+      <h3><i id="heart-icon" class="fa fa-heartbeat"></i> Health Stats</h3>
+       <span>
        Chart your health progress. Contact the office at
       (555) 555-5555 if you have any questions.
-    </h5>
+    </span>
     </div>
-    <div class="weight">
-      <!-- <div class="health-stats-photo"> -->
-        <img
-          id="weight-graph"
-          src="../assets/weight-graph.png"
-          alt="Weight Graph"
-        />
-        <img id="bmi-range" src="../assets/bmi-range.png" alt="BMI chart" />
-        <!-- <p id="bmi-calc">View your BMI calculation below!</p> -->
-        <iframe
-          src="https://www.mealpro.net/bmi/?color=34a6b0"
-          frameborder="0"
-          width="400px"
-          height="400px"
-          style="max-width: 100%"
-          id="bmi-widget"
-        ></iframe>
-      <!-- </div> -->
+      <div class="weight">
+        <div class="health-stats-photo">
+          <h3 id="title-for-weight">View your weight stats below</h3>
+          <hr class="solid" />
+          <div class="health-stats-photo">
+            <div id="weight-graph-description">
+              <img
+                id="weight-graph"
+                src="../assets/weight-graph.png"
+                alt="Weight Graph"
+              />
+              <h3 id="weight-note">A note from your doctor:</h3>
+              <p id="weight-graph-text">
+                Kevin, you have made great job over these past 6 months!
+                <br />You've lost a total of 20lbs, which now puts you in the
+                healthy weight range <br />for your age and height. I believe if
+                you continue exercising regularly <br />
+                and eating you will continue to lose weight and your test
+                results will improve. <br />
+                Your cholestoral will be within a normal range and your average
+                heart rate <br />
+                should decrease as well. <br />-Dr. Steve "Coach" Carmichael
+              </p>
+            </div>
+            <h3 id="title-for-weight">
+              Keep up to date on your BMI to keep it in a healthy range
+            </h3>
+            <hr class="solid" />
+            <div id="bmi">
+              <iframe
+                src="https://www.mealpro.net/bmi/?color=34a6b0"
+                frameborder="0"
+                width="400px"
+                height="400px"
+                style="max-width: 100%"
+                id="bmi-widget"
+              ></iframe>
+              <img
+                id="bmi-range"
+                src="../assets/bmi-range.png"
+                alt="BMI chart"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 id="title-for-weight">View your latest test results below</h3>
+      <hr class="solid" />
+      <div id="test-results">
+        <h3 id="Cholesterol">Cholesterol</h3>
+        <p id="cholesterol-results">
+          <img
+            id="lipid-test-results"
+            src="../assets/lipid-profile-blood.png"
+            alt="Lipid test results"
+          />
+          <br />Based on your latest lipid test, you have elevated lipid levels.
+        </p>
+        <p id="tips-on-info">
+          <img
+            id="lipid-test-info"
+            src="../assets/lipid-results-info.png"
+            alt="Lipid test info"
+          />
+          <br />
+          View this infographic for more information on how to read your lipid
+          test results.
+        </p>
+
+        <h3 id="HeartRate">Heart Rate</h3>
+        <p id="heart-rate-results">
+          <img id="ecg" src="../assets/ecg.jpg" alt="ecg results" />
+          <br />Based on your latest ECG, your resting heart rate, or RHR, is
+          elevated.
+        </p>
+        <hr class="solid" />
+        <p id="heart-rate-info-caption">
+          <img
+            id="heart-rate-info"
+            src="../assets/rhr-info.png"
+            alt="heart-rate-info"
+          />
+          <br />
+          View this infographic for more information on how to reduce your RHR,
+        </p>
+      </div>
     </div>
     <the-footer id="footer" />
   </div>
@@ -45,30 +114,12 @@ export default {
 </script>
 
 <style>
-#h-stats-view {
-  margin-top: 60px;
-  margin-left: 60px;
-  margin-bottom: 40px;
-  text-align: left;
-  font-size: 1.5em;
-  font-weight: 600;
-  color: #1e3250;
-}
-#header {
-  grid-area: header;
-}
-#footer {
-  grid-area: footer;
-}
 #heart-icon {
   grid-area: heart;
   color: #46a7ad;
   font-size: 1.5em;
-  margin-left: 4%;
-  margin-top: 4%;
-  margin-bottom: 2%;
 }
-/* #weight-graph-description {
+#weight-graph-description {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
@@ -76,29 +127,34 @@ export default {
     "weight-graph doctor-note";
   margin-left: 20px;
   margin-right: 20px;
-} */
-.weight {
-  grid-area: weight;
-  display: flex;
-  justify-content: space-evenly;
-  max-height: 400px;
 }
+#bmi {
+  grid-area: weight;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "bmi-widget bmi-range";
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
 #bmi-range {
-  width: 400px;
-  margin: 20px;
+  grid-area: bmi-range;
+  height: 300px;
+  width: 600px;
 }
 #weight-graph {
   grid-area: weight-graph;
   width: 450px;
   height: 300px;
 }
+
 #bmi-widget {
   grid-area: bmi-widget;
   justify-content: center;
   height: 300px;
   width: 600px;
 }
-/* #title-for-weight {
+#title-for-weight {
   font-size: 25px;
   margin-top: 20px;
   margin-left: 20px;
@@ -151,14 +207,40 @@ hr.solid {
   grid-area: heart-rate-info;
   height: 300px;
   width: 400px;
-  margin: 20px;
-} */
-#health-stats-page {
+  
+}
+#test-results {
+  grid-area: weight;
   display: grid;
-  grid-template-rows: 1fr 4fr 1fr;
-  grid-template-areas: 
-      "header"
-      "weight"
-      "footer";
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "cholesterol ."
+    "cholesterol-caption-and-image tips-on-info"
+    "divider divider"
+    "heart-rate heart-rate"
+    "heart-rate-results heart-rate-info-caption";
+  margin-left: 50px;
+  margin-top: 50px;
+}
+#cholesterol-results {
+  grid-area: cholesterol-caption-and-image;
+}
+#tips-on-info {
+  grid-area: tips-on-info;
+}
+#heart-rate-results {
+  grid-area: heart-rate-results;
+}
+#heart-rate-info-caption {
+  grid-area: heart-rate-info-caption;
+}
+#health-message {
+  margin-top: 60px;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #1e3250;
 }
 </style>
