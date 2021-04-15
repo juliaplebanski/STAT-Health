@@ -68,7 +68,7 @@ export default {
   margin-top: 4%;
   margin-bottom: 2%;
 }
-#weight-graph-description {
+/* #weight-graph-description {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
@@ -76,14 +76,13 @@ export default {
     "weight-graph doctor-note";
   margin-left: 20px;
   margin-right: 20px;
-}
+} */
 .weight {
   grid-area: weight;
   display: flex;
   justify-content: space-evenly;
   max-height: 400px;
 }
-
 #bmi-range {
   width: 400px;
   margin: 20px;
@@ -93,14 +92,13 @@ export default {
   width: 450px;
   height: 300px;
 }
-
 #bmi-widget {
   grid-area: bmi-widget;
   justify-content: center;
   height: 300px;
   width: 600px;
 }
-#title-for-weight {
+/* #title-for-weight {
   font-size: 25px;
   margin-top: 20px;
   margin-left: 20px;
@@ -154,7 +152,7 @@ hr.solid {
   height: 300px;
   width: 400px;
   margin: 20px;
-}
+} */
 #health-stats-page {
   display: grid;
   grid-template-rows: 1fr 4fr 1fr;
