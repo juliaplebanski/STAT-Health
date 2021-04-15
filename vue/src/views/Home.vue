@@ -1,8 +1,7 @@
 <template>
   <div id="home-page">
-    
-    <the-header id="header"/>
-    
+    <the-header id="header" />
+
     <div class="container">
       <!-- <p class="emergency">
         IF THIS IS AN EMERGENCY <br />
@@ -38,9 +37,8 @@
             <p class="details">Health Stats</p>
 
             <p class="description" id="health-stats-description">
-              View important information on  <br />
+              View important information on <br />
               how your health has changed over time <br />
-              
             </p>
           </div>
           <div id="Medications">
@@ -61,7 +59,6 @@
               for a recent visit and see what <br />
               services your insurance covers
             </p>
-          
           </div>
         </nav>
       </div>
@@ -74,12 +71,12 @@
             src="../assets/nbc_news_covid_map.png"
             alt="COVID map"
           />
-          <p id=covid-map>
+          <p id="covid-map">
             MAP: Covid-19 vaccination tracker across the U.S.
             <a
               href="https://www.nbcnews.com/health/health-news/map-covid-19-vaccination-tracker-across-u-s-n1252085"
               target="_blank"
-              ><br/>Link to article</a
+              ><br />Link to article</a
             >
           </p>
 
@@ -89,13 +86,13 @@
             alt="quarentine"
           />
 
-          <p id=quarentine-caption>
+          <p id="quarentine-caption">
             Covid vaccines mean the end of quarantine is in sight.<br />
             For some, the view doesn't look so good
             <a
               href="https://www.nbcnews.com/think/opinion/covid-vaccines-mean-end-quarantine-sight-some-view-doesn-t-ncna1262192"
               target="_blank"
-              ><br/>Link to article</a
+              ><br />Link to article</a
             >
           </p>
 
@@ -104,7 +101,7 @@
             src="../assets/nbc_news_no_hate.png"
             alt="no hate"
           />
-          <p id=no-hate>
+          <p id="no-hate">
             CDC says racism is a 'serious threat' to public health
             <a
               href="https://www.nbcnews.com/health/health-news/cdc-says-racism-serious-threat-public-health-n1263547"
@@ -116,22 +113,22 @@
       </div>
     </div>
     <div>
-    <the-footer id="footer"/> 
-  </div>
+      <the-footer id="footer" />
+    </div>
   </div>
 </template>
 
 <script>
-import TheHeader from '../components/TheHeader.vue';
-import TheFooter from '../components/TheFooter.vue';
+import TheHeader from "../components/TheHeader.vue";
+import TheFooter from "../components/TheFooter.vue";
 
-export default{
-  name: 'home',
-  components:{
+export default {
+  name: "home",
+  components: {
     TheHeader,
-    TheFooter
-  }
-}
+    TheFooter,
+  },
+};
 </script>
 <style>
 /* #home-page {
@@ -205,7 +202,6 @@ export default{
   height: 525px;
   width: 100%;
   filter: brightness(50%);
-  
 }
 #slogan {
   font-size: 60px;
@@ -229,7 +225,7 @@ export default{
   grid-area: visit;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-top: 40px;
   margin-left: 20px;
   margin-right: 30px;
   /* border-style: solid; */
@@ -246,7 +242,9 @@ export default{
   grid-area: test-results;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-top: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-left: 30px;
   margin-right: 30px;
   /* border-style: solid;
@@ -263,7 +261,7 @@ export default{
   grid-area: medications;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-top: 40px;
   margin-left: 30px;
   margin-right: 30px;
   /* border-style: solid;
@@ -280,7 +278,7 @@ export default{
   grid-area: health-stats;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-top: 40px;
   margin-left: 30px;
   margin-right: 20px;
   /* border-style: solid;

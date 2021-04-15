@@ -2,13 +2,13 @@
   <div id="health-stats-page">
     <the-header id="header" />
     <div id="health-stats-page-body">
-      <div id=health-message>
-      <h3><i id="heart-icon" class="fa fa-heartbeat"></i> Health Stats</h3>
-       <span>
-       Chart your health progress. Contact the office at
-      (555) 555-5555 if you have any questions.
-    </span>
-    </div>
+      <div id="health-message">
+        <h3><i id="heart-icon" class="fa fa-heartbeat"></i> Health Stats</h3>
+        <span>
+          Chart your health progress. Contact the office at (555) 555-5555 if
+          you have any questions.
+        </span>
+      </div>
       <div class="weight">
         <div class="health-stats-photo">
           <h3 id="title-for-weight">View your weight stats below</h3>
@@ -22,11 +22,11 @@
               />
               <h3 id="weight-note">A note from your doctor:</h3>
               <p id="weight-graph-text">
-                Kevin, you have made great job over these past 6 months!
+                Kevin, you have made great progress over these past 6 months!
                 <br />You've lost a total of 20lbs, which now puts you in the
                 healthy weight range <br />for your age and height. I believe if
                 you continue exercising regularly <br />
-                and eating you will continue to lose weight and your test
+                and eating well you will continue to lose weight and your test
                 results will improve. <br />
                 Your cholestoral will be within a normal range and your average
                 heart rate <br />
@@ -92,7 +92,7 @@
             alt="heart-rate-info"
           />
           <br />
-          View this infographic for more information on how to reduce your RHR,
+          View this infographic for more information on how to reduce your RHR.
         </p>
       </div>
     </div>
@@ -158,6 +158,7 @@ export default {
   font-size: 25px;
   margin-top: 20px;
   margin-left: 20px;
+  font-style: italic;
 }
 #weight-graph-text {
   grid-area: doctor-note;
@@ -168,6 +169,7 @@ export default {
   border-radius: 10px;
   margin-top: 10px;
   padding-top: 20px;
+  padding-left: 40px;
   margin-right: 20px;
   font-style: italic;
 }
@@ -187,6 +189,7 @@ hr.solid {
 }
 #lipid-test-results {
   grid-area: lipid-results;
+  margin-bottom: 49px;
 }
 #lipid-test-info {
   grid-area: lipid-test-info;
@@ -202,12 +205,12 @@ hr.solid {
   height: 250px;
   width: 500px;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 #heart-rate-info {
   grid-area: heart-rate-info;
   height: 300px;
   width: 400px;
-  
 }
 #test-results {
   grid-area: weight;
@@ -220,19 +223,24 @@ hr.solid {
     "heart-rate heart-rate"
     "heart-rate-results heart-rate-info-caption";
   margin-left: 50px;
+  margin-right: 50px;
   margin-top: 50px;
 }
 #cholesterol-results {
   grid-area: cholesterol-caption-and-image;
+  font-weight: 600;
 }
 #tips-on-info {
   grid-area: tips-on-info;
+  font-weight: 600;
 }
 #heart-rate-results {
   grid-area: heart-rate-results;
+  font-weight: 600;
 }
 #heart-rate-info-caption {
   grid-area: heart-rate-info-caption;
+  font-weight: 600;
 }
 #health-message {
   margin-top: 60px;
