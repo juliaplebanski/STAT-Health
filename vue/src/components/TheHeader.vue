@@ -64,7 +64,7 @@ export default {
 #visit-icon, #results-icon, #meds-icon, #billing-icon  {
   color:white;
 }
-#meds-icon {
+#meds-icon, #health-stats-icon, #visit-icon {
   margin-right: 7px;
 }
 .nav-item {

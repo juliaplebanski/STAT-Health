@@ -1,6 +1,9 @@
 <template>
   <div id="uh-home">
     <the-header id="header"/>
+    <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }"
+      >Schedule a Visit</router-link
+    >
     <div id="uh-view">
     <doctor-info />
     <upcoming-visits />
@@ -27,7 +30,7 @@ export default {
   grid-area: header;
 }
 #uh-view {
-  margin-top: 50px;
+  margin-top: 10%;
   margin-bottom: 50px;
   grid-area: uh-view;
   display:flex;
@@ -44,5 +47,10 @@ export default {
       "uh-view"
       "footer";
 }
-
+#book-visit {
+  float: right;
+  margin-right: 5%;
+  margin-top: 3%;
+  margin-right: 5%;
+}
 </style>

@@ -1,9 +1,5 @@
 <template>
   <div id="booking-main">
-    <div id="patient-message">
-      <h3><i id="med-visit-icon" class="fa fa-clinic-medical"></i> Schedule a Visit</h3>
-      <h5>If you need to schedule a visit more than 2 weeks in advance, please call the office at (555) 555-5555.</h5>
-    </div>
     <div id="booking">
       <div>
         <h4 id="schedule-visit">Select a date to begin</h4>
@@ -330,7 +326,6 @@ button:hover,
   color: white;
 }
 #schedule-visit {
-  /* padding: 0 10px; */
   color: #278b90;
 }
 #patient-form {
@@ -340,7 +335,6 @@ button:hover,
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
-  margin: 10px 0px 0px 20px;
   border: 1px solid #ced4da;
 }
 .form-group {
@@ -379,12 +373,6 @@ select.form-control {
   color: #1e3250;
   font-weight: bold;
 }
-#patient-message {
-  grid-area: message;
-  margin-left: 200px;
-  margin-bottom: 40px;
-  color: #1e3250;
-}
 #reason,
 #dates {
   margin-top: 10px;
@@ -400,14 +388,14 @@ select.form-control {
   grid-area: booking;
   background-color: #e0f5f6;
   border-radius: 10px;
-  justify-self: center;
+  /* justify-self: center; */
   min-width: 400px;
   max-width: 400px;
   min-height: 400px;
   padding-top: 20px;
   padding-left: 80px;
   padding-bottom: 20px;
-  margin: 10px 20px 0px 40px;
+  /* margin: 10px 20px 0px 40px; */
 }
 #confirmation {
   grid-area: confirmation;
@@ -473,9 +461,5 @@ select.form-control {
   "message message"
   "booking forms"
   "booking forms";
-}
-#med-visit-icon {
-  color: #46a7ad;
-  font-size: 1.3em;
 }
 </style>

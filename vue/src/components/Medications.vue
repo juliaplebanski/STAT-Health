@@ -3,7 +3,7 @@
     <div id="med-message">
      <h3><i id="med-bottle" class="fa fa-prescription-bottle"></i> Medications</h3>
     <span>
-       These are the medications onfile for you. Please contact the office at
+       Current medications on file. Contact the office at
       (555) 555-5555 if you have any questions.
     </span>
     <span id="emergency">Call 911 if you have an emergency. </span>
@@ -27,7 +27,7 @@
           <span> Instructions: </span
           ><span class="med-text">{{ medication.instructions }}</span>
         </p>
-        <a href="#" id="refill-btn" class="btn btn-primary">Request Refill</a>
+        <button id="refill-btn" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="Refills not available. Contact the office for assistance." disabled>Request Refill</button>
       </div>
     </div>
   </div>
@@ -73,10 +73,10 @@ export default {
   background-color: #46a7ad;
   border: none;
 }
-#refill-btn:hover {
+/* #refill-btn:hover {
   background-color: #92dce0;
   color: white;
-}
+} */
 #med-header {
   background-color: #4674ad;
   text-align: left;
@@ -97,7 +97,9 @@ export default {
 }
 #med-message {
   margin-left: 20px;
+  margin-top: 20px;
   margin-bottom: 40px;
+  text-align: left;
   font-size: 1.2em;
   font-weight: 600;
   color: #1e3250;

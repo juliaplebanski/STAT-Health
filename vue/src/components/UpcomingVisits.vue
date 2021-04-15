@@ -1,8 +1,5 @@
 <template>
   <div id="uv-main">
-    <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }"
-      >Schedule a Visit</router-link
-    >
     <div id="uv-list">
       <h4 id="upcoming-visits">Upcoming Visits</h4>
       <p v-show="upcomingVisits.length == 0" class="uv-text">No upcoming visits at this time.<p>
