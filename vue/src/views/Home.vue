@@ -29,7 +29,7 @@
             <p class="description">
               View past visits, <br />
               view upcoming visits, <br />
-              and schedule a visit.
+              and schedule a visit
             </p>
           </div>
 
@@ -48,8 +48,8 @@
             <p class="details">Medications</p>
 
             <p class="description">
-              View current prescriptions, <br />
-              and request refills.
+              View current prescriptions <br />
+              and request refills
             </p>
           </div>
 
@@ -57,9 +57,9 @@
             <i class="fa fa-clipboard-list"></i>
             <p class="details">Billing & Insurance</p>
             <p class="description" id="billing-insurance-description">
-              View your bill and pay, <br />
-              for a recent visit as well as see what <br />
-              services your insurance covers.
+              View and pay your bill <br />
+              for a recent visit and see what <br />
+              services your insurance covers
             </p>
           
           </div>
@@ -220,6 +220,7 @@ export default{
 #scheduling-section {
   grid-area: scheduling-section;
   margin-top: 40px;
+  margin-bottom: 20px;
   margin-left: 15px;
   font-style: italic;
   color: #1e3250;
