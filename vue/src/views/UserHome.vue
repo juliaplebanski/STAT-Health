@@ -4,6 +4,15 @@
     <router-link id="book-visit" v-bind:to="{ name: 'scheduling' }"
       >Schedule a Visit</router-link
     >
+    <div id="user-home-message">
+        <h3 id="user-home-header">
+          <i class="fa fa-home" id="user-home-icon"></i> Home
+        </h3>
+        <span>
+          Please contact the office at (555) 555-5555 if you have any questions.
+        </span>
+        <span id="emergency">Call 911 if you have an emergency. </span>
+      </div>
     <div id="uh-view">
     <doctor-info />
     <upcoming-visits />
@@ -52,5 +61,18 @@ export default {
   margin-right: 5%;
   margin-top: 3%;
   margin-right: 5%;
+}
+#user-home-message {
+  margin-top: 60px;
+  margin-left: 60px;
+  margin-bottom: 40px;
+  text-align: left;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #1e3250;
+}
+#user-home-icon {
+   color: #46a7ad;
+  font-size: 1.5em;
 }
 </style>
