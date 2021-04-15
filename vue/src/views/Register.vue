@@ -131,7 +131,7 @@ export default {
 }
 #register-link {
   color: #1e3250;
-  text-decoration: underline;
+  text-decoration: none;
 }
 input[type="text"],
 input[type="password"] {
